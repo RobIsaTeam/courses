@@ -2,6 +2,8 @@
 published: true
 title: 3 - ThreeJS - Intro to CSS
 layout: post
+tags: [threejs]
+categories: [threejs, course, material, ]
 ---
 *Learning Objectives*
 
