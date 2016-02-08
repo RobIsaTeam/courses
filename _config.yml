@@ -3,8 +3,8 @@ pygments: true
 markdown: kramdown
 url: http://resbaztraining.github.io
 title: Training
-email: 
+email: isa.kiral@gmail.com
 author: Isabell Kiral-Kornek
 description: training notes
-paginate: 5
+paginate: 10
 google_analytics: 
