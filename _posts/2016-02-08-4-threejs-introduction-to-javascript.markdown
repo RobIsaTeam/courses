@@ -1,7 +1,9 @@
 ---
 published: true
-title: 3 - ThreeJS - Introduction to JavaScript
+title: 4 - ThreeJS - Introduction to JavaScript
 layout: post
+tags: [threejs]
+categories: [threejs, course, material, ]
 ---
 As mentioned before, neither HTML nor CSS are actual programming languages. If we want any functionality (and that includes interactivity) on our page, we will need to code in an actual language that allows for loops, conditionals, and mathematical operations. On the internet, that language is JavaScript.
 
