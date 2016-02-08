@@ -11,7 +11,7 @@ Let's look at a neat toy project: we have two pets, a cat and a dog, we have the
 
 ___
 
-* Learning objectives:*
+*Learning objectives:*
 
 * Know the difference between list, object, number, and string
 * Write a first function
@@ -52,7 +52,7 @@ console.log(my_number);
 
 ___
 
-* Challenge: adding strings and numbers*
+*Challenge: adding strings and numbers*
 
 We've learned about strings and numbers. But what happens if we add them?
 Create four variables: two numbers and two strings. Then add any two of them and print the sum to the console (e.g. `console.log(num1 + num2`)). What is the output?
