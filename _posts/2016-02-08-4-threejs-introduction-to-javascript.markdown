@@ -188,7 +188,7 @@ var royal_names_of_pets = pets.map(function(element_in_object) {
 var royal_well_fed_pets = pets.map(function(element_in_object) {
   return {
      name: 'the honorary ' + element_in_object.name,
-     weigth: element_in_object.weight_in_kg + 4;
+     weigth: element_in_object.weight_in_kg + 4
    }
 })
 {%endhighlight%}
