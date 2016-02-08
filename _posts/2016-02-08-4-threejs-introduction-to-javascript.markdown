@@ -7,15 +7,15 @@ categories: [threejs, course, material, ]
 ---
 As mentioned before, neither HTML nor CSS are actual programming languages. If we want any functionality (and that includes interactivity) on our page, we will need to code in an actual language that allows for loops, conditionals, and mathematical operations. On the internet, that language is JavaScript.
 
-Let's look at a neat toy project: we have two pets, a cat and a dog, we have their weights and their names. JavaScript thinks in lists and objects. Our goal here will be to create a list of pets so we can then only look at a subset of them (by filtering them). 
+Let's look at a neat toy project: we have two pets, a cat and a dog, we have their weights and their names. JavaScript thinks in arrays and objects. Our goal here will be to create a array of pets so we can then only look at a subset of them (by filtering them). 
 
 ___
 
 *Learning objectives:*
 
-* Know the difference between list, object, number, and string
+* Know the difference between array, object, number, and string
 * Write a first function
-* Know how to copy, map, and filter lists
+* Know how to copy, map, and filter arrays
 * Along the way, learn a little bit about debugging (console.log() and alert()) 
 
 ___ 
@@ -59,7 +59,7 @@ Create four variables: two numbers and two strings. Then add any two of them and
 
 ___
 
-Back to what we initially wanted: a list of our animals. Each of our animals will be stored as an object. And our objects will have different fields to start with: name and weight.
+Back to what we initially wanted: a array of our animals. Each of our animals will be stored as an object. And our objects will have different fields to start with: name and weight.
 
 {%highlight javascript%}
 var my_cat = {
@@ -89,23 +89,23 @@ Create an object for your dog! Give it a name, weight, and whatever else seems l
 
 ___
 
-We have two pets now. Remember we wanted both of them in one list? Where objects have curly brackets and values can be recalled using the dot-syntax and field names, lists have square brackets and boring indices (starting at 0).
+We have two pets now. Remember we wanted both of them in one array? Where objects have curly brackets and values can be recalled using the dot-syntax and field names, arrays have square brackets and boring indices (starting at 0).
 
 {%highlight javascript%}
-list = [1,2,3];
-console.log(list(0));
+array = [1,2,3];
+console.log(array(0));
 {%endhighlight%}
 
 This code will return the first element: `1`.
 
-To create our list of pets, instead of having numbers, we now have our objects in the brackets:
+To create our array of pets, instead of having numbers, we now have our objects in the brackets:
 {%highlight javascript%}
 pets = [my_cat, my_dog];
 console.log(pets(0)); // returns the cat
 console.log(pets(1)); // returns the dog
 {%endhighlight%}
 
-We can continue this pattern indefinitely, having lists of objects with fields that have lists of objects... 
+We can continue this pattern indefinitely, having arrays of objects with fields that have arrays of objects... 
 
 ___
 
@@ -155,7 +155,7 @@ The reason `my_cat`'s name has changed is that JavaScript thinks of the two cats
 
 So that's not the way to copy. An intuitive way to copy might be a `.copy()` function, but for some reason this doesn't exist. It may in future, but for now, we will need to make use of workarounds. 
 
-For a list, we can use a mapping function:
+For a array, we can use a mapping function:
 
 {%highlight javascript%}
 var copy_pets = pets.map(function(element_in_object) {
@@ -163,7 +163,7 @@ var copy_pets = pets.map(function(element_in_object) {
 })
 {%endhighlight%}
 
-What this function does is it loops through each element in `pets`, temporarily calls it `element_in_object`, and returns it to a new list `copy_pets` at the same position.
+What this function does is it loops through each element in `pets`, temporarily calls it `element_in_object`, and returns it to a new array `copy_pets` at the same position.
 You may notice that this time, we didn't even give the function a name. This is an anonymous function that only makes sense in the context we are using it in. So it doesn't need a name. 
 
 We can also use maps to extract only certain fields:
@@ -174,7 +174,7 @@ var names_of_pets = pets.map(function(element_in_object) {
 })
 {%endhighlight%}
 
-...perform any operation on each element in the list:
+...perform any operation on each element in the array:
 
 {%highlight javascript%}
 var royal_names_of_pets = pets.map(function(element_in_object) {
@@ -182,7 +182,7 @@ var royal_names_of_pets = pets.map(function(element_in_object) {
 })
 {%endhighlight%}
 
-...or return a whole new custom list:
+...or return a whole new custom array:
 
 {%highlight javascript%}
 var royal_well_fed_pets = pets.map(function(element_in_object) {
@@ -197,11 +197,11 @@ ___
 
 *Challenge: Mapping*
 
-Create a new list of animals from `pet`, giving it new attributes that relate back to the ones we already have. 
+Create a new array of animals from `pet`, giving it new attributes that relate back to the ones we already have. 
 
 ___
 
-One last function, that will come up frequently, is the filter function. Its syntax is very similar to mapping function we just learned about. It takes a list and filters it according to our specifications. So the list it returns will be shorter (or of equal length) than the list we feed it. Let's say we want to only look at animals that weigh over a certain number of kgs.
+One last function, that will come up frequently, is the filter function. Its syntax is very similar to mapping function we just learned about. It takes a array and filters it according to our specifications. So the array it returns will be shorter (or of equal length) than the array we feed it. Let's say we want to only look at animals that weigh over a certain number of kgs.
 
 {%highlight javascript%}
 var well_fed_pets = pets.filter(function(element_in_object) {
@@ -215,7 +215,7 @@ ___
 
 *Challenge: Filtering*
 
-Create a new list of animals that contains only cats by filtering the `pets` list.
+Create a new array of animals that contains only cats by filtering the `pets` array.
 
 ___
 
