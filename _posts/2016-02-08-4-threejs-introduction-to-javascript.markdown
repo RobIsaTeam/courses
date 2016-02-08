@@ -218,3 +218,5 @@ ___
 Create a new list of animals that contains only cats by filtering the `pets` list.
 
 ___
+
+What more can we want from a programming language? More explicit loops and conditionals. But we'll get to that if we need to. 
