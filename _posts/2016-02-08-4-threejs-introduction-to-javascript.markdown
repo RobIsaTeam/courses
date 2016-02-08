@@ -7,7 +7,7 @@ categories: [threejs, course, material, ]
 ---
 As mentioned before, neither HTML nor CSS are actual programming languages. If we want any functionality (and that includes interactivity) on our page, we will need to code in an actual language that allows for loops, conditionals, and mathematical operations. On the internet, that language is JavaScript.
 
-Let's look at a neat toy project: we have two pets, a cat and a dog, we have their weights and their names. JavaScript thinks in lists and objects. Our goal here will be 
+Let's look at a neat toy project: we have two pets, a cat and a dog, we have their weights and their names. JavaScript thinks in lists and objects. Our goal here will be to create a list of pets so we can then only look at a subset of them (by filtering them). 
 
 ___
 
