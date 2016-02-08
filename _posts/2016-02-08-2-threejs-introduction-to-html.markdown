@@ -5,6 +5,16 @@ layout: post
 tags: [threejs]
 categories: [threejs, course, material, ]
 ---
+
+*Learning objectives:* 
+
+* Create your first web page and view it in a browser
+* Understand the structure of an HTML document
+* Understand the different elements within an HTML document
+
+___
+
+
 A way of writing that is understood by all web browsers is HTML: hypertext markup language. Since we don’t have the ability to do logical operations (loops, etc.) with HTML alone, it’s not technically a programming language.
 
 Let’s see how we can get our browser to greet the world. We need to:
@@ -52,5 +62,8 @@ HTML has more predefined elements that will vary in size and style. To divide th
 </html> 
 {%endhighlight%}
 
+___
+
 *Challenge: other elements*
+
 Create a folder that contains the file index.html (or download it). What seems to be the difference between `<div>`, `<h1>`, and `<em>`? What about the difference between two `<div>` elements and two `<span>` elements? Create a heading that is in italics. Never be afraid to google to find out how to use certain elements and find out about the syntax!
