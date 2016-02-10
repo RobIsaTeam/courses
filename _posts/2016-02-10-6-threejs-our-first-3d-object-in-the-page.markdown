@@ -33,12 +33,12 @@ _Challenge: _
 
 ___ 
 
-We can't show an object that doesn't have a material assigned. ThreeJS comes with a whole range of predefined materials. For now, we'll use a very basic one: `MeshBasicMaterial`. Any material has a whole range of attributes that we can define. For this one, we want to define the colour (a light grey: #E6E6E6) and also show the wireframe.
+We can't show an object that doesn't have a material assigned. ThreeJS comes with a whole range of predefined materials. For now, we'll use a very basic one: `MeshBasicMaterial`. Any material has a whole range of attributes that we can define. For this one, we want to define the colour (a light pink: #FFDDDD) and also show the wireframe.
 
 In our callback, we'll create our material:
 
 {%highlight javascript%}
-var material = new THREE.MeshBasicMaterial( { color: '#E6E6E6', wireframe:true } );
+var material = new THREE.MeshBasicMaterial( { color: '#FFDDDD', wireframe:true } );
 {%endhighlight%}
 
 
