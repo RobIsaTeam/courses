@@ -1,6 +1,6 @@
 ---
 published: true
-title: 6 - ThreeJS - Our first 3D object in the page
+title: 6 - ThreeJS - Our first 3D object in the scene
 layout: post
 ---
 _Learning objectives:_
@@ -15,7 +15,7 @@ Great, we have a scene, a camera pointed at it, nothing to look at, yet.
 
 ## continue here:
 
-* load stl (give link to the monkeybrain)
+* load stl (give link to the monkeybrain) - mention the callback function
 * set material
 * make a mesh
 * add to the scene
