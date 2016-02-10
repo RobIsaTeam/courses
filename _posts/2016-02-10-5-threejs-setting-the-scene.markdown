@@ -58,7 +58,7 @@ ThreeJS is programmed in a way that requires us to use the `new` keyword to crea
 In our JavaScript file 'main.js', we start setting the scene: 
 {%highlight javascript%}
 var scene =  new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 80, 1000 );
+var camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, .1, 1000 );
 var renderer = new THREE.WebGLRenderer();
 {%endhighlight%}
 
