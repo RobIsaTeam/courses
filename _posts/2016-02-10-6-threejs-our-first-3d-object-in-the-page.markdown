@@ -43,7 +43,9 @@ From the ThreeJS documentation we find out what parameters we have to pass to th
 {%highlight javascript%}
 PerspectiveCamera( fov, aspect, near, far )
 {%endhighlight%}
-`fov` is the view angle, `aspect` the aspect ratio, and `near` and `far` set the range of things you can see in the scene. This image might help to get a better understanding about what's going on: https://www3.ntu.edu.sg/home/ehchua/programming/opengl/images/Graphics3D_CameraPerspective.png
+`fov` is the view angle, `aspect` the aspect ratio, and `near` and `far` set the range of things you can see in the scene. This image might help to get a better understanding about what's going on:
+![camera setup](https://www3.ntu.edu.sg/home/ehchua/programming/opengl/images/Graphics3D_CameraPerspective.png "This image")
+
 Play with the camera settings until you can see the entire brain on the screen. 
 ...try setting `near = 80`. What happens?
 
