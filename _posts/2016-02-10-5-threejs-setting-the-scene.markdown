@@ -23,7 +23,7 @@ And of course, we need to link to the ThreeJS library in 'index.html' as well as
 		<script src="main.js"></script>
 	</body>
 </html>
-{%endhighligh%}
+{%endhighlight%}
 
 Let's go through the dot points one by one:
 
