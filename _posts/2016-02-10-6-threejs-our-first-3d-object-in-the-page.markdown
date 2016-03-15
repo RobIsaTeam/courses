@@ -28,7 +28,7 @@ Again, we are creating a ThreeJS-specific object (a loader), which means we use 
 
 ___
 
-_Challenge: _
+_Challenge:_
 ...maybe have a look at https://github.com/mrdoob/three.js/tree/master/examples/js/loaders to see what some other file formats are we could be loading? 
 
 ___ 
