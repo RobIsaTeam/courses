@@ -3,11 +3,7 @@ published: true
 title: 7 - ThreeJS - It's all about perspective
 layout: post
 ---
----
-published: true
-title: 6 - ThreeJS - Our first 3D object in the scene
-layout: post
----
+
 _Learning objectives:_
 
 * rotate, set position of mesh and camera.
