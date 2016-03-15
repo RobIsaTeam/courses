@@ -64,7 +64,9 @@ var renderer = new THREE.WebGLRenderer();
 
 We have given the camera a few default parameters - don't worry about them for now, we'll play with them later. 
 
-To be able to draw the 2D projection of our 3D objects, the renderer creates its own canvas `<canvas></canvas>` which we will need to insert into the page, more precisely, inside the `<div>` container we set up before. And while we're at it, we'll make the canvas as large as the browser window:
+To be able to draw the 2D projection of our 3D objects, the renderer creates its own canvas `<canvas></canvas>` which we will need to insert into the page, more precisely, inside the `<div>` container we set up before. 
+We're doing this using `appendChild()`. Each HTML element can have any number of "children" who can have children on their own. Think of the structure like russian dolls (or turducken)... except if they could have siblings. Each child has one parent, the HTML element it's contained within.
+And while we're at it, we'll make the canvas as large as the browser window:
 
 {%highlight javascript%}
 var container = document.getElementById('threeJScontainer');
