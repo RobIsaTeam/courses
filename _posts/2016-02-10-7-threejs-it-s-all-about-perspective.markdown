@@ -35,10 +35,10 @@ camera.position.set( 20, 20 , 120 );
 One important thing I want to have if I'm in a 3D space is a reference system. ThreeJS doesn't come with a simple command to create axes, so we've written a little script to help us with this. It should be in your `/js` folder. To use it, we'll have to load it in the `index.html`. It needs to be included before the `main.js`, so we have access to its functionality in our main file.   
 
 {%highlight html%}
-		<script src="js/three.min.js"></script>
-		<script src="js/STLLoader.js"></script>
-		<script src="js/makeAxes.js"></script> <!--  this one -->
-		<script src="js/main.js"></script>
+<script src="js/three.min.js"></script>
+<script src="js/STLLoader.js"></script>
+<script src="js/makeAxes.js"></script> <!--  this one -->
+<script src="js/main.js"></script>
 {%endhighlight%}
 
 To add the axes to the scene, call `addAxes(scene)` any time after creating the scene. 
