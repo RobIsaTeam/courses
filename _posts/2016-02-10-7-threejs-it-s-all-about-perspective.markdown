@@ -17,6 +17,7 @@ PerspectiveCamera( fov, aspect, near, far )
 {%endhighlight%}
 `fov` is the view angle, `aspect` the aspect ratio, and `near` and `far` set the range of things you can see in the scene. This image might help to get a better understanding about what's going on:
 ![https://www3.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsTheory.html](https://www3.ntu.edu.sg/home/ehchua/programming/opengl/images/Graphics3D_CameraPerspective.png "camera setup")
+
 ___
 
 _Challenge: Play with the camera_
