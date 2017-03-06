@@ -1,0 +1,17 @@
+notes:
+
+* reference frustrum image: https://www.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsTheory.html
+* explain renderer.domElement better (by looking at the dev tools)
+* mention the makeAxes.js file
+
+* explain THREE.Vector3( 100, 10, 10 ) ); first, then 
+* console.log camera.position (also a THREE.Vector3); then
+* set using camera.position.set(100, 10, 10)
+
+* camera.position: where it is
+* camera.lookAt: where to look at 
+* alternatively: change rotation : added to main.js - add code to lesson 7
+
+* remove console.log('done') and have it in loading instead
+* make dependency tree.. what needs to be set up first before rendering
+
