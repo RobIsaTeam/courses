@@ -1,3 +1,9 @@
+/**
+ * @author robrkerr / https://github.com/robrkerr
+ * @author isakiko / https://github.com/isakiko
+ */
+
+
 function addAxes(scene) {
     // make x-axis:
 

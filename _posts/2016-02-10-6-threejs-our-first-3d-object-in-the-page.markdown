@@ -49,11 +49,10 @@ var mesh = new THREE.Mesh( geometry, material );
 scene.add( mesh );
 {%endhighlight%}
 
-The last step now is to render our scene (and giving an indication of when we're done to debug). Our renderer expects a scene and a camera and our scene contains our brain:
+The last step now is to render our scene. Our renderer expects a scene and a camera and our scene contains our brain:
 
 {%highlight javascript%}
 renderer.render(scene, camera);
-console.log('done')
 {%endhighlight%}
 
 ___
@@ -62,4 +61,6 @@ _Challenge: Play with the basic material_
 The material we use is documented [here](http://threejs.org/docs/index.html#Reference/Materials/MeshBasicMaterial). Make the brain transparent. 
 
 ___ 
+
+![Code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/setup.png"code flow")
 
