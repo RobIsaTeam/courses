@@ -2,9 +2,9 @@ excerpt_separator: ""
 pygments: true
 markdown: kramdown
 url: http://isakiko.github.io/ThreeJS-course
-title: Training
+title: ThreeJS Course
 email: isa.kiral@gmail.com
-author: Isabell Kiral-Kornek
-description: training notes
+author: Isabell Kiral-Kornek and Robert Kerr
+description: Training notes for javascript and ThreeJS course
 paginate: 10
 google_analytics: 
