@@ -6,15 +6,15 @@ layout: post
 _Learning objectives:_
 
 * loading an STL file
-* rendering a 3D object, using a mesh and a basic material 
-* deeper understanding of camera attributes and object positioning 
+* rendering a 3D object, using a mesh and a basic material
+* deeper understanding of camera attributes and object positioning
 
 
-Great, we have a scene, a camera pointed at it, nothing to look at, yet. 
-Luckily we have our [3D object](link!), a monkey's brain ready to go. 
+Great, we have a scene, a camera pointed at it, nothing to look at, yet.
+Luckily we have our [3D object](link!), a monkey's brain ready to go.
 
 We want to load the image using the `THREE.STLLoader()` function we included earlier.
-We'll have to wait until the file is loaded before we can assign a material to it and add it to the scene. 
+We'll have to wait until the file is loaded before we can assign a material to it and add it to the scene.
 Whenever we need to wait until an earlier step has finished, an easy way to do this is to use a callback function.
 
 {%highlight javascript%}
@@ -24,14 +24,14 @@ loader.load( '/MonkeyBrain.stl', function ( geometry ) {
 } );
 {%endhighlight%}
 
-Again, we are creating a ThreeJS-specific object (a loader), which means we use the `new` keyword. `THREE.STLLoader()` provides a `load()` function. Its arguments are the path to the file and a callback function for the loaded geometry. For now, all we want to know is if the file was loaded at all, and we can use a `console.log()` to find out. 
+Again, we are creating a ThreeJS-specific object (a loader), which means we use the `new` keyword. `THREE.STLLoader()` provides a `load()` function. Its arguments are the path to the file and a callback function for the loaded geometry. For now, all we want to know is if the file was loaded at all, and we can use a `console.log()` to find out.
 
 ___
 
 _Challenge:_
-...maybe have a look at https://github.com/mrdoob/three.js/tree/master/examples/js/loaders to see what some other file formats are we could be loading? 
+...maybe have a look at https://github.com/mrdoob/three.js/tree/master/examples/js/loaders to see what some other file formats are we could be loading?
 
-___ 
+___
 
 We can't show an object that doesn't have a material assigned. ThreeJS comes with a whole range of predefined materials. For now, we'll use a very basic one: `MeshBasicMaterial`. Any material has a whole range of attributes that we can define. For this one, we want to define the colour (a light pink: #FFDDDD) and also show the wireframe.
 
@@ -58,9 +58,8 @@ renderer.render(scene, camera);
 ___
 
 _Challenge: Play with the basic material_
-The material we use is documented [here](http://threejs.org/docs/index.html#Reference/Materials/MeshBasicMaterial). Make the brain transparent. 
+The material we use is documented [here](http://threejs.org/docs/index.html#Reference/Materials/MeshBasicMaterial). Make the brain transparent.
 
-___ 
+___
 
-![Code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/setup.png"code flow")
-
+![Code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/setup.png)
