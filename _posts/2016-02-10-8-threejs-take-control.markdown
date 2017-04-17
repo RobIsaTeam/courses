@@ -6,7 +6,7 @@ layout: post
 
 _Learning objectives:_
 
-* finding and including scripts from others
+* finding and including scripts from external sources
 * adding controls like zooming, panning, and rotating
 
 ___
@@ -21,13 +21,13 @@ Now it gets a little bit tricky. We'll want to find out which script this exampl
 
 1. Scroll down to the `<body>` tag
 1. Look at which scripts get imported
-1. Navigate through the repo to the imported script (in this case to [js/controls/OrbitControls.js](https://github.com/mrdoob/threejs/blob/master/examples/js/controls/OrbitControls.js))
-1. Click on `Raw` button and copy the URL into a script tag in `index.html` before including your `main.js` and after including the ThreeJS library.
-1. Replace `https://github.com` with `https://cdn.rawgit.com`
+1. Navigate through the repo to the imported script (in this case to [js/controls/OrbitControls.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.js))
+1. Click on `Raw` button.
+1. Right-click anywhere on the page and save the file in your directory as `OrbitControls.js`
+1. Include the following script tag in your `index.html` file:
 
-You should now have the following line:
 {%highlight html%}
-<script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+<script type="text/javascript" src="OrbitControls.js"></script>
 {%endhighlight%}
 
 Now the really handy thing is, that this example also shows us how to use the code we just included.
@@ -53,8 +53,8 @@ So that's all we need to copy over into our script to dynamically change the cam
 
 ___
 
-_Challenge: A better way to import STLLoader_
+_Challenge: Playing with libraries
 
-Following the steps above, re-import the STLLoader library we are using.
+Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
 
 ___
