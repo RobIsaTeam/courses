@@ -57,6 +57,3 @@ _Challenge: A better way to import STLLoader_
 
 Following the steps above, re-import the STLLoader library we are using.
 ___ 
-
-
-
