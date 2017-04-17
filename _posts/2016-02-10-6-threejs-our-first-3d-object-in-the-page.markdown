@@ -62,4 +62,4 @@ The material we use is documented [here](http://threejs.org/docs/index.html#Refe
 
 ___
 
-![Code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/setup.png)
+[![code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png)](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png)
