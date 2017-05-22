@@ -10,6 +10,9 @@ _Learning objectives:_
 * set the position of mesh and camera.
 * adding axes.
 
+___
+
+
 At the moment, we're only seeing half the brain. To fix that, we'll need to understand our camera a little bit better. 
 When we initiated the camera, we gave it some default parameters. If we look at the [ThreeJS documentation](http://threejs.org/docs/api/cameras/PerspectiveCamera.html) we find out what parameters we have to pass to the camera:
 {%highlight javascript%}

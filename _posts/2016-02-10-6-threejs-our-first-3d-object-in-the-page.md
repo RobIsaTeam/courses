@@ -9,6 +9,8 @@ _Learning objectives:_
 * rendering a 3D object, using a mesh and a basic material
 * deeper understanding of camera attributes and object positioning
 
+___
+
 
 Great, we have a scene, a camera pointed at it, nothing to look at, yet.
 Luckily we have our [3D object](link!), a monkey's brain ready to go.
@@ -63,4 +65,4 @@ Then try using [MeshBasicMaterial](http://threejs.org/docs/index.html#Reference/
 
 ___
 
-[![code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png)](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png)
+![Code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/setup.png)

@@ -8,6 +8,7 @@ _Learning objectives:_
 
 * including our custom objects in the scene
 * including a light source
+
 ___
 
 
