@@ -33,16 +33,16 @@ _Challenge:_
 
 ___
 
-We can't show an object that doesn't have a material assigned. ThreeJS comes with a whole range of predefined materials. For now, we'll use a very basic one: `MeshBasicMaterial`. Any material has a whole range of attributes that we can define. For this one, we want to define the colour (a light pink: #FFDDDD) and also show the wireframe.
+We can't show an object that doesn't have a material assigned. ThreeJS comes with a whole range of predefined materials. For now, we'll use a very basic one: `MeshNormalMaterial`. Any material has a whole range of attributes that we can define. 
 
 In our callback, we'll create our material:
 
 {%highlight javascript%}
-var material = new THREE.MeshBasicMaterial( { color: '#FFDDDD', wireframe:true } );
+var material = new THREE.MeshNormalMaterial( {visible: true} );
 {%endhighlight%}
 
 
-Now we can finally create our object form the loaded geometry and our material. ThreeJS, like many other 3D tools, thinkgs of objects in terms of a mesh. So we're creating this mesh, and add it to the scene, using `scene.add()`:
+Now we can finally create our object form the loaded geometry and our material. ThreeJS, like many other 3D tools, think of objects in terms of a mesh. So we're creating this mesh, and add it to the scene, using `scene.add()`:
 
 {%highlight javascript%}
 var mesh = new THREE.Mesh( geometry, material );
@@ -57,8 +57,9 @@ renderer.render(scene, camera);
 
 ___
 
-_Challenge: Play with the basic material_
-The material we use is documented [here](http://threejs.org/docs/index.html#Reference/Materials/MeshBasicMaterial). Make the brain transparent.
+_Challenge: Play with the material_
+The material we use is documented [here](http://threejs.org/docs/index.html#Reference/Materials/MeshNormalMaterial). Make the brain transparent.
+Then try using [MeshBasicMaterial](http://threejs.org/docs/index.html#Reference/Materials/MeshBasicMaterial) and see if you can make the wireframe visible.
 
 ___
 

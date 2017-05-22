@@ -51,6 +51,8 @@ function render() {
 
 So that's all we need to copy over into our script to dynamically change the camera position, angle, and zoom.
 
+Note: camera.lookAt gets overwritten by the controls we're using, so feel free to comment that line out. 
+
 ___
 
 _Challenge: Playing with libraries

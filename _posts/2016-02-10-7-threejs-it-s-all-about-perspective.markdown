@@ -15,7 +15,12 @@ When we initiated the camera, we gave it some default parameters. If we look at 
 {%highlight javascript%}
 PerspectiveCamera( fov, aspect, near, far )
 {%endhighlight%}
-`fov` is the view angle, `aspect` the aspect ratio, and `near` and `far` set the range of things you can see in the scene. This image might help to get a better understanding about what's going on [1]:
+
+`fov` is vertical field of view. If it's bigger, it's like a wide-angle / fishbowl lens. If it's smaller, the less you notice that there is a perspective at all and things seem to have less depth. 
+`aspect` is the aspect ratio of the screen. 
+`near` and `far` set the distance at which things get cut off. `far` can be huge, `near` can be tiny unless you want them to be something else for artistic reasons. 
+
+This image might help to get a better understanding about what's going on [1]:
 ![https://www3.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsTheory.html](https://www3.ntu.edu.sg/home/ehchua/programming/opengl/images/Graphics3D_CameraPerspective.png "camera setup")
 
 ___
@@ -35,7 +40,7 @@ console.log(camera.position);
 Now we can set the camera position using `camera.position.set()` and giving it an x, y, and z coordinate:
 
 {%highlight javascript%}
-camera.position.set( 20, 20, 120 );
+camera.position.set( -200, 200 , -200 );
 {%endhighlight%}
 
 One important thing I want to have if I'm in a 3D space is a reference system. ThreeJS doesn't come with a simple command to create axes, so we wrote a little script to help us with this. It should be in your `/js` folder. To use it, we'll have to load it in the `index.html`. It needs to be included before the `main.js`, so we have access to its functionality in our main file.   
