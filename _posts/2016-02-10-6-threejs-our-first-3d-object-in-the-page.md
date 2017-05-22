@@ -63,4 +63,4 @@ Then try using [MeshBasicMaterial](http://threejs.org/docs/index.html#Reference/
 
 ___
 
-![Code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/setup.png)
+[![code flow](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png)](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png)
