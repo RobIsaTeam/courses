@@ -47,27 +47,38 @@ fetch('/data.json')
 		console.log(data)
 
 		var brainregions = data.map(function(item){
-			var sphereMaterial = new THREE.MeshLambertMaterial({color: item.color});
+			var color = 'hsl(' + item.hsl.h + ',' + item.hsl.s+ '%,' + item.hsl.l +'%)';
+			var sphereMaterial = new THREE.MeshLambertMaterial({color: color});
 			var sphereGeometry = new THREE.SphereGeometry(1,32,32);
 			var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial)
-			sphere.position.set(item.position[0], item.position[1], item.position[2]);
-			var color = sphere.material.color.getHSL();
-			scene.add( sphere );
+			var threejscolor = sphere.material.color.getHSL();
+			console.log(threejscolor);
 			console.log(color);
+			console.log(item.hsl);
+
 			var brainregion = {
 				sphere: sphere, 
-				sphere_color: color,
 				data: item
-			}
-			return brainregion;
-		})		
 
+			}
+
+			return brainregion
+		})		
 
 		var counter = 0;
 		function update_spheres(){		
 			brainregions.forEach(function(item){
+				var pos = item.data.position
+				item.sphere.position.set(pos[0], pos[1], pos[2])
 				item.sphere.scale.set(item.data.power[counter],item.data.power[counter],item.data.power[counter]);
-				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,item.data.power[counter]/10);
+
+				// console.log(item.data.hsl.h)
+				var c = new THREE.Color('hsl(' + item.data.hsl.h + ',' + item.data.hsl.s+ '%,' + item.data.power[counter]*10 +'%)')
+				console.log(c)
+				// item.sphere.material.color.setHSL(item.data.hsl.h/100, item.data.hsl.s/100, item.data.hsl.l/100)
+				item.sphere.material.color.set(c)
+
+				scene.add( item.sphere );
 			})
 			renderer.render( scene, camera );
 			if (counter <= brainregions[0].data.power.length){
