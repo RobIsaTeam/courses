@@ -62,7 +62,7 @@ The data contains an array of data points. Each object in this array coresponds 
 
 ___
 
-_Challenge: Chain all the things! 
+_Challenge: Chain all the things! _
 
 1. Just to see if you can, once the array is fully loaded, pass the first element of the array we just loaded through another '.then' statement to a function that prints its colour in the console.
 
@@ -111,7 +111,7 @@ fetch('/data.json')
 
 ___
 
-_Challenge: Scale the spheres
+_Challenge: Scale the spheres_
 
 To relate our spheres to the data, we want to scale them based on the measured power. 
 Using `sphere.scale.set()`, scale each sphere according to the first value in its power array.
@@ -240,7 +240,7 @@ fetch('/data.json')
 
 ___
 
-_Challenge: Meaningful colours
+_Challenge: Meaningful colours_
 
 1. Suppose we also want to update the colour, making spheres lighter when they get larger. Write the bit of code that allows you to do this. You will need to first get the initial colour, pass it on within the brainregions array, and then update it during the update phase. 
 
@@ -257,7 +257,7 @@ ___
 
 ___
 
-_Challenge: A better way to keep the time
+_Challenge: A better way to keep the time_
 
 1. The following bit of code can be used to improve the way we update our data. 
 1. Explain how it's doing it.
