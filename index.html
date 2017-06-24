@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <div class="posts">
+    {% for collection in site.collections %}
+      <div class="post">
+        <a href="{{ collection.path | prepend: site.baseurl }}" class="post-link">
+          <h3 class="h2 post-title">{{ collection.description }}</h3>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>

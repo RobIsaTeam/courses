@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <div class="posts">
+    {% for item in site.course_2_d3 %}
+      {% if item.url != "/d3-course/index" %}
+        <div class="post">
+          <a href="{{ item.url | prepend: site.baseurl }}" class="post-link">
+            <h3 class="h2 post-title">{{ item.title }}</h3>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</div>

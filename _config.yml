@@ -1,0 +1,25 @@
+baseurl: ""
+url: "https://robisateam.github.io/web-courses/"
+title: Visualising Data on the Web
+email: isa.kiral@gmail.com
+author: Isabell Kiral-Kornek and Robert Kerr
+collections:
+  course_1_web:
+    output: true
+    path: /web-course
+    permalink: /web-course/:path
+    description: "Introduction to Web Development"
+  course_2_d3:
+    output: true
+    path: /d3-course
+    permalink: /d3-course/:path
+    description: "Visualising Data with D3"
+  course_3_threejs:
+    output: true
+    path: /threejs-course
+    permalink: /threejs-course/:path
+    description: "Visualising Data with ThreeJS"
+
+# Build settings
+markdown: kramdown
+exclude: [code]
