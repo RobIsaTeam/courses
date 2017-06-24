@@ -26,7 +26,7 @@ controls.addEventListener( 'change', function(){
 // controls.enableZoom = false;
 
 var loader = new THREE.STLLoader();
-loader.load( '/images/MonkeyBrain.stl', function ( brainGeometry ) {
+loader.load( '../images/MonkeyBrain.stl', function ( brainGeometry ) {
 	console.log('brain loaded')
 
 	var brainMaterial = new THREE.MeshLambertMaterial({color: 'pink'});

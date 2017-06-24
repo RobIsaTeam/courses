@@ -82,7 +82,7 @@ And now we're ready to add one circle per data point!
 We don't want to see all the data at once for now. Let's instead just look at the
 most recent data point (data for 2009).
 
-<img src="/images/data_structure.png" alt="data structure" width="500" />
+<img src="../images/data_structure.png" alt="data structure" width="500" />
 
 ```js
 var data_canvas = canvas.append("g")

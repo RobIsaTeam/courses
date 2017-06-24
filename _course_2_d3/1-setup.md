@@ -81,7 +81,7 @@ For now, we want to:
 
 First, let's draw a little schematic of how we want the page to be structured.
 
-<img src="/images/chart_area.png" alt="What we want.." width="700" />
+<img src="../images/chart_area.png" alt="What we want.." width="700" />
 
 We already set up our HTML page to contain a chart area. That's the space we want to
 fill now.
