@@ -3,7 +3,6 @@ published: true
 title: Transitions
 subtitle: Move it!
 layout: post
-category: d3
 ---
 > ### Learning Objectives
 >

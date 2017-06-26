@@ -3,7 +3,6 @@ published: true
 title: Add and remove
 subtitle: Dynamically adding and removing data points
 layout: post
-category: d3
 ---
 > ### Learning Objectives
 >

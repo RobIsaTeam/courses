@@ -3,7 +3,6 @@ published: true
 title: Into the data
 subtitle: Actually plotting things
 layout: post
-category: d3
 ---
 > ### Learning Objectives
 >
