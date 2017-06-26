@@ -3,6 +3,9 @@ ___ JS ___
 ** think about where to introduce eventlisteners <-- add to the JS part, or write a new one
 --> make cat feeding lesson
 
+
+__ ThreeJS __
+
 -- tie in new images into text
 
 -- swap images 5 and 6 
@@ -16,3 +19,8 @@ setup flow:
 -- color in boxes 
 -- stack boxes vertically 
 
+__ Web page __
+ 
+-- add twitter links
+-- link back to lesson list from within a lesson
+-- change font form bold to pretty
