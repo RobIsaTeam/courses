@@ -40,7 +40,7 @@ loader.load( '../images/MonkeyBrain.stl', function ( brainGeometry ) {
 });
 
 
-fetch('../images/data.json')
+fetch('../images/electrode_data.json')
 	.then(function(response) {
 		console.log(response)
 		return response.json()
