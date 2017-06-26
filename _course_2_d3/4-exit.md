@@ -131,4 +131,4 @@ In order to create the plot when we first load the page, we will also have to ca
 
 By the end of this lesson, your page should look something like this:
 
-<iframe style="position: relative; left: -120px" src="https://robisateam.github.io/D3-course/lesson03.html" width="1000" height="600"></iframe>
+<iframe style="position: relative; left: -120px" src="lesson03.html" width="1000" height="600"></iframe>

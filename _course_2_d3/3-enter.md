@@ -116,4 +116,4 @@ arbitrary number... for now.
 > ### Challenge: A new dimension
 > Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40.
 
-<iframe style="position: relative; left: -120px" src="https://robisateam.github.io/D3-course/lesson02.html" width="1000" height="600"></iframe>
+<iframe style="position: relative; left: -120px" src="lesson02.html" width="1000" height="600"></iframe>
