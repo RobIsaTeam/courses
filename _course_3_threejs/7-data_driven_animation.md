@@ -10,7 +10,6 @@ layout: post
 > * reading in and using data to control size and colour of an object 
 > * animating properties 
 
-___
 
 It's time to use some actual data. In this course, we want to visualise recorded brain activity from [a Science paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4721574/). In particular, we're looking at Figure XX, which displays the measured electric activity over time in different regions of a macaque's brain. 
 
@@ -241,7 +240,7 @@ fetch('/data.json')
 
 
 
-> # Challenge: A better way to keep the time
+> ### Challenge: A better way to keep the time
 > 
 > 1. The following bit of code can be used to improve the way we update our data. 
 > 1. Explain how it's doing it.
