@@ -3,7 +3,6 @@ published: true
 title: Setup
 subtitle: Setting up html for our data visualisation
 layout: post
-category: d3
 ---
 > ### Learning Objectives
 >
