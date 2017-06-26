@@ -23,13 +23,20 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] review lessons
 - [ ] run an alpha course (23/07 12pm)
 - [x] delete JS intro bits and sort lessons in ascending order
+- [ ] swap images 5 and 6 (might be already done)
+- [ ] turn off spell checker in keynote before exporting images
+- [ ] export images with higher resolution
+- [ ] setup flow: color in boxes 
+- [ ] setup flow: stack boxes vertically
+
+### Web page
+- [ ] add twitter links
+- [ ] link back to lesson list from within a lesson
+- [ ] change font form bold to pretty
 
 ### All courses: 
 - [x] Make /code/index.html run again despite pixel
-- [ ] ROB: Merge commit history from the 3 repos:
-      - https://github.com/IsaKiko/D3-visualising-data
-      - https://github.com/RobIsaTeam/ThreeJS-course
-      - https://github.com/RobIsaTeam/courses
+- [ ] ROB: Merge commit history from the 3 repos ([d3-orig](https://github.com/IsaKiko/D3-visualising-data), [threejs-old](https://github.com/RobIsaTeam/ThreeJS-course), [current-repo](https://github.com/RobIsaTeam/courses))
 
 ## CampJS Notes:
 
