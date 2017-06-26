@@ -23,11 +23,11 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] review lessons
 - [ ] run an alpha course (23/07 12pm)
 - [x] delete JS intro bits and sort lessons in ascending order
-- [ ] swap images 5 and 6 (might be already done)
-- [ ] turn off spell checker in keynote before exporting images
-- [ ] export images with higher resolution
-- [ ] setup flow: color in boxes 
-- [ ] setup flow: stack boxes vertically
+- [ ] ISA: swap images 5 and 6 (might be already done)
+- [ ] ISA: turn off spell checker in keynote before exporting images
+- [ ] ISA: export images with higher resolution
+- [ ] ISA: setup flow: color in boxes 
+- [ ] ISA: setup flow: stack boxes vertically
 
 ### Web page
 - [ ] add twitter links
