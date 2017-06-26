@@ -67,14 +67,16 @@ scene.add( ambientLight );
 > 1. Then move it above the brain using the same command we used to move our camera and spheres earlier.
 
 
-<!-- links: [https://threejs.org/examples](https://threejs.org/examples)
+<!--
+
+links: [https://threejs.org/examples](https://threejs.org/examples)
+
 code:
-	{%highlight html%}
+```html
 	<script type="text/javascript" src="OrbitControls.js"></script>
-	{%endhighlight%}
+```
 
 challenges:
-___
 
 > ### Challenge: Playing with libraries
 >
