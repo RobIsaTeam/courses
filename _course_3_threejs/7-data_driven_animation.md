@@ -21,39 +21,39 @@ Now the neat thing about promises is that among other things, we can wait for th
 
 ```js
 fetch('/data.json')
-	.then(function(response) {
-		console.log(response)
-		return response.json()
-	})
+  .then(function(response) {
+    console.log(response)
+    return response.json()
+  })
 ```
 
 Once in the `then` bit, we can use `console.log` to see what we get back. The response printed in the console can look a little bit confusing and it seems to have nothing to do with the data we tried to read. But if you look closely, we find that there's a link to a `url`. Follow the link and we'll see that our data is loaded. We can chain as many `.then` commands together as we'd like, passing things from one to the other. For now, we'll want to read out the url content - the json object we loaded - and once it's converted into a usable object, pass it on to the next bit of code.
 
 ```js
 fetch('/data.json')
-	.then(function(response) {
-		console.log(response)
-		return response.json()
-	})
-	.then(function (data) {
-		console.log(data)
-	})
+  .then(function(response) {
+    console.log(response)
+    return response.json()
+  })
+  .then(function (data) {
+    console.log(data)
+  })
 ```
 
 Now let's have a look at what we're dealing with: 
 ```js
 [
-	{
-		"electrode":1,
-		"position":[16, 60 , -80],
-		"power": [4,5,6,7,8,4,3,1,2,3,6,7,8,9], 
-		"brain_region":"Frontal cortex",
-		"hsl":"green"
-		}
+  {
+    "electrode":1,
+    "position":[16, 60 , -80],
+    "power": [4,5,6,7,8,4,3,1,2,3,6,7,8,9], 
+    "brain_region":"Frontal cortex",
+    "hsl":"green"
+    }
 
-	},
-	{...},
-	{...}
+  },
+  {...},
+  {...}
 ]
 ```
 
@@ -69,14 +69,14 @@ Now everything we want to happen on the page that requires the data, needs to be
 
 ```js
 fetch('/data.json')
-	.then(function(response) {
-		return response.json()
-	})
-	.then(function(data) {
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(data) {
 
-		// here is where all the new code goes //
+    // here is where all the new code goes //
 
-	})
+  })
 ```
 
 The goal is to create a sphere object for each brain region that changes its size over time based on the data we just loaded. First, let's create a static sphere using the convenient `forEach` function. This function takes in an array item by item does whatever we tell it to with it. For now, we'll to render one sphere per datapoint.
@@ -85,24 +85,24 @@ For each data point (corresponding to a brain region), we'll create a material a
 
 ```js
 fetch('/data.json')
-	.then(function(response) {
-		return response.json()
-	})
-	.then(function(data) {
-		console.log(data)
-		data.forEach(function(item){
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(data) {
+    console.log(data)
+    data.forEach(function(item){
 
-			var sphereMaterial = new THREE.MeshLambertMaterial({color:item.color});
-			var sphereGeometry = new THREE.SphereGeometry(1,32,32);
-			var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial);
+      var sphereMaterial = new THREE.MeshLambertMaterial({color:item.color});
+      var sphereGeometry = new THREE.SphereGeometry(1,32,32);
+      var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial);
 
-			sphere.position.set(item.position[0], item.position[1], item.position[2]);
-			sphere.scale.set(item.power[0],item.power[0],item.power[0]);
+      sphere.position.set(item.position[0], item.position[1], item.position[2]);
+      sphere.scale.set(item.power[0],item.power[0],item.power[0]);
 
-			scene.add( sphere );
-			renderer.render( scene, camera );
-		})		
-		console.log(brainregions)
+      scene.add( sphere );
+      renderer.render( scene, camera );
+    })    
+    console.log(brainregions)
 ```
 
 > ### Challenge: Scale the spheres
@@ -126,42 +126,42 @@ For the first step, we'll change `forEach` to `map`. These two functions basical
 
 ```js
 fetch('/data.json')
-	.then(function(response) {
-		return response.json()
-	})
-	.then(function(data) {
-		console.log(data)
-		var brainregions = data.map(function(item){
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(data) {
+    console.log(data)
+    var brainregions = data.map(function(item){
 
-			var sphereMaterial = new THREE.MeshLambertMaterial({color:item.color});
-			var sphereGeometry = new THREE.SphereGeometry(1,32,32);
-			var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial);
+      var sphereMaterial = new THREE.MeshLambertMaterial({color:item.color});
+      var sphereGeometry = new THREE.SphereGeometry(1,32,32);
+      var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial);
 
-			sphere.position.set(item.position[0], item.position[1], item.position[2]);
-			sphere.scale.set(item.power[0],item.power[0],item.power[0]);
+      sphere.position.set(item.position[0], item.position[1], item.position[2]);
+      sphere.scale.set(item.power[0],item.power[0],item.power[0]);
 
-			scene.add( sphere );
-			renderer.render( scene, camera );
+      scene.add( sphere );
+      renderer.render( scene, camera );
 
-			var brainregion={
-				data: item,
-				sphere: sphere
-			}
+      var brainregion={
+        data: item,
+        sphere: sphere
+      }
 
-			return brainregion
-		})		
-		console.log(brainregions)
+      return brainregion
+    })    
+    console.log(brainregions)
 ```
 
 Now the update function. Within the function, we can iterate through the brainregions just like before, using `forEach`. We move the scaling into the update function, because that's the thing we want to update. Then, every time we change something, we need to re-render the scene, so we move that bit down into our new update function, too. 
 
 ```js
-function update_spheres(){		
-	brainregions.forEach(function(item){
-		// update things we want to update - for example the scale
-		item.sphere.scale.set(item.data.power[0],item.data.power[0],item.data.power[0]);		
-	})
-	renderer.render( scene, camera );
+function update_spheres(){    
+  brainregions.forEach(function(item){
+    // update things we want to update - for example the scale
+    item.sphere.scale.set(item.data.power[0],item.data.power[0],item.data.power[0]);    
+  })
+  renderer.render( scene, camera );
 }
 ```
 
@@ -170,16 +170,16 @@ This isn't doing much yet in terms of updating. We'll need to also keep track of
 ```js
 var currentindex = 0;
 
-function update_spheres(){		
-	brainregions.forEach(function(item){
-		// update things we want to update - for example the scale
-		item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);		
-	})
-		renderer.render( scene, camera );
-	if (currentindex <= brainregions[0].data.power.length){
-		currentindex = currentindex+1;
-	}
-	else {currentindex = 0};
+function update_spheres(){    
+  brainregions.forEach(function(item){
+    // update things we want to update - for example the scale
+    item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);   
+  })
+    renderer.render( scene, camera );
+  if (currentindex <= brainregions[0].data.power.length){
+    currentindex = currentindex+1;
+  }
+  else {currentindex = 0};
 }
 ```
 
@@ -188,42 +188,42 @@ So if we now call this function every 200 milliseconds, the whole slab of code l
 
 ```js
 fetch('/data.json')
-	.then(function(response) {
-		console.log(response)
-		return response.json()
-	})
-	.then(function(data) {
-		console.log(data)
+  .then(function(response) {
+    console.log(response)
+    return response.json()
+  })
+  .then(function(data) {
+    console.log(data)
 
-		var brainregions = data.map(function(item){
-			var sphereMaterial = new THREE.MeshLambertMaterial({color: item.color});
-			var sphereGeometry = new THREE.SphereGeometry(1,32,32);
-			var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial)
-			sphere.position.set(item.position[0], item.position[1], item.position[2]);
-			scene.add( sphere );
-			var brainregion = {
-				data: item
-				sphere: sphere, 
-			}
-			return brainregion
-		})		
-		
+    var brainregions = data.map(function(item){
+      var sphereMaterial = new THREE.MeshLambertMaterial({color: item.color});
+      var sphereGeometry = new THREE.SphereGeometry(1,32,32);
+      var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial)
+      sphere.position.set(item.position[0], item.position[1], item.position[2]);
+      scene.add( sphere );
+      var brainregion = {
+        data: item
+        sphere: sphere, 
+      }
+      return brainregion
+    })    
+    
 
-		var currentindex = 0;
-		function update_spheres(){		
-			brainregions.forEach(function(item){
-				item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);
-			})
-			renderer.render( scene, camera );
-			if (currentindex <= brainregions[0].data.power.length){
-				currentindex = currentindex+1;
-			}
-			else {currentindex = 0};
-		}
+    var currentindex = 0;
+    function update_spheres(){    
+      brainregions.forEach(function(item){
+        item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);
+      })
+      renderer.render( scene, camera );
+      if (currentindex <= brainregions[0].data.power.length){
+        currentindex = currentindex+1;
+      }
+      else {currentindex = 0};
+    }
 
-		setInterval(update_spheres, 200);
+    setInterval(update_spheres, 200);
 
-	})
+  })
 ```
 
 
@@ -252,27 +252,27 @@ fetch('/data.json')
 > var updatePeriod = 300 // ms
 > /// NEW ///
 > 
-> function update_spheres(){		
+> function update_spheres(){    
 > 
-> 	/// NEW ///
-> 	var time = Date.now() // time now in ms
-> 	var timestep = Math.floor(time / updatePeriod) // time now in 300ms steps
-> 	var currentindex = timestep % brainregions[0].power.length // what's the index we are up to
-> 	/// NEW ///
+>   /// NEW ///
+>   var time = Date.now() // time now in ms
+>   var timestep = Math.floor(time / updatePeriod) // time now in 300ms steps
+>   var currentindex = timestep % brainregions[0].power.length // what's the index we are up to
+>   /// NEW ///
 > 
-> 	brainregions.forEach(function(item){
-> 		item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);		
-> 	})
-> 		renderer.render( scene, camera );
+>   brainregions.forEach(function(item){
+>     item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);   
+>   })
+>     renderer.render( scene, camera );
 > }
 ```
 
 
 <!-- links: [https://threejs.org/examples](https://threejs.org/examples)
 code:
-	{%highlight html%}
-	<script type="text/javascript" src="OrbitControls.js"></script>
-	{%endhighlight%}
+  {%highlight html%}
+  <script type="text/javascript" src="OrbitControls.js"></script>
+  {%endhighlight%}
 
 challenges:
 ___
