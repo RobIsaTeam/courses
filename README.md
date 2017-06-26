@@ -28,6 +28,7 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] ISA: export images with higher resolution
 - [ ] ISA: setup flow: color in boxes 
 - [ ] ISA: setup flow: stack boxes vertically
+- [ ] ISA: create data file
 
 ### Web page
 - [ ] add twitter links
