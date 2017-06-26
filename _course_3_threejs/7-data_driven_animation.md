@@ -1,6 +1,7 @@
 ---
 published: true
-title: 10 - ThreeJS - Data-driven animation 
+title: Data-driven animation 
+subtitle: Reading in data. And showing it. 
 layout: post
 ---
 
