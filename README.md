@@ -18,17 +18,18 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] more advanced challenges maybe?
 
 ### ThreeJS:
-- [ ] finish lessons
-- [ ] ROB: create main.js files 
-- [ ] review lessons
-- [ ] run an alpha course (23/07 12pm)
 - [x] delete JS intro bits and sort lessons in ascending order
 - [ ] ISA: swap images 5 and 6 (might be already done)
 - [ ] ISA: turn off spell checker in keynote before exporting images
 - [ ] ISA: export images with higher resolution
 - [ ] ISA: setup flow: color in boxes 
 - [ ] ISA: setup flow: stack boxes vertically
-- [ ] ISA: create data file
+- [ ] ISA: make stimulus images for texture challenge (or video)
+- [ ] ISA: create data file / trace data from paper
+- [ ] ROB: interpolate data traces
+- [ ] ROB: create main.js files
+- [ ] review lessons
+- [ ] run an alpha course (23/07 12pm)
 
 ### Web page
 - [ ] add twitter links
@@ -38,8 +39,15 @@ Courses available here: https://robisateam.github.io/courses/
 ### All courses: 
 - [x] Make /code/index.html run again despite pixel
 - [ ] ROB: Merge commit history from the 3 repos ([d3-orig](https://github.com/IsaKiko/D3-visualising-data), [threejs-old](https://github.com/RobIsaTeam/ThreeJS-course), [current-repo](https://github.com/RobIsaTeam/courses))
-- [ ] ROB: See if code (js/css/html/images) for each course can go into a code directory in each course and still load in iframes
-- [ ] Fix indentation in code blocks
+- [ ] ROB: **[priority]** See if code (js/css/html/images) for each course can go into a code directory in each course and still load in iframes
+- [ ] ISA: Fix indentation in code blocks
+
+## ThreeJS Lesson Plan:
+- lesson 7: animation of sphere sizes
+- lesson 8: clicking on spheres with plotly pop-up
+- advanced challenge: make stimulus textures on planes thing (lesson 7 or 8)
+- advanced challenge: give the brain eye (textured spheres)
+- no lesson 9
 
 ## CampJS Notes:
 
