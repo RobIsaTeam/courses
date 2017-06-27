@@ -3,7 +3,6 @@ published: true
 title: Publishing using Github
 subtitle: Show us your art!
 layout: post
-category: web
 ---
 > ### Learning Objectives
 >

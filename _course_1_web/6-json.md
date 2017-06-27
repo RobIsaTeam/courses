@@ -3,9 +3,7 @@ published: true
 title: JSON
 subtitle: Everything is strings!
 layout: post
-category: web
 ---
-
 > ### Learning Objectives
 >
 > * Understand JavaScript data types

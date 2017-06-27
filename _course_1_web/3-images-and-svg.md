@@ -3,7 +3,6 @@ published: true
 title: Images and SVG
 subtitle: Adding graphical components
 layout: post
-category: web
 ---
 > ### Learning Objectives
 >

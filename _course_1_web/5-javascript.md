@@ -3,9 +3,7 @@ published: true
 title: JavaScript
 subtitle: Feeding a cat
 layout: post
-category: web
 ---
-
 > ### Learning Objectives
 >
 > * Linking to a JavaScript file
@@ -163,4 +161,4 @@ We've also just used that, when we concatenated
 
 By the end of this lesson, your page should look something like this:
 
-<iframe src="https://robisateam.github.io/WebIntro-course/meow.html" width="100%" height="300"></iframe>
+<iframe src="code/meow.html" width="100%" height="300"></iframe>

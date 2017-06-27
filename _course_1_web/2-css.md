@@ -3,7 +3,6 @@ published: true
 title: CSS
 subtitle: Doing it in style
 layout: post
-category: web
 ---
 > ### Learning Objectives
 >
