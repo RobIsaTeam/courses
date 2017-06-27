@@ -58,7 +58,7 @@ scene.add( ambientLight );
 ```
 
 > ### Note:
-> If you refer back to the [diagram from lesson 6](https://raw.githubusercontent.com/IsaKiko/ThreeJS-course/master/_posts/flow.png), you can see that we need to add the light before rendering the scene, just like we did with the spheres._
+> If you refer back to the [diagram from lesson 6](../images/flow.png), you can see that we need to add the light before rendering the scene, just like we did with the spheres._
 
 
 > ### Challenge: challenge_title

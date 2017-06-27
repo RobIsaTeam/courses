@@ -1,5 +1,5 @@
 // Load the data.
-var dataUrl = "https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json";
+var dataUrl = "https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json";
 d3.json(dataUrl, function(nations) {
 
 	// Create the SVG frame inside chart_area.
