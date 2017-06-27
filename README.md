@@ -19,6 +19,7 @@ Courses available here: https://robisateam.github.io/courses/
 
 ### ThreeJS:
 - [x] 🦆: delete JS intro bits and sort lessons in ascending order
+- [x] 🦄: clean up introduction
 - [ ] 🦄: swap images 5 and 6 (might be already done)
 - [ ] 🦄: turn off spell checker in keynote before exporting images
 - [ ] 🦄: export images with higher resolution
@@ -31,7 +32,6 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦆: create main.js files
 - [ ] 🦆+🦄: review lessons
 - [ ] 🦆+🦄: run an alpha course (23/07 12pm)
-- [ ] 🦄: clean up introduction
 
 ### Web page
 - [ ] 🦆: add twitter links
