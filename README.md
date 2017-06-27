@@ -7,9 +7,12 @@ Courses available here: https://robisateam.github.io/courses/
 ### JS basics:
 - [ ] 🦄: review
 - [ ] 🦄: re-write map&filter lesson
+- [ ] 🦄: write introduction
+
 
 ### D3:
 - [x] 🦆: convert to RobIsaTeam repo
+- [ ] 🦄: clean up introduction
 - [ ] 🦆: properly check that its at v4
 - [ ] 🦄: think about where to start and how to introduce d3 and the course
 - [ ] 🦄: give context about what d3 is for (and when plotly might be easier) <-- intro page
@@ -37,6 +40,7 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦆: add twitter links
 - [ ] 🦆: link back to lesson list from within a lesson
 - [ ] 🦆: change font form bold to pretty
+- [ ] 🦄: write introduction
 
 ### All courses: 
 - [x] 🦆: Make /code/index.html run again despite pixel
