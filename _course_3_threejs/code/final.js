@@ -5,7 +5,7 @@ var camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHe
 var renderer = new THREE.WebGLRenderer();
 // when i create the renderer, it creates a canvas in the page, which is where the renderer puts the 2D image it draws
 
-container.appendChild( renderer.domElement ); //renderer has an attribute called domElement that is the html canvas element 
+container.appendChild( renderer.domElement ); //renderer has an attribute called domElement that is the html canvas element
 
 renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -16,23 +16,23 @@ addAxes(scene); // provided with the course material
 camera.lookAt( new THREE.Vector3( 100, 10, 10 ) ); // ...looking at a point in space
 camera.position.set( -200, 200 , -200 ); // .set sets a THREE.Vector3 to new coordinates
 
-// camera.rotation.x = 2.3 // modify the rotation around the x-axis in radians 
+// camera.rotation.x = 2.3 // modify the rotation around the x-axis in radians
 
 controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', function(){
 	renderer.render(scene, camera);
-} ); 
+} );
 
 // controls.enableZoom = false;
 
 var loader = new THREE.STLLoader();
-loader.load( '../images/MonkeyBrain.stl', function ( brainGeometry ) {
+loader.load( '../data/MonkeyBrain.stl', function ( brainGeometry ) {
 	console.log('brain loaded')
 
 	// var brainMaterial= new THREE.MeshNormalMaterial();
 	var brainMaterial = new THREE.MeshLambertMaterial({ transparent: true, opacity: .8, color: 'grey'});
 	var brainMesh = new THREE.Mesh( brainGeometry, brainMaterial );
-	
+
 	scene.add( brainMesh );
 
 	renderer.render(scene, camera);
@@ -40,7 +40,7 @@ loader.load( '../images/MonkeyBrain.stl', function ( brainGeometry ) {
 });
 
 
-fetch('../images/electrode_data.json')
+fetch('../data/electrode_data.json')
 	.then(function(response) {
 		console.log(response)
 		return response.json()
@@ -57,16 +57,16 @@ fetch('../images/electrode_data.json')
 			scene.add( sphere );
 			console.log(color);
 			var brainregion = {
-				sphere: sphere, 
+				sphere: sphere,
 				sphere_color: color,
 				data: item
 			}
 			return brainregion;
-		})		
+		})
 
 
 		var counter = 0;
-		function update_spheres(){		
+		function update_spheres(){
 			brainregions.forEach(function(item){
 				item.sphere.scale.set(item.data.power[counter],item.data.power[counter],item.data.power[counter]);
 				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,item.data.power[counter]/10);

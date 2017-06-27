@@ -9,7 +9,7 @@
 // This set of controls performs orbiting, dollying (zooming), and panning.
 // Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
 //
-//    Rotate - left mouse / touch: one finger move
+//    Orbit - left mouse / touch: one finger move
 //    Zoom - middle mouse, or mousewheel / touch: two finger spread or squish
 //    Pan - right mouse, or arrow keys / touch: three finger swipe
 
@@ -93,6 +93,14 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.getAzimuthalAngle = function () {
 
 		return spherical.theta;
+
+	};
+
+	this.saveState = function () {
+
+		scope.target0.copy( scope.target );
+		scope.position0.copy( scope.object.position );
+		scope.zoom0 = scope.object.zoom;
 
 	};
 
@@ -654,29 +662,37 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		event.preventDefault();
 
-		if ( event.button === scope.mouseButtons.ORBIT ) {
+		switch ( event.button ) {
 
-			if ( scope.enableRotate === false ) return;
+			case scope.mouseButtons.ORBIT:
 
-			handleMouseDownRotate( event );
+				if ( scope.enableRotate === false ) return;
 
-			state = STATE.ROTATE;
+				handleMouseDownRotate( event );
 
-		} else if ( event.button === scope.mouseButtons.ZOOM ) {
+				state = STATE.ROTATE;
 
-			if ( scope.enableZoom === false ) return;
+				break;
 
-			handleMouseDownDolly( event );
+			case scope.mouseButtons.ZOOM:
 
-			state = STATE.DOLLY;
+				if ( scope.enableZoom === false ) return;
 
-		} else if ( event.button === scope.mouseButtons.PAN ) {
+				handleMouseDownDolly( event );
 
-			if ( scope.enablePan === false ) return;
+				state = STATE.DOLLY;
 
-			handleMouseDownPan( event );
+				break;
 
-			state = STATE.PAN;
+			case scope.mouseButtons.PAN:
+
+				if ( scope.enablePan === false ) return;
+
+				handleMouseDownPan( event );
+
+				state = STATE.PAN;
+
+				break;
 
 		}
 
@@ -697,23 +713,31 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		event.preventDefault();
 
-		if ( state === STATE.ROTATE ) {
+		switch ( state ) {
 
-			if ( scope.enableRotate === false ) return;
+			case STATE.ROTATE:
 
-			handleMouseMoveRotate( event );
+				if ( scope.enableRotate === false ) return;
 
-		} else if ( state === STATE.DOLLY ) {
+				handleMouseMoveRotate( event );
 
-			if ( scope.enableZoom === false ) return;
+				break;
 
-			handleMouseMoveDolly( event );
+			case STATE.DOLLY:
 
-		} else if ( state === STATE.PAN ) {
+				if ( scope.enableZoom === false ) return;
 
-			if ( scope.enablePan === false ) return;
+				handleMouseMoveDolly( event );
 
-			handleMouseMovePan( event );
+				break;
+
+			case STATE.PAN:
+
+				if ( scope.enablePan === false ) return;
+
+				handleMouseMovePan( event );
+
+				break;
 
 		}
 
@@ -863,6 +887,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 	}
 
 	function onContextMenu( event ) {
+
+		if ( scope.enabled === false ) return;
 
 		event.preventDefault();
 
