@@ -7,9 +7,12 @@ Courses available here: https://robisateam.github.io/courses/
 ### JS basics:
 - [ ] 🦄: review
 - [ ] 🦄: re-write map&filter lesson
+- [ ] 🦄: write introduction
+
 
 ### D3:
 - [x] 🦆: convert to RobIsaTeam repo
+- [ ] 🦄: clean up introduction
 - [ ] 🦆: properly check that its at v4
 - [ ] 🦄: think about where to start and how to introduce d3 and the course
 - [ ] 🦄: give context about what d3 is for (and when plotly might be easier) <-- intro page
@@ -19,14 +22,16 @@ Courses available here: https://robisateam.github.io/courses/
 
 ### ThreeJS:
 - [x] 🦆: delete JS intro bits and sort lessons in ascending order
+- [x] 🦄: clean up introduction
 - [ ] 🦄: swap images 5 and 6 (might be already done)
 - [ ] 🦄: turn off spell checker in keynote before exporting images
 - [ ] 🦄: export images with higher resolution
 - [ ] 🦄: setup flow: color in boxes 
 - [ ] 🦄: setup flow: stack boxes vertically
 - [ ] 🦄: make stimulus images for texture challenge (or video)
-- [ ] 🦄: create data file / trace data from paper
+- [x] 🦄: create data file / trace data from paper
 - [ ] 🦆: interpolate data traces
+- [ ] 🦄: move brain down and left and figure out bubble coordinates
 - [ ] 🦆: create main.js files
 - [ ] 🦆+🦄: review lessons
 - [ ] 🦆+🦄: run an alpha course (23/07 12pm)
@@ -35,6 +40,7 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦆: add twitter links
 - [ ] 🦆: link back to lesson list from within a lesson
 - [ ] 🦆: change font form bold to pretty
+- [ ] 🦄: write introduction
 
 ### All courses: 
 - [x] 🦆: Make /code/index.html run again despite pixel
