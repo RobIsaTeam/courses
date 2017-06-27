@@ -30,6 +30,7 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦆: create main.js files
 - [ ] 🦆+🦄: review lessons
 - [ ] 🦆+🦄: run an alpha course (23/07 12pm)
+- [ ] 🦄: clean up introduction
 
 ### Web page
 - [ ] 🦆: add twitter links
