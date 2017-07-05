@@ -1,0 +1,18 @@
+___ JS ___
+
+** think about where to introduce eventlisteners <-- add to the JS part, or write a new one
+--> make cat feeding lesson
+
+-- tie in new images into text
+
+-- swap images 5 and 6 
+
+-- turn off spell checker in keynote before exporting images
+
+-- export with higher resolution 
+
+
+setup flow:
+-- color in boxes 
+-- stack boxes vertically 
+

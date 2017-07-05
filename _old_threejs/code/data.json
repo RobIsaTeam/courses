@@ -1,0 +1,23 @@
+[
+	{
+		"electrode":1,
+		"position":[16, 60 , -80],
+		"power": [4,5,6,7,8,4,3,1,2,3,6,7,8,9], 
+		"brain_region":"Frontal cortex",
+		"color":"green"
+	},
+	{
+		"electrode":2,
+		"position":[-20, 30 , -80],
+		"power": [3,4,6,4,5,6,7,8,4,3,1,2,3,6],
+		"brain_region":"some region",
+		"color":"lightblue"
+	},
+	{
+		"electrode":3,
+		"position":[-20, 60 , -80],
+		"power": [2.4,2,3,4,6,4,5,6,7,8,4,3,1,2],
+		"brain_region":"some other region",
+		"color":"purple"
+	}	
+]
