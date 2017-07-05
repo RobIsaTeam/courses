@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: D3 - Into the data</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">D3 - Into the data</h1>
+          <h2 class="subtitle">Actually plotting things</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Making axes</li>
+<li>Actually plotting data (d3.enter)</li>
+</ul>
+</div>
+</div>
+<p>We design our axes based on our data. This means we have to know the minimum and maximum values of our data and have to decide whether we want linear or logarithmic axes.</p>
+<pre class="js"><code>// Create a logarithmic scale for the income
+var xScale = d3.scale.log(); // income
+xScale.domain([250, 1e5]); // set minimum and maximum value
+xScale.range([0, canvas_width]); // set minimum and maximum range on the page</code></pre>
+<p>D3's scale object provides a number of functions to create the scaling we want for our data. For example, we can choose between a logarithmic scale (<code>log</code>), a linear scale (<code>linear</code>), a square root scale (<code>sqrt</code>), or a categorical scale (e.g. <code>category20</code> could represent 20 different colours).</p>
+<p>The domain consists of the data values that will get mapped to the minimum and maximum positions on the page specified by the range. Often, the domain would be set to the minimum and maximum values of the data and the range to the edges of the plotting area.</p>
+<p>Instead of spreading this code over three lines, we often find another notation online that achieves the same thing:</p>
+<pre class="js"><code>var xScale = d3.scale.log().domain([300, 1e5]).range([0, canvas_width]);  </code></pre>
+<p>These two notations are interchangeable and it is entirely up to you to use the one that seems more intuitive to you. In the same way that we could switch setting up the domain and range in the more verbose notation, we can swap these two in the shorter notation without it making any difference.</p>
+<p>The next step is to create the actual axis and linking it to the scale we just created:</p>
+<pre class="js"><code>// Creating the x &amp; y axes.
+var xAxis = d3.svg.axis().orient(&quot;bottom&quot;).scale(xScale);</code></pre>
+<p>We also want to orient it horizontally, at the bottom of our canvas.</p>
+<p>So far, the xAxis exists, but it's not actually showing up anywhere on the page. To push the axis to our canvas, we create a new group element (using <code>.append</code>).</p>
+<pre class="js"><code>// Add the x-axis.
+canvas.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+  .attr(&quot;transform&quot;, &quot;translate(0,&quot; + canvas_height + &quot;)&quot;)
+  .call(xAxis);</code></pre>
+<p><code>.call</code> calls the axis we just created and pushed it to the element. We add a transform attribute to move the axis to the bottom of the plotting area (instead of having it across the top). There are a number of transform options, but here we are just using <code>translate</code> and pass in the amount to shift the axis in the x and y directions, respectively. Here we shift it only in the y direction (i.e. down) by an amount given by height of the canvas.<br />We also give it a class, just in case we might want to select the axis later in our code.</p>
+<div id="we-might-need-a-y-axis-too" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>We might need a y-axis, too</h1>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.</li>
+</ol>
+</div>
+</div>
+<p>We're slowly getting there. Having our two axes, we can now finally add our data.</p>
+<p>And now we're ready to add one circle per data point! We don't want to see all the data at once for now. Let's instead just look at the most recent data point (data for 2009).</p>
+<p><img src="img/data_structure.png" alt="data structure" width="500" /></p>
+<pre class="js"><code>var data_canvas = canvas.append(&quot;g&quot;)
+  .attr(&quot;class&quot;, &quot;data_canvas&quot;);
+
+var dot = data_canvas.selectAll(&quot;.dot&quot;)
+  .data(nations, function(d){return d.name});
+
+dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
+  .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); })
+  .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
+  .attr(&quot;r&quot;, 5);</code></pre>
+<p>We're starting this bit by adding a <code>g</code> element to our canvas. This group is going to be our data canvas, so that's the class name we give it. We then select everything of the class <code>dot</code>. This is an empty set at the moment, since we haven't created any dots, yet. We are then telling our page where to find the data, using <code>.data(nations)</code>.</p>
+<p>We are also inserting what is called a key function <code>.data(nations, function(d){return d.name});</code>. This function will help D3 keep track of the data when we start changing it (and the order of the objects). It's important to keep the identifier unique, which is why we return only the name of the current element.</p>
+<p>Now comes the interesting part: The function <code>enter()</code> takes each element in the dataset and does everything that follows afterwards for each of these elements we're adding in. These new dots need to be added with the class 'dot', so that next time we call <code>data_canvas.selectAll(&quot;.dot&quot;)</code> we get the dots that have already been added to our plot.</p>
+<p>What we want to do is to create one circle for each data point. That's what the last four lines of code do. They are creating the circle, and then setting the attributes <code>cx</code>, <code>cy</code>, and <code>r</code>. The attributes <code>cx</code> and <code>cy</code> define the position of the centre of the circle and are based on the income (we are looking at the most recent data point: <code>[nation.income.length-1]</code>.) and life expectancy of the data point (that is temporarily called <code>d</code>). The radius is set to an arbitrary number... for now.</p>
+<div id="a-new-dimension" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>A new dimension</h1>
+</div>
+<div class="panel-body">
+<p>Change the code so that the radius of the circles represents the population. First, create a 'sqrt' scale with a minimum of 0 and a maximum of 5e8. The range should be between 0 and 40. </p>
+</div>
+</div>
+<iframe src="code/index08.html" width="1000" height="600"></iframe>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: D3 - Add and remove</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">D3 - Add and remove</h1>
+          <h2 class="subtitle">Dynamically adding and removing data points</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Filtering data</li>
+<li>Creating checkboxes</li>
+<li>Adding and removing data points (d3.enter and d3.exit)</li>
+</ul>
+</div>
+</div>
+<p>Our plot is pretty busy. We might not want to display everything all the time. The goal for this lesson is to update the plot based on what kind of data we want to display.</p>
+<p>First, we need to find a way to filter our data. We use the function <code>filter</code> to do this. Similar to previous functions (e.g. <code>map</code>), this function iterates over each of the elements in the array <code>nations</code>, temporarily calling it <code>nation</code>. It only includes elements in the new array <code>filtered_nations</code> if the function evaluates to 'true' for that element. Here this will be the case for nations whose population in 2009 was larger than 10,000,000.</p>
+<pre class="js"><code>var filtered_nations = nations.filter(function(nation){
+    return nation.population[nation.population.length-1] &gt; 10000000;
+});</code></pre>
+<div id="filtering-by-region" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Filtering by region</h1>
+</div>
+<div class="panel-body">
+<p>You might have noticed that our data contains information about the region in which a country is.</p>
+<ol style="list-style-type: decimal">
+<li>Create a filter so that you only display data points from &quot;Sub-Saharan Africa&quot;.</li>
+</ol>
+</div>
+</div>
+<p>We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change what data gets displayed interactively using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.</p>
+<p>Now, instead of displaying all the data all the time, we want to be able to choose which data we display. We will create a checkbox for each region and only display the data for the regions that are checked.</p>
+<p>Checkboxes will need to be added to the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one. Checkbox elements are actually <code>input</code> elements with type <code>checkbox</code>. Initially, we want all checkboxes to be checked. We do this by setting the <code>checked</code> attribute of the element to 'checked'.</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;label&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name=</span><span class="st">&quot;region&quot;</span><span class="ot"> class=</span><span class="st">&quot;region_cb&quot;</span><span class="ot"> value=</span><span class="st">&quot;Sub-Saharan Africa&quot;</span><span class="ot"> checked=</span><span class="st">&quot;checked&quot;</span><span class="kw">/&gt;</span> Sub-Saharan Africa<span class="kw">&lt;/label&gt;</span></code></pre>
+<p>The next step is to add an event listener to the JavaScript file. Luckily, D3 provides us with some nice options. The <code>value</code> needs to be set to the region, because this is the value we want to filter our data by later.</p>
+<pre class="js"><code>d3.selectAll(&quot;.region_cb&quot;).on(&quot;change&quot;, function () { &lt;--- stuff happens here ---&gt; });</code></pre>
+<p>This line listens to all checkboxes that have the class <code>region_cb</code>. Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed.</p>
+<p>Inside this function, we want to decide what happens based on which of the checkboxes got checked or unchecked. The first step to doing this is to read out the value of the checkbox. We set this value to the region string earlier. Reading it can be done using the <code>this</code> keyword. <code>this</code> inside a callback function refers to the element through which the function got called, in our case the checkbox.</p>
+<pre class="js"><code>var type = this.value;</code></pre>
+<p>Now that we have the region string saved in <code>type</code>, we want to add the data points for the new nations to include if the checkbox is now checked. Whether it is checked or not is stored in <code>this.checked</code>. To add the new nations to <code>filtered_nations</code>, we use the <code>concat</code> function, which, similar to the <code>concat</code> function we used with strings, joins the array given as an argument onto the end of the first array. Here we join <code>new_nations</code> onto the end of <code>filtered_nations</code>.</p>
+<pre class="js"><code>if (this.checked) { // adding data points
+  var new_nations = nations.filter(function(nation){ return nation.region == type;});
+  filtered_nations = filtered_nations.concat(new_nations);
+}</code></pre>
+<p>This <code>if</code>-statement gets executed every time a checkbox is checked. To add the data points, we can use the <code>push</code>-function, which adds one object to an array at a time. First, we filter the nations we want to add, calling them <code>new_nations</code>. Next, we are looping through all new nations and add one at a time to the array <code>filtered_nations</code>.</p>
+<p>We also have to initialise <code>filtered_nations</code> at the top of our script. Remember that there is a difference between the object and the name space, so in order to keep <code>nations</code> the way it is, we need to map the values instead of just using <code>=</code>.</p>
+<pre class="js"><code>var filtered_nations = nations.map(function(nation) { return nation; });</code></pre>
+<p>We are initially making <code>filtered_nations</code> be the same as <code>nations</code> because initially all of the checkboxes are checked and we are displaying the data from all of the nations. This also means that any checkbox that is changed from this point will actually be changing to the unchecked state and not entering the <code>if</code>-statement we just made. So we need to add some code to remove elements when the state of a checkbox changes to unchecked.</p>
+<p>But before doing this, we need to learn how to remove elements using D3. This is done using the <code>exit()</code> function.</p>
+<pre class="js"><code>dot.exit().remove();</code></pre>
+<p>Whereas before <code>enter()</code> was used to append new elements to the plot, <code>exit()</code> is used to remove elements from the plot that are no longer in the dataset. Both functions compare the data that has been specified to what elements are in the plot (on the page). As for <code>enter()</code>, everything that follows <code>exit()</code> is performed for each of the elements that no longer have data points corresponding to them. Here (and in most cases) we want to remove these elements.</p>
+<p>A good, brief explanation of this linking between data and elements on the page can be found <a href="http://bost.ocks.org/mike/join/">here</a>. This article discusses the three important functions used for this: <code>enter</code>, <code>exit</code>, and a third function <code>update</code> that we will get to shortly.</p>
+<div id="removing-elements" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Removing elements</h1>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Using an <code>else</code> case after the <code>if</code> statement, create a filter that removes elements from <code>filtered_data</code> that correspond to the checkbox that was just unchecked. (i.e. <code>else { filtered_nations = &lt;--- fill in this bit ---&gt;}</code>).</li>
+</ol>
+</div>
+</div>
+<p>As a last step, let's move <code>enter()</code> and <code>exit()</code> into a separate function. This will become useful when we want to update the data from different elements on the page.</p>
+<pre class="js"><code>function update() {
+  var dot = data_canvas.selectAll(&quot;.dot&quot;).data(filtered_nations, function(d){return d.name});
+
+  dot.enter().append(&quot;circle&quot;).attr(&quot;class&quot;,&quot;dot&quot;)
+                .style(&quot;fill&quot;, function(d) { return colorScale(d.region); });
+                .attr(&quot;cx&quot;, function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
+                .attr(&quot;cy&quot;, function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
+                .attr(&quot;r&quot;, function(d) { return rScale(d.population[d.population.length-1]); });
+
+  dot.exit().remove();
+}</code></pre>
+<p>This means that we now have to call the update function from our event listener after updating <code>filtered_nations</code> based on the checkbox change:</p>
+<pre class="js"><code>d3.selectAll(&quot;.region_cb&quot;).on(&quot;change&quot;, function() {
+  var type = this.value;
+  if (this.checked) { // adding data points (not quite right yet)
+    var new_nations = nations.filter(function(nation){ return nation.region == type;});
+    filtered_nations = filtered_nations.concat(new_nations);
+  } else { // remove data points from the data that match the filter
+    filtered_nations = filtered_nations.filter(function(nation){ return nation.region != type;});
+  }
+  update();
+});</code></pre>
+<p>In order to create the plot when we first load the page, we will also have to call <code>update()</code> outside of our event listeners once.</p>
+<div id="another-new-dimension" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Another new dimension</h1>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add <code>.style(&quot;fill&quot;, function(d) { &lt;-- fill in this bit ---&gt; });</code> to the enter() function.</li>
+</ol>
+</div>
+</div>
+<p>By the end of this lesson, your page should look something like this:</p>
+<iframe src="code/index09.html" width="1000" height="600"></iframe>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

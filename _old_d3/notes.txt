@@ -1,0 +1,17 @@
+
+To load it using node:
+var nations = fs.readFileSync("code/nations.json",{encoding:"UTF-8"})
+
+..parse.. 
+
+Filtering the data in node:
+var new_array = nations.filter(function(el){ return el.name[0] == "N";});
+
+Filtering the nations...
+var filtered_nations = nations.filter(function(nation){ return nation.population[0] > 10000000;});
+
+
+
+Thing we might want to include: 
+- how to convert an excel spreadsheet to json
+- end on the chart

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: JSON</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">JSON</h1>
+          <h2 class="subtitle">Everything is strings!</h2>
+<div id="learning-objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Understand JavaScript data types</li>
+<li>Converting JavaScript data to JSON format</li>
+<li>Converting JSON data to JavaScript format</li>
+</ul>
+</div>
+</div>
+<p>The goal of these lessons is to visualize data. So far we haven't really dealt with any specific data, let alone relatively big data files. In this lesson, we will learn about the basic data types used by JavaScript and also talk about ways to conveniently convert variables into a text file so we can store it.</p>
+<p>There are two containers in JavaScript: arrays (<code>[]</code>-notation) and objects (<code>{}</code>-notation).</p>
+<p>In order to create a container, we have to declare it first using the <code>var</code> keyword that we've already come across.</p>
+<pre class="js"><code>var list_of_numbers = [];</code></pre>
+<p>creates an array. But so far it’s empty.</p>
+<p>We can now add elements to this array but instead let's create it again with some values in it, like this:</p>
+<pre class="js"><code>var list_of_numbers = [30, 2, 5];</code></pre>
+<p>Let's use the console of the browser to look at the values of object by including some extra code:</p>
+<pre class="js"><code>console.log(list_of_numbers);</code></pre>
+<p>Or we can just address one field of the vector. Counting begins from zero, so the third field has the index '2'.</p>
+<pre class="js"><code>console.log(list_of_numbers[2]);</code></pre>
+<p><code>list_of_numbers</code> is a vector that holds 3 numbers. We can also have a variable that contains a string:</p>
+<pre class="js"><code>var text = &#39;I love cats.&#39;;</code></pre>
+<p>We can address this string by using indices, so <code>console.log(text[2])</code> returns <code>l</code>.</p>
+<p>Unlike arrays which allow you to access elements using their indices, JavaScript objects allow you to index elements using names. This lets us create something like this:</p>
+<pre class="js"><code>var cat_object = {
+    weight : 5,
+    past_weight_values : [4.5, 5.1, 4.9],
+    name : &#39;Princess Caroline&#39;
+};</code></pre>
+<div id="creating-new-attributes" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Creating new attributes</h2>
+</div>
+<div class="panel-body">
+<p>You can append the list of attributes using the dot-syntax <code>cat_object.attributename = ...</code>, (<code>attributename</code> is a placeholder). Create a new attribute <code>height</code> and assign a number!</p>
+</div>
+</div>
+<p>Sometimes we want to have a list of objects that we can address using an index. In our case, we might want to have a list of multiple cats. Now if we want a second cat, we can store them both in the same array <code>cat_list</code>. We can append to an array using the <code>push</code> function:</p>
+<pre class="js"><code>var cat_list = [cat_object]; // initializing with the first field being cat_object
+cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Snowball&#39;});</code></pre>
+<p>This process is called 'nesting'.</p>
+<div id="nesting" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>Nesting</h1>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Append a third cat to the array, not entering a name or weight.</li>
+<li>Do all animals have to have the same attribute fields?</li>
+<li>Use the console of your browser to read the values of your object.</li>
+</ol>
+</div>
+</div>
+<div id="object-space-and-name-space" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Object space and name space</h2>
+</div>
+<div class="panel-body">
+<p>Instead of pushing a new cat to the list, what happens if we initiate the list using cat_object twice?</p>
+<p>Reinitialise the list:</p>
+<pre class="js"><code>var cat_list2 = [cat_object, cat_object]; </code></pre>
+<ol style="list-style-type: decimal">
+<li>Change the name of the first cat object <code>cat_list2[0]</code>. Look at the whole list again (<code>cat_list2</code>). What happened?</li>
+<li>Look at cat_object. What's going on??</li>
+</ol>
+</div>
+</div>
+<p>In Javascript, we have a name space and an object space. The name space contains the names of the variables, the object space contains the actual content. Normally, you would assume that each name points to one object (<code>cat_object.weight</code> --&gt; <code>5</code>, <code>cat_object.name</code> --&gt; 'Princess Caroline'). What we did, when we created our list is that we used three names to point to the same object (<code>cat_list[0]</code>, <code>cat_list[1]</code>, <code>cat_object</code> --&gt; <code>{weight = 5 , past_weight_values = [4.5, 5.1, 4.9], name = 'Princess Caroline'}</code>). When we changed the name of <code>cat_list2[0]</code>, what we actually did was changing the content of the one object <code>cat_object</code> that they were all pointing to.</p>
+<p><img src="img/namespace.png" alt="Name space and object space" width="500" /></p>
+<p>A good way of creating a new array (as in a new object, not just a new name for the same one) that relates to an array we already have can be done using the <code>map()</code> function.</p>
+<p>As an example, we can create a list of dogs that have the same names as our cats, only appended by &quot;Doggie&quot;.</p>
+<pre class="js"><code>dog_list = cat_list.map(function(cat) {
+    return {
+        name: &quot;Doggie &quot;+ cat.name
+    };
+});</code></pre>
+<p>When the map function is called using <code>cat_list.map</code>, it loops through all elements in <code>cat_list</code>, calls each temporarily <code>cat</code>, and creates a new list <code>dog_list</code>, which will have one dog per cat. We join the two strings with a simple <code>+</code>.</p>
+<div id="how-much-do-dogs-weigh" class="challenge panel panel-success">
+<div class="panel-heading">
+<h1><span class="glyphicon glyphicon-pencil"></span>How much do dogs weigh?</h1>
+</div>
+<div class="panel-body">
+<p>Let's assume dogs weigh twice as much as their feline versions. Make the new array reflect this.</p>
+</div>
+</div>
+<p>When we start creating our data for the plot, this is the structured (and nicely annotated) data format that we want. In order to store our variable outside of the scripting environment, we need to convert it into a string.</p>
+<p>JavaScript provides an easy way to do this. Variables can get converted from objects/arrays to strings using <code>JSON.stringify()</code>. To convert our list of cats to a string, type</p>
+<pre class="js"><code>var cat_json = JSON.stringify(cat_list);</code></pre>
+<p>The resulting string is what we would normally store in a <code>.json</code> file to read it in later. At this stage, we can't really create a file, because we're in a browser and creating files would make it too easy to program a virus.</p>
+<p>So instead, let's have a look at our stringified variable using the <code>alert()</code> function:</p>
+<pre class="js"><code>alert(cat_json);</code></pre>
+<p>The output should look like this:</p>
+<pre class="out"><code>[{&quot;weight&quot;:5,&quot;past_weight_values&quot;:[4.5,5.2,4.9],&quot;name&quot;:&quot;Princess Caroline&quot;},{&quot;weight&quot;:6,&quot;past_weight_values&quot;:[5.9,5.3,6.1],&quot;name&quot;:&quot;Snowball&quot;}]</code></pre>
+<p>We could now copy this string and save it manually in a <code>.json</code> file.</p>
+<div id="de-stringify" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>De-stringify</h2>
+</div>
+<div class="panel-body">
+<p>Let's assume we read in a JSON formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can use the JSON.parse() function. Convert the variable <code>cat_json</code> back and store it in a container called <code>new_cat_list</code>.</p>
+</div>
+</div>
+<p>We are now at a stage where we can have a look at the data file that we want to work with. Open 'nations.json'.</p>
+<p>Here is a snap-shot of our data. We have data from 10 different countries, describing income per capita, population, and life expectancy for different years between 1800 and 2009. Source: <a href="http://www.gapminder.org/data/">gapminder</a></p>
+<pre class="out"><code>[
+  {
+    &quot;name&quot;: &quot;Angola&quot;,
+    &quot;region&quot;: &quot;Sub-Saharan Africa&quot;,
+    &quot;years&quot;: [
+      1950,
+      1951,
+      1952,
+      ...
+    ],
+    &quot;income&quot;: [
+      3363.02,
+      3440.9,
+      3520.61,
+      ...
+    ],
+    &quot;population&quot;: [
+      4117617,
+      4173095,
+      4232095,
+      ...
+    ],
+    &quot;lifeExpectancy&quot;: [
+      29.22,
+      29.42,
+      29.81,
+      ...
+    ]
+  },
+  { ... }
+]</code></pre>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
