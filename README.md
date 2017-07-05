@@ -45,7 +45,7 @@ Courses available here: https://robisateam.github.io/courses/
 ### All courses: 
 - [x] 🦆: Make /code/index.html run again despite pixel
 - [ ] 🦆: Merge commit history from the 3 repos ([d3-orig](https://github.com/IsaKiko/D3-visualising-data), [threejs-old](https://github.com/RobIsaTeam/ThreeJS-course), [current-repo](https://github.com/RobIsaTeam/courses))
-- [ ] 🦆: **[priority]** See if code (js/css/html/images) for each course can go into a code directory in each course and still load in iframes
+- [x] 🦆: Put code (js/css/html/images) for each course can go into a code directory in each course and still load in iframes
 - [ ] 🦄: Fix indentation in code blocks
 
 ## ThreeJS Lesson Plan 🦆+🦄:
