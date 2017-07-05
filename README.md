@@ -30,7 +30,7 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦄: setup flow: stack boxes vertically
 - [ ] 🦄: make stimulus images for texture challenge (or video)
 - [x] 🦄: create data file / trace data from paper
-- [ ] 🦆: interpolate data traces
+- [x] 🦆: interpolate data traces
 - [ ] 🦄: move brain down and left and figure out bubble coordinates
 - [ ] 🦆: create main.js files
 - [ ] 🦆+🦄: review lessons
