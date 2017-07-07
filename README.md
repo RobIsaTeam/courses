@@ -13,12 +13,13 @@ Courses available here: https://robisateam.github.io/courses/
 ### D3:
 - [x] 🦆: convert to RobIsaTeam repo
 - [ ] 🦄: clean up introduction
-- [ ] 🦆: properly check that its at v4
+- [x] 🦆: properly check that its at v4
 - [ ] 🦄: think about where to start and how to introduce d3 and the course
 - [ ] 🦄: give context about what d3 is for (and when plotly might be easier) <-- intro page
 - [ ] 🦄: prepare D3 rant - enter, exit
 - [ ] 🦄: simpler build up for scales (1d first)? maybe?
 - [ ] 🦆+🦄: more advanced challenges maybe?
+- [ ] 🦆+🦄: talk about the "note" in d3 lesson 5 - event is actually coming from d3 - not a special browser object 
 
 ### ThreeJS:
 - [x] 🦆: delete JS intro bits and sort lessons in ascending order
