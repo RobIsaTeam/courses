@@ -71,7 +71,8 @@ fetch('../data/electrode_data.json')
 			brainregions.forEach(function(item){
 				var size = 1 + 5*item.data.power[counter];
 				item.sphere.scale.set(size,size,size);
-				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,.1+item.data.power[counter]/10);
+				var lightness = 0.1+item.data.power[counter]/10;
+				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,lightness);
 			})
 			renderer.render( scene, camera );
 			if (counter <= brainregions[0].data.power.length){

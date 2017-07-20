@@ -97,7 +97,6 @@ fetch('/data.json')
       var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial);
 
       sphere.position.set(item.position[0], item.position[1], item.position[2]);
-      sphere.scale.set(item.power[0],item.power[0],item.power[0]);
 
       scene.add( sphere );
       renderer.render( scene, camera );
@@ -109,8 +108,7 @@ fetch('/data.json')
 > ### Challenge: Scale the spheres
 >
 > 1. To relate our spheres to the data, we want to scale them based on the measured power.
-Using `sphere.scale.set()`, scale each sphere according to the first value in its power array.
-
+Using `sphere.scale.set()`, scale each sphere according to the first value in its power array. In our data, `power` has been normalised to range between 0 and 1. To help make sure the spheres stay visible it might be a good idea to scale them as something like: `1 + 5*power`.
 
 We've started our display of data. Now, how can we change the size of the spheres dynamically?
 To repeatedly execute a function, we can use the function `setInterval(my_function, timestep)`. Whatever `my_function` does is executed every `timestep` milliseconds. In our case, our function is supposed to update the size of the bubble.
@@ -121,7 +119,6 @@ We'll need to do a few things to make this work:
 1. Write the update function.
 1. Move everything we want to update dynamically into that function.
 1. Call the update function using `setInterval`, incrementing a variable that's keeping track of the time.
-
 
 For the first step, we'll change `forEach` to `map`. These two functions basically have the same syntax. The main difference for us is that `map` allows us to return a new object.  We can define how the output items relate to the items we are mapping. In our case, we want to return a sphere object for each item in our data set. We'll call this output array `brainregions`. Each `brainregion` (each element of `brainregions`) will contain one sphere. Along with that, we'll pass on the bit of data that this sphere is visualising.
 
@@ -139,7 +136,8 @@ fetch('/data.json')
       var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial);
 
       sphere.position.set(item.position[0], item.position[1], item.position[2]);
-      sphere.scale.set(item.power[0],item.power[0],item.power[0]);
+      var size = 1 + 5*item.data.power[0];
+      sphere.scale.set(size, size, size);
 
       scene.add( sphere );
       renderer.render( scene, camera );
@@ -161,7 +159,8 @@ Now the update function. Within the function, we can iterate through the brainre
 function update_spheres(){    
   brainregions.forEach(function(item){
     // update things we want to update - for example the scale
-    item.sphere.scale.set(item.data.power[0],item.data.power[0],item.data.power[0]);    
+    var size = 1 + 5*item.data.power[0];
+    item.sphere.scale.set(size, size, size);
   })
   renderer.render( scene, camera );
 }
@@ -175,7 +174,8 @@ var currentindex = 0;
 function update_spheres(){    
   brainregions.forEach(function(item){
     // update things we want to update - for example the scale
-    item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);   
+    var size = 1 + 5*item.data.power[currentindex];
+    item.sphere.scale.set(size, size, size);
   })
     renderer.render( scene, camera );
   if (currentindex <= brainregions[0].data.power.length){
@@ -186,7 +186,6 @@ function update_spheres(){
 ```
 
 So if we now call this function every 200 milliseconds, the whole slab of code looks like this:
-
 
 ```js
 fetch('/data.json')
@@ -210,11 +209,11 @@ fetch('/data.json')
       return brainregion
     })
 
-
     var currentindex = 0;
     function update_spheres() {    
       brainregions.forEach(function(item) {
-        item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);
+        var size = 1 + 5*item.data.power[currentindex];
+				item.sphere.scale.set(size, size, size);
       })
       renderer.render(scene, camera);
       if (currentindex <= brainregions[0].data.power.length) {
