@@ -146,6 +146,17 @@ function onMouseMove(event) {
 
 <img src="../images/brain_schematic.png" alt="setup" style="width: 50%; margin: 0 25%" />
 
+> ### Advanced challenge: More details about the data
+>
+> We now want to make a little line graph on the side showing us how the brain activity changes over time for any given brain region. Instead of displaying the graph when we move the mouse over a sphere, we want to do this when the user clicks on a sphere. A nice and relatively easy way to make graphs is using plotly. Here are some tips to get started:
+> * The plotly library can be included using `<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>`
+> * Make sure each sphere knows of the data its representing (similar to how it knows about the brain region)
+> * Similar to how we made a tooltip, plotly needs a div to hook into. You can use this: <div id='detail-plot' style='position:absolute; width:400px; height:300px; top:20px; left: 70%; border: 1px solid white; visibility:hidden;'></div>
+> Making plots happens in three steps: 
+> * grab the plot div: var plot = document.getElementById('detail-plot');
+> * make data trace and layout: `var trace = [{"y": (data goes here) , "type": "scatter" }]; var layout = {"title": (title goes here)}`
+> * put it all together: `Plotly.newPlot(plot, trace, layout, {"showLink": false})`
+> * more layout options are [here](https://plot.ly/javascript/#layout-options), more about getting started with plotly, if needed is [here](https://plot.ly/javascript/getting-started/)
 
 
 > ### Note: 3D to 2D and back
