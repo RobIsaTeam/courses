@@ -9,7 +9,6 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦄: re-write map&filter lesson
 - [ ] 🦄: write introduction
 
-
 ### D3:
 - [x] 🦆: convert to RobIsaTeam repo
 - [ ] 🦄: clean up introduction
@@ -29,13 +28,21 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦄: export images with higher resolution
 - [ ] 🦄: setup flow: color in boxes 
 - [ ] 🦄: setup flow: stack boxes vertically
-- [ ] 🦄: make stimulus images for texture challenge (or video)
 - [x] 🦄: create data file / trace data from paper
 - [x] 🦆: interpolate data traces
-- [ ] 🦄: move brain down and left and figure out bubble coordinates
-- [ ] 🦆: create main.js files
-- [ ] 🦆+🦄: review lessons
+- [x] 🦄: move brain down and left and figure out bubble coordinates
+- [x] 🦄: create main.js files
 - [ ] 🦆+🦄: run an alpha course (23/07 12pm)
+- [ ] 🦆+🦄: after campjs write to neuro paper authors
+
+### Saturday morning:
+- [ ] 🦆+🦄: review lesson content
+- [ ] 🦆+🦄: review lesson js/html files and check they match notes
+- [ ] 🦆+🦄: maybe make the brain white?
+- [ ] 🦆+🦄: be excited about how great the lessons are
+- [ ] 🦆+🦄: cocktails! 🍹
+- [ ] 🦆+🦄: mainly just step through the lessons
+- [ ] 🦆+🦄: add the iframe at the end of each lesson like in d3
 
 ### Web page
 - [ ] 🦆: add twitter links
