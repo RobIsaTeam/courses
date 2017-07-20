@@ -1,4 +1,5 @@
-baseurl: "https://robisateam.github.io/courses/"
+# baseurl: "https://robisateam.github.io/courses/"
+baseurl: ""
 url: "https://robisateam.github.io/courses/"
 title: Visualising Data on the Web
 email: isa.kiral@gmail.com
