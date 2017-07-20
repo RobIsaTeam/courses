@@ -1,5 +1,11 @@
 const fs = require('fs')
 
+const normalise = (y) => {
+  const minY = Math.min(...y)
+  const maxY = Math.max(...y)
+  return y.map((val) => (val - minY) / (maxY - minY))
+}
+
 const interpolate = (old_x, old_y, new_x) => {
   let i = 0
   return new_x.map((x) => {
@@ -36,17 +42,27 @@ const generateRange = (x0, x1, dx) => {
 const interpolateTraceFile = (filename, newFilename, x0, x1, dx) => {
   const origData = JSON.parse(fs.readFileSync(filename))[0]
   const newX = generateRange(x0, x1, dx)
-  const newY = interpolate(origData.x, origData.y, newX)
+  const newY = normalise(interpolate(origData.x, origData.y, newX))
   const newData = {
     x: newX,
     y: newY,
   }
   fs.writeFileSync(newFilename, JSON.stringify(newData, null, 2))
+  return newY
 }
 
-interpolateTraceFile('data/FEF-orig.json', 'data/FEF.json', -0.2, 1.25, 0.01)
-interpolateTraceFile('data/IT-orig.json',  'data/IT.json',  -0.2, 1.25, 0.01)
-interpolateTraceFile('data/LIP-orig.json', 'data/LIP.json', -0.2, 1.25, 0.01)
-interpolateTraceFile('data/MT-orig.json',  'data/MT.json',  -0.2, 1.25, 0.01)
-interpolateTraceFile('data/PFC-orig.json', 'data/PFC.json', -0.2, 1.25, 0.01)
-interpolateTraceFile('data/V4-orig.json',  'data/V4.json',  -0.2, 1.25, 0.01)
+const fefSignal = interpolateTraceFile('data/FEF-orig.json', 'data/FEF.json', -0.2, 1.25, 0.01)
+const  itSignal = interpolateTraceFile('data/IT-orig.json',  'data/IT.json',  -0.2, 1.25, 0.01)
+const lipSignal = interpolateTraceFile('data/LIP-orig.json', 'data/LIP.json', -0.2, 1.25, 0.01)
+const  mtSignal = interpolateTraceFile('data/MT-orig.json',  'data/MT.json',  -0.2, 1.25, 0.01)
+const pfcSignal = interpolateTraceFile('data/PFC-orig.json', 'data/PFC.json', -0.2, 1.25, 0.01)
+const  v4Signal = interpolateTraceFile('data/V4-orig.json',  'data/V4.json',  -0.2, 1.25, 0.01)
+
+const electrodeData = JSON.parse(fs.readFileSync('data/electrode_data_template.json'))
+electrodeData[0].power = fefSignal
+electrodeData[1].power = pfcSignal
+electrodeData[2].power = lipSignal
+electrodeData[3].power = itSignal
+electrodeData[4].power = v4Signal
+electrodeData[5].power = mtSignal
+fs.writeFileSync('data/electrode_data.json', JSON.stringify(electrodeData, null, 2))

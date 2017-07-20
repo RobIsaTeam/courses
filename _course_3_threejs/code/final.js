@@ -40,7 +40,7 @@ loader.load( '../data/MonkeyBrain.stl', function ( brainGeometry ) {
 });
 
 
-fetch('../data/electrode_data_new.json')
+fetch('../data/electrode_data.json')
 	.then(function(response) {
 		console.log(response)
 		return response.json()
@@ -69,7 +69,8 @@ fetch('../data/electrode_data_new.json')
 		var counter = 0;
 		function update_spheres(){
 			brainregions.forEach(function(item){
-				item.sphere.scale.set(5+item.data.power[counter],5+item.data.power[counter],5+item.data.power[counter]);
+				var size = 1 + 5*item.data.power[counter];
+				item.sphere.scale.set(size,size,size);
 				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,.1+item.data.power[counter]/10);
 			})
 			renderer.render( scene, camera );
@@ -79,7 +80,7 @@ fetch('../data/electrode_data_new.json')
 			else {counter = 0};
 		}
 
-		setInterval(update_spheres, 200);
+		setInterval(update_spheres, 50);
 
 	})
 

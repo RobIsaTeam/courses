@@ -142,7 +142,7 @@ function onMouseMove( event ) {
 >
 > * Something went wrong with the position of the inferior temporal cortex! Using this [reference for raycasters](https://threejs.org/docs/index.html#api/core/Raycaster), and the schematic from the original paper, move the 'IT sphere' to the right spot, correcting its coordinates in the data file directly.
 
-<img src="../images/brain_schematic.png" alt="setup" width="50%" />
+<img src="../images/brain_schematic.png" alt="setup" style="width: 50%; margin: 0 25%" />
 
 
 

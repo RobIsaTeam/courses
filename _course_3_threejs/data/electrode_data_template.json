@@ -1,0 +1,44 @@
+[
+	{
+		"electrode":0,
+		"position":[-14,73,-44],
+		"power": [],
+		"brain_region":"Frontal eye field",
+		"color":"#A3679C"
+	},
+	{
+		"electrode":1,
+		"position":[-23,67,-38],
+		"power": [],
+		"brain_region":"Prefrontal cortex",
+		"color":"#8D7AAC"
+	},
+	{
+		"electrode":2,
+		"position":[-20,69,-71],
+		"power": [],
+		"brain_region":"Lateral intraparietal area",
+		"color":"#47C2C7"
+	},
+	{
+		"electrode":3,
+		"position":[-28,48,-47],
+		"power": [],
+		"brain_region":"Inferior temporal cortex",
+		"color":"#58A768"
+	},
+	{
+		"electrode":4,
+		"position":[-24,56,-85],
+		"power": [],
+		"brain_region":"V4",
+		"color":"#9BBC57"
+	},
+	{
+		"electrode":5,
+		"position":[-25,59,-78],
+		"power": [],
+		"brain_region":"Middle temporal",
+		"color":"#E36845"
+	}
+]
