@@ -7,9 +7,9 @@ layout: post
 
 > ### Learning objectives:
 >
-> * Creating a [raycaster](https://threejs.org/docs/index.html#api/core/Raycaster)
+> * Learn how to interact with the page using a [raycaster](https://threejs.org/docs/index.html#api/core/Raycaster)
 
-In order to react with a 3D scene using our 2D display, we have to use a trick. We need to 
+In order to react with a 3D scene using our 2D display, we have to use a trick. We need to:
 
 * track where our mouse cursor is in 2D 
 * project these coordinates throuhg our 3D space onto our objects
@@ -105,6 +105,7 @@ Now that our spheres know which region they belong to, we can print it out in th
 
 
 We'll add this to our html file: 
+
 ```html
 <div id='tooltip' style='visibility: hidden; position: absolute; color: white; font-family:sans-serif'> </div>
 ```
@@ -145,11 +146,9 @@ function onMouseMove( event ) {
 
 
 
-> ### Note: 3D to 2D and back:
+> ### Note: 3D to 2D and back
 >
 > * While our rendering function was taking 3D objects and projecting them onto a 2D screen, our raycaster is doing the exact opposite. It is concerned with telling us which 3D object we are pointing at in 2D. 
-
-
 
 
 
