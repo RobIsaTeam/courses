@@ -11,10 +11,10 @@ layout: post
 
 In order to react with a 3D scene using our 2D display, we have to use a trick. We need to:
 
-* track where our mouse cursor is in 2D 
+* track where our mouse cursor is in 2D
 * project these coordinates throuhg our 3D space onto our objects
 
-We do this by setting up a 'raycaster' object. Think of our 2D cursor as being on the glass surface of our 'window' into the scene. Now imagine parallel rays of light shining through the window. The cursor will cast a shadow onto our objects. 
+We do this by setting up a 'raycaster' object. Think of our 2D cursor as being on the glass surface of our 'window' into the scene. Now imagine parallel rays of light shining through the window. The cursor will cast a shadow onto our objects.
 
 
 Let's start with the mouse coordinates. We need to create a vector with x and y coordinates that keeps track of out cursor's position whenever we move it. `THREE.Vector2` creates a 2D vector.
@@ -29,7 +29,7 @@ To keep track of movement, we use the `mousemove` event and update our vector's 
 window.addEventListener( 'mousemove', onMouseMove );
 ```
 
-In that function, we'll update the x and y coordinate of our vector. 
+In that function, we'll update the x and y coordinate of our vector.
 We can get the coordinate of our mouse using `event.clientX` and `event.clientY` and dividing it by the extent of our window in x and y direction (`window.innerWidth` and `window.innerHeight`).
 This gives us values between 0 and 1 that we'll then have to transform into the right range. Curiously, according to html-standards, `event.clientY` starts at the top of the page with 0. ThreeJS and the raycaster treat the bottom of the window as y=-1 and the top as y=1. Similarly, the x-coordinate needs to be between -1 and 1 (left to right, same as `event.clientX`).
 
@@ -58,11 +58,11 @@ function onMouseMove( event ) {
 }
 ```
 
-The raycaster is ready to go now. The most important method, and the one we'll use to find our what we're poining at is called `intersectObject`. It computes everything we might want to know about the where our shadow is in 3D space: distance to the camera, position in space, and the object we're pointing at. It's important to note that this works not only for the closest object we're pointing at, but that we can also get information about any object that's behind it at that same direction. 
+The raycaster is ready to go now. The most important method, and the one we'll use to find our what we're poining at is called `intersectObject`. It computes everything we might want to know about the where our shadow is in 3D space: distance to the camera, position in space, and the object we're pointing at. It's important to note that this works not only for the closest object we're pointing at, but that we can also get information about any object that's behind it at that same direction.
 
 The `intersectObjects` method asks us to pick which object or objects we're interested in. In our case, we want to know about every object in the scene. We'll pass that in as the argument `scene.children`.
 
-The last thing we need do in order to be able to interact with our scene in a meaningful way is to print out which object our ray intersects with. We only need to be careful to just print this out if there is indeed an object in the path, otherwise we'll get an error. First, let's look at the first's object's position that's in our way. 
+The last thing we need do in order to be able to interact with our scene in a meaningful way is to print out which object our ray intersects with. We only need to be careful to just print this out if there is indeed an object in the path, otherwise we'll get an error. First, let's look at the first's object's position that's in our way.
 
 
 ```js
@@ -104,13 +104,13 @@ Now that our spheres know which region they belong to, we can print it out in th
 ...or we could create a little tooltip to display the name. To do that, we'll make an invisible div. Once we find an object that has a 'region' property, we'll update the text in the div, make it visible and position (using the html standard coordinates) it close to our cursor:
 
 
-We'll add this to our html file: 
+We'll add this to our html file:
 
 ```html
 <div id='tooltip' style='visibility: hidden; position: absolute; color: white; font-family:sans-serif'> </div>
 ```
 
-...and update our js file with the following now complete block: 
+...and update our js file with the following now complete block:
 
 ```js
 var mouse = new THREE.Vector2();
@@ -142,13 +142,13 @@ function onMouseMove( event ) {
 >
 > * Something went wrong with the position of the inferior temporal cortex! Using this [reference for raycasters](https://threejs.org/docs/index.html#api/core/Raycaster), and the schematic from the original paper, move the 'IT sphere' to the right spot, correcting its coordinates in the data file directly.
 
-<img src="../images/brain_schematic.png" alt="setup" width="100%" />
+<img src="../images/brain_schematic.png" alt="setup" width="50%" />
 
 
 
 > ### Note: 3D to 2D and back
 >
-> * While our rendering function was taking 3D objects and projecting them onto a 2D screen, our raycaster is doing the exact opposite. It is concerned with telling us which 3D object we are pointing at in 2D. 
+> * While our rendering function was taking 3D objects and projecting them onto a 2D screen, our raycaster is doing the exact opposite. It is concerned with telling us which 3D object we are pointing at in 2D.
 
 
 
