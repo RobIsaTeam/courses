@@ -166,7 +166,7 @@ function update_spheres(){
 }
 ```
 
-This isn't doing much yet in terms of updating. We'll need to also keep track of time (or in how often we've called the update function) and change the current index accordingly. We'll start at 0 (outside of the function), and then, everytime the update function is called, we'll increment until there aren't any values in the power array anymore. That's when we reset.
+This isn't doing much yet in terms of updating. We'll need to also keep track of time (or in how often we've called the update function) and change the current index accordingly. We'll start at 0 (outside of the function), and then, every time the update function is called, we'll increment until there aren't any values in the power array anymore. That's when we reset.
 
 ```js
 var currentindex = 0;
@@ -177,11 +177,12 @@ function update_spheres(){
     var size = 1 + 5*item.data.power[currentindex];
     item.sphere.scale.set(size, size, size);
   })
-    renderer.render( scene, camera );
-  if (currentindex <= brainregions[0].data.power.length){
-    currentindex = currentindex+1;
+  renderer.render( scene, camera );
+  if (counter < brainregions[0].data.power.length - 1){
+    counter = counter+1;
+  } else {
+    counter = 0;
   }
-  else {currentindex = 0};
 }
 ```
 
@@ -205,8 +206,8 @@ fetch('/data.json')
       var brainregion = {
         data: item
         sphere: sphere,
-      }
-      return brainregion
+      };
+      return brainregion;
     })
 
     var currentindex = 0;
@@ -216,10 +217,11 @@ fetch('/data.json')
 				item.sphere.scale.set(size, size, size);
       })
       renderer.render(scene, camera);
-      if (currentindex <= brainregions[0].data.power.length) {
-        currentindex = currentindex+1;
-      }
-      else {currentindex = 0; }
+      if (counter < brainregions[0].data.power.length - 1){
+				counter = counter+1;
+			} else {
+				counter = 0;
+			}
     }
 
     setInterval(update_spheres, 200);
@@ -248,7 +250,7 @@ fetch('/data.json')
 > ```js
 >
 > /// NEW ///
-> var updatePeriod = 300 // ms
+> var updatePeriod = 300; // ms
 > /// NEW ///
 >
 > function update_spheres(){    
@@ -259,10 +261,11 @@ fetch('/data.json')
 >   var currentindex = timestep % brainregions[0].power.length // what's the index we are up to
 >   /// NEW ///
 >
->   brainregions.forEach(function(item){
->     item.sphere.scale.set(item.data.power[currentindex],item.data.power[currentindex],item.data.power[currentindex]);   
+>   brainregions.forEach(function(item) {
+>     var size = 1 + 5*item.data.power[currentindex];
+>     item.sphere.scale.set(size, size, size);
 >   })
->     renderer.render( scene, camera );
+>   renderer.render( scene, camera );
 > }
 > ```
 

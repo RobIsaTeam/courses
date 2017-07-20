@@ -75,10 +75,11 @@ fetch('../data/electrode_data.json')
 				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,lightness);
 			})
 			renderer.render( scene, camera );
-			if (counter <= brainregions[0].data.power.length){
+			if (counter < brainregions[0].data.power.length - 1){
 				counter = counter+1;
+			} else {
+				counter = 0;
 			}
-			else {counter = 0};
 		}
 
 		setInterval(update_spheres, 50);

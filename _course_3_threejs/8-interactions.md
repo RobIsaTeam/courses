@@ -116,24 +116,26 @@ We'll add this to our html file:
 var mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
 
-function onMouseMove( event ) {
+function onMouseMove(event) {
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-  raycaster.setFromCamera( mouse, camera );
-  var intersects = raycaster.intersectObjects( scene.children );
+  raycaster.setFromCamera(mouse, camera);
+  var intersects = raycaster.intersectObjects(scene.children);
   var tooltip = document.getElementById('tooltip');
-  if (intersects[0]){
+  if (intersects[0]) {
     console.log(intersects[0].object.region)
-    if (intersects[0].object.region){
-        tooltip.innerHTML = intersects[0].object.region;
-        tooltip.style.visibility = 'visible';
-        tooltip.style.top = event.clientY + 'px';
-        tooltip.style.left = event.clientX + 20 + 'px';}
-     else{tooltip.style.visibility = 'hidden';}
-    // document.getElementById('tooltip').visibility = 'visible';
+    if (intersects[0].object.region) {
+      tooltip.innerHTML = intersects[0].object.region;
+      tooltip.style.visibility = 'visible';
+      tooltip.style.top = event.clientY + 'px';
+      tooltip.style.left = event.clientX + 20 + 'px';
+    } else {
+      tooltip.style.visibility = 'hidden';
     }
-  else{tooltip.style.visibility = 'hidden';}
+  } else {
+    tooltip.style.visibility = 'hidden';
+  }
 }
 ```
 

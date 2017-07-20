@@ -46,12 +46,12 @@ const interpolateTraceFile = (filename, x0, x1, dx) => {
   return newY
 }
 
-const fefSignal = interpolateTraceFile('data/FEF.json', -0.2, 1.25, 0.01)
-const  itSignal = interpolateTraceFile('data/IT.json',  -0.2, 1.25, 0.01)
-const lipSignal = interpolateTraceFile('data/LIP.json', -0.2, 1.25, 0.01)
-const  mtSignal = interpolateTraceFile('data/MT.json',  -0.2, 1.25, 0.01)
-const pfcSignal = interpolateTraceFile('data/PFC.json', -0.2, 1.25, 0.01)
-const  v4Signal = interpolateTraceFile('data/V4.json',  -0.2, 1.25, 0.01)
+const fefSignal = interpolateTraceFile('data/FEF.json', -60, 150, 1)
+const  itSignal = interpolateTraceFile('data/IT.json',  -60, 150, 1)
+const lipSignal = interpolateTraceFile('data/LIP.json', -60, 150, 1)
+const  mtSignal = interpolateTraceFile('data/MT.json',  -60, 150, 1)
+const pfcSignal = interpolateTraceFile('data/PFC.json', -60, 150, 1)
+const  v4Signal = interpolateTraceFile('data/V4.json',  -60, 150, 1)
 
 const electrodeData = JSON.parse(fs.readFileSync('data/electrode_data_template.json'))
 electrodeData[0].power = fefSignal
