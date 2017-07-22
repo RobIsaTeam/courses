@@ -213,7 +213,9 @@ pre {
 }
 
 blockquote {
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
   font-style: italic;
   border-left: 5px solid #7a7a7a;
 }
@@ -227,12 +229,18 @@ blockquote footer {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 900;
   margin-top: 3rem;
 }
+
+h3 {
+  font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 900;
+  margin-top: 1rem;
+}
+
 
 h4,
 h5,
