@@ -54,3 +54,8 @@ renderer.render(scene, camera);
 > ### Challenge: Play with the material
 > The material we use is documented [here](http://threejs.org/docs/index.html#Reference/Materials/MeshNormalMaterial). Make the brain transparent.
 > Then try using [MeshBasicMaterial](http://threejs.org/docs/index.html#Reference/Materials/MeshBasicMaterial) and see if you can make the wireframe visible.
+
+Here is what the scene should look like by the end of this lesson:
+<iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-03.html" width="1000" height="600"></iframe>
+
+> ### [Next Lesson: Changing the camera](./4-camera)

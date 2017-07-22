@@ -53,5 +53,10 @@ So that's all we need to copy over into our script to dynamically change the cam
 Note: camera.lookAt gets overwritten by the controls we're using, so feel free to comment that line out.
 
 > ### Challenge: Playing with libraries
-> 
+>
 > Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
+
+Here is what the scene should look like by the end of this lesson:
+<iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-05.html" width="1000" height="600"></iframe>
+
+> ### [Next Lesson: More objects and lighting](./6-objects_and_light)
