@@ -75,8 +75,6 @@ camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
 
 Sooo... we could play with this for ever, create buttons to rotate, focus, zoom, and pan. But instead, we'll rely on a pre-built library that has all these controls conveniently packaged up already.
 
-[1] [https://www3.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsTheory.html](Frustrum image reference)
-
 Here is what the scene should look like by the end of this lesson:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-04.html" width="1000" height="600"></iframe>
 
