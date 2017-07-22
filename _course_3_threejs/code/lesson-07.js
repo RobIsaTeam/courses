@@ -39,7 +39,7 @@ pointLight.position.set( 0,200,0 );
 scene.add( pointLight );
 
 //// Challenge 1:
-// fetch('/data/electrode_data.json')
+// fetch('../data/electrode_data.json')
 //   .then(function(response) {
 //     console.log(response)
 //     return response.json()
@@ -53,7 +53,7 @@ scene.add( pointLight );
 //   })
 
 //// Challenge 2:
-// fetch('/data/electrode_data.json')
+// fetch('../data/electrode_data.json')
 //   .then(function(response) {
 //     return response.json()
 //   })
@@ -77,7 +77,7 @@ scene.add( pointLight );
 //   })
 
 // Challenge 3
-// fetch('/data/electrode_data.json')
+// fetch('../data/electrode_data.json')
 //   .then(function(response) {
 //     console.log(response)
 //     return response.json()
@@ -132,7 +132,7 @@ scene.add( pointLight );
 
 var updatePeriod = 50; // ms
 
-fetch('/data/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     console.log(response)
     return response.json()

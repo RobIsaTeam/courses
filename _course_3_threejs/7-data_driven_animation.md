@@ -20,7 +20,7 @@ To load the data, we're using a command called `fetch`. `Fetch` returns what's c
 Now the neat thing about promises is that among other things, we can wait for the response and `then` act on the `response` we get back:
 
 ```js
-fetch('/data/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     console.log(response)
     return response.json()
@@ -30,7 +30,7 @@ fetch('/data/electrode_data.json')
 Once in the `then` bit, we can use `console.log` to see what we get back. The response printed in the console can look a little bit confusing and it seems to have nothing to do with the data we tried to read. But if you look closely, we find that there's a link to a `url`. Follow the link and we'll see that our data is loaded. We can chain as many `.then` commands together as we'd like, passing things from one to the other. For now, we'll want to read out the url content - the json object we loaded - and once it's converted into a usable object, pass it on to the next bit of code.
 
 ```js
-fetch('/data/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     console.log(response)
     return response.json()
@@ -84,7 +84,7 @@ The goal is to create a sphere object for each brain region that changes its siz
 For each data point (corresponding to a brain region), we'll create a material and a geometry. Those two make up the sphere, just like before. We get the position from the data and set it for each sphere. And we'll delete all the spheres we created manually.
 
 ```js
-fetch('/data/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     return response.json()
   })
@@ -122,7 +122,7 @@ We'll need to do a few things to make this work:
 For the first step, we'll change `forEach` to `map`. These two functions basically have the same syntax. The main difference for us is that `map` allows us to return a new object.  We can define how the output items relate to the items we are mapping. In our case, we want to return a sphere object for each item in our data set. We'll call this output array `brainregions`. Each `brainregion` (each element of `brainregions`) will contain one sphere. Along with that, we'll pass on the bit of data that this sphere is visualising.
 
 ```js
-fetch('/data/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     return response.json()
   })
@@ -188,7 +188,7 @@ function update_spheres(){
 So if we now call this function every 50 milliseconds, the whole slab of code looks like this:
 
 ```js
-fetch('/data/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     console.log(response)
     return response.json()
