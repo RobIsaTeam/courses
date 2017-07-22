@@ -86,6 +86,4 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 >
 > To see what these lines of code do to our page, open the page in the browser and inspect the page elements. You should find a `<canvas>` element inside a `<div>` element. This canvas element is the 'domElement' the renderer attached to our main container. Everything we do from here on will be drawn (=rendered) in this canvas.
 
-<img src="../images/setup.png" alt="setup" width="100%" />
-
 > ### [Next Lesson: Adding an object](./3-objects)
