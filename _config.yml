@@ -1,4 +1,4 @@
-baseurl: "https://robisateam.github.io/courses/" # when you commit!
+baseurl: "https://robisateam.github.io/courses" # when you commit!
 # baseurl: "" # locally
 url: "https://robisateam.github.io/courses/"
 title: Visualising Data on the Web
@@ -7,18 +7,18 @@ author: Isabell Kiral-Kornek and Robert Kerr
 collections:
   course_1_web:
     output: true
-    path: web-course
-    permalink: web-course/:path
+    path: /web-course
+    permalink: /web-course/:path
     description: "Introduction to Web Development"
   course_2_d3:
     output: true
-    path: d3-course
-    permalink: d3-course/:path
+    path: /d3-course
+    permalink: /d3-course/:path
     description: "Visualising Data with D3"
   course_3_threejs:
     output: true
-    path: threejs-course
-    permalink: threejs-course/:path
+    path: /threejs-course
+    permalink: /threejs-course/:path
     description: "Visualising Data with ThreeJS"
 
 # Build settings
