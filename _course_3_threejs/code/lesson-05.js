@@ -17,11 +17,11 @@ addAxes(scene);
 // console.log(camera.rotation)
 // camera.rotation.set(-2, -0.8, -2,)
 
-// controls = new THREE.OrbitControls( camera, renderer.domElement );
-// controls.addEventListener( 'change', render );
-
-controls = new THREE.TrackballControls( camera );
+controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', render );
+
+// controls = new THREE.TrackballControls( camera );
+// controls.addEventListener( 'change', render );
 
 function render() {
 	renderer.render( scene, camera );
