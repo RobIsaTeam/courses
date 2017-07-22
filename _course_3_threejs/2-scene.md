@@ -13,13 +13,17 @@ layout: post
 Before we start doing anything visual, we need to set up our main html file ('index.html') in 'code' folder.
 We need to link to the ThreeJS library as well as a [loading module](https://raw.githubusercontent.com/mrdoob/three.js/master/examples/js/loaders/STLLoader.js) to read in 3D object files. We'll also go ahead and include another file straight away - 'main.js' - a file that will contain our own code.
 
-Then, we insert a `div` element that we will use to display our scene in and give it the ID 'container'
+Then, we insert a `div` element that we will use to display our scene in and give it the ID 'container'. 
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
     <title>Playing with ThreeJS</title>
+    <style>
+		* { margin: 0; padding:0;}
+		canvas { width: 100%; height: 100% }    	
+    </style>
   </head>
   <body>
 
@@ -76,11 +80,13 @@ If that's confusing, that's ok. This image shows the result of appending the can
 And while we're at it, we'll make the canvas as large as the browser window:
 
 ```js
-var container = document.getElementById('threeJScontainer');
+var container = document.getElementById('container');
 
-container.appendChild( renderer.domElement );
-renderer.setSize( window.innerWidth, window.innerHeight );
+container.appendChild(renderer.domElement);
+renderer.setSize(window.innerWidth, window.innerHeight);
 ```
+
+Upon saving the tab's background colour should change from white to black.
 
 > ### Challenge: inspect the scene
 >
