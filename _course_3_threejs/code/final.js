@@ -67,19 +67,19 @@ fetch('../data/electrode_data_final.json')
 		})
 
 
-		var counter = 0;
+		var currentindex = 0;
 		function update_spheres(){
 			brainregions.forEach(function(item){
-				var size = 1 + 5*item.data.power[counter];
+				var size = 1 + 5*item.data.power[currentindex];
 				item.sphere.scale.set(size,size,size);
-				var lightness = 0.1+item.data.power[counter]/10;
+				var lightness = 0.1+item.data.power[currentindex]/10;
 				item.sphere.material.color.setHSL(item.sphere_color.h,item.sphere_color.s,lightness);
 			})
 			renderer.render( scene, camera );
-			if (counter < brainregions[0].data.power.length - 1){
-				counter = counter+1;
+			if (currentindex < brainregions[0].data.power.length - 1){
+				currentindex = currentindex+1;
 			} else {
-				counter = 0;
+				currentindex = 0;
 			}
 		}
 
