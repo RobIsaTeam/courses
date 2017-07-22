@@ -40,7 +40,7 @@ loader.load( '../data/MonkeyBrain.stl', function ( brainGeometry ) {
 });
 
 
-fetch('../data/electrode_data.json')
+fetch('../data/electrode_data_final.json')
 	.then(function(response) {
 		console.log(response)
 		return response.json()
@@ -54,6 +54,7 @@ fetch('../data/electrode_data.json')
 			var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial)
 			sphere.position.set(item.position[0], item.position[1], item.position[2]);
 			sphere.region = item.brain_region;
+			sphere.power = item.power;
 			var color = sphere.material.color.getHSL();
 			scene.add( sphere );
 			console.log(color);
@@ -82,7 +83,7 @@ fetch('../data/electrode_data.json')
 			}
 		}
 
-		setInterval(update_spheres, 200);
+		setInterval(update_spheres, 50);
 
 	})
 
@@ -136,3 +137,43 @@ pointLight.position.set( 0,200,0 );
 scene.add( pointLight );
 
 renderer.render(scene, camera);
+
+window.addEventListener( 'click', onClick );
+
+var plot = document.getElementById('detail-plot');
+function onClick( event ){
+	var intersects = raycaster.intersectObjects( scene.children );
+	if (intersects[0]){
+		if (intersects[0].object.region){
+			plot.style.visibility = 'visible'
+			var trace = [{
+				"y": intersects[0].object.power,
+				"type": "scatter"
+			}]
+			var layout = {
+				"title": intersects[0].object.region,
+				"margin": {
+				    l: 55,
+				    r: 30,
+				    b: 65,
+				    t: 60,
+				    pad: 5
+				},
+				font: {
+					color: 'white'
+				},
+				xaxis: {
+					title: 'Time'
+				},
+				yaxis: {
+					title: 'Brain activity'
+				},
+				paper_bgcolor: '#000000',
+				plot_bgcolor: '#000000'
+			}
+
+			Plotly.newPlot(plot, trace, layout, {"showLink": false})	
+		}
+	}
+}
+
