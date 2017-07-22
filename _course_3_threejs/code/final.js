@@ -9,7 +9,7 @@ container.appendChild( renderer.domElement ); //renderer has an attribute called
 
 renderer.setSize( window.innerWidth, window.innerHeight );
 
-addAxes(scene); // provided with the course material
+// addAxes(scene); // provided with the course material
 
 //camera.position.z = 50;
 
