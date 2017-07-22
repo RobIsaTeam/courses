@@ -20,10 +20,10 @@ Now it gets a little bit tricky. We'll want to find out which script this exampl
 
 1. Scroll down to the `<body>` tag
 1. Look at which scripts get imported
-1. Navigate through the repo to the imported script (in this case to [js/controls/OrbitControls.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.js))
+1. Navigate through this repo: 'https://github.com/mrdoob/three.js/blob/dev/examples' to the imported script (in this case to [js/controls/OrbitControls.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.js))
 1. Click on `Raw` button.
 1. Right-click anywhere on the page and save the file in your `code` directory as `OrbitControls.js`
-1. Include the following script tag in your `index.html` file:
+1. Include the following script tag in your `index.html` file, before `main.js`, but after the ThreeJS library gets loaded:
 
 ```html
 <script src="OrbitControls.js"></script>
