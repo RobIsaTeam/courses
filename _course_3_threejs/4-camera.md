@@ -12,21 +12,26 @@ layout: post
 > * adding axes.
 
 At the moment, we're only seeing half the brain. To fix that, we'll need to understand our camera a little bit better.
-When we initiated the camera, we gave it some default parameters. If we look at the [ThreeJS documentation](http://threejs.org/docs/api/cameras/PerspectiveCamera.html) we find out what parameters we have to pass to the camera:
-```js
-PerspectiveCamera( fov, aspect, near, far )
-```
+When we initiated the camera, we gave it some default parameters. If we look at the [ThreeJS documentation](http://threejs.org/docs/api/cameras/PerspectiveCamera.html) we find out what parameters we have to pass to the camera: `PerspectiveCamera( fov, aspect, near, far )`.
 
-`fov` is vertical field of view. If it's bigger, it's like a wide-angle / fishbowl lens. If it's smaller, the less you notice that there is a perspective at all and things seem to have less depth.
-`aspect` is the aspect ratio of the screen.
-`near` and `far` set the distance at which things get cut off. `far` can be huge, `near` can be tiny unless you want them to be something else for artistic reasons.
+**`fov`** is vertical field of view. If it's bigger, it's like a wide-angle / fishbowl lens. If it's smaller, the less you notice that there is a perspective at all and things seem to have less depth.
 
-This image might help to get a better understanding about what's going on [1]:
+**`aspect`** is the aspect ratio of the screen.
+
+**`near`** and **`far`** set the distance at which things get cut off. `far` can be huge, `near` can be tiny unless you want them to be something else for artistic reasons.
+
+This [image](https://www3.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsTheory.html) might help to get a better understanding about what's going on:
 ![https://www3.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsTheory.html](https://www3.ntu.edu.sg/home/ehchua/programming/opengl/images/Graphics3D_CameraPerspective.png "camera setup")
 
-> ### Challenge: Play with the camera
+We'll start with these parameters:
+
+```js
+var camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 100000 );
+```
+
+> ### Challenge: Bring back the brain! 
 >
-> Play with the camera settings until you can see the entire brain on the screen.
+> Clearly we're no longer looking at the right area. Play with the camera settings until you can see the entire brain on the screen.
 > ...try setting `near = 80`. What happens?
 
 One thing that you might have noticed while playing with the camera is that you always look at the brain from the same direction. All we know how to change are the distance and the aspect ratio. Let's have a look at where our camera actually is by printing its position in the console:
@@ -40,13 +45,13 @@ Now we can set the camera position using `camera.position.set()` and giving it a
 camera.position.set( -200, 200 , -200 );
 ```
 
-One important thing I want to have if I'm in a 3D space is a reference system. ThreeJS doesn't come with a simple command to create axes, so we wrote a little script to help us with this. It should be in your `/js` folder. To use it, we'll have to load it in the `index.html`. It needs to be included before the `main.js`, so we have access to its functionality in our main file.   
+One important thing I want to have if I'm in a 3D space is a reference system. ThreeJS doesn't come with a simple command to create axes, so we wrote a little script to help us with this. It should be in your `code` folder. To use it, we'll have to load it in the `index.html`. It needs to be included before the `main.js`, so we have access to its functionality in our main file.   
 
 ```html
-<script src="js/three.min.js"></script>
-<script src="js/STLLoader.js"></script>
-<script src="js/makeAxes.js"></script> <!--  this one -->
-<script src="js/main.js"></script>
+<script src="three.min.js"></script>
+<script src="STLLoader.js"></script>
+<script src="makeAxes.js"></script> <!--  this one -->
+<script src="main.js"></script>
 ```
 
 To add the axes to the scene, call `addAxes(scene)` any time after creating the scene.
@@ -65,7 +70,7 @@ camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
 
 > ### Challenge:
 > Similar to setting the positon, we can rotate the camera around the x-, y-, and z-axis.
-> Inspecting what `console.log(camera.rotation);`
+> Inspecting what `console.log(camera.rotation)`
 > returns, think of how you could just modify the rotation around the x-axis?
 
 Sooo... we could play with this for ever, create buttons to rotate, focus, zoom, and pan. But instead, we'll rely on a pre-built library that has all these controls conveniently packaged up already.

@@ -57,6 +57,10 @@ The last step now is to render our scene. Our renderer expects a scene and a cam
 renderer.render(scene, camera);
 ```
 
+For a little recap of what we did and how everything relates, have a look at this image. Even though there might be parts that we haven't covered yet, it will also be useful as a reference later.
+
+<img src="../images/flow.png" alt="setup" style="width:100%; margin: 0 auto;" />
+
 > ### Challenge: Play with the material
 > The material we use is documented [here](https://threejs.org/docs/index.html#api/materials/MeshNormalMaterial). Make the brain transparent.
 > Then try using [MeshBasicMaterial](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) and see if you can make the wireframe visible.
