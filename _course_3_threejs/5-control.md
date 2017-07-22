@@ -14,7 +14,7 @@ As you can imagine, we are not the first ones who are interested in zooming, pan
 
 Even if it wasn't good for anything else (it will be.. ) the ThreeJS documentation is excellent for looking at examples and the associated code. If we go to [https://threejs.org/examples](https://threejs.org/examples), and search for 'controls', we'll see a number of examples that are built around that. We are interested in the orbit control package.
 
-If you click on the example `controls / orbit`, there will be a button in the lower right corner with the text `view code` on it. This button takes us straight to the corresponding GitHub page.
+If you click on the example `controls / orbit`, there will be a button in the lower right corner with the text `view source` on it. This button takes us straight to the corresponding GitHub page.
 
 Now it gets a little bit tricky. We'll want to find out which script this example uses and integrate it into our code. Generally, we'll need to follow these steps:
 
@@ -22,11 +22,11 @@ Now it gets a little bit tricky. We'll want to find out which script this exampl
 1. Look at which scripts get imported
 1. Navigate through the repo to the imported script (in this case to [js/controls/OrbitControls.js](https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.js))
 1. Click on `Raw` button.
-1. Right-click anywhere on the page and save the file in your directory as `OrbitControls.js`
+1. Right-click anywhere on the page and save the file in your `code` directory as `OrbitControls.js`
 1. Include the following script tag in your `index.html` file:
 
 ```html
-<script type="text/javascript" src="OrbitControls.js"></script>
+<script src="OrbitControls.js"></script>
 ```
 
 Now the really handy thing is, that this example also shows us how to use the code we just included.
@@ -50,7 +50,7 @@ function render() {
 
 So that's all we need to copy over into our script to dynamically change the camera position, angle, and zoom.
 
-Note: camera.lookAt gets overwritten by the controls we're using, so feel free to comment that line out.
+Note: `camera.lookAt` gets overwritten by the controls we're using, so feel free to comment that line out.
 
 > ### Challenge: Playing with libraries
 >
