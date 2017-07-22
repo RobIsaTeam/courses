@@ -279,4 +279,4 @@ And since we can barely see what's going on, let's change our camera's field of 
 Here is what the scene should look like by the end of this lesson:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-07.html" width="1000" height="600"></iframe>
 
-> ### [Next Lesson: Interacting with the scene](./8-interactions)
+> ### [Next Lesson: Interacting with objects in the scene](./8-interactions)

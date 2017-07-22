@@ -1,6 +1,6 @@
 ---
 published: true
-title: Interacting with the scene
+title: Interacting with objects
 subtitle: Live investigations.
 layout: post
 ---
@@ -124,8 +124,8 @@ function onMouseMove(event) {
   var intersects = raycaster.intersectObjects(scene.children);
   var tooltip = document.getElementById('tooltip');
   if (intersects[0]) {
-    console.log(intersects[0].object.region)
     if (intersects[0].object.region) {
+      console.log(intersects[0].object.region)
       tooltip.innerHTML = intersects[0].object.region;
       tooltip.style.visibility = 'visible';
       tooltip.style.top = event.clientY + 'px';
@@ -151,7 +151,7 @@ function onMouseMove(event) {
 > We now want to make a little line graph on the side showing us how the brain activity changes over time for any given brain region. Instead of displaying the graph when we move the mouse over a sphere, we want to do this when the user clicks on a sphere. A nice and relatively easy way to make graphs is using plotly. Here are some tips to get started:
 > * The plotly library can be included using `<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>`
 > * Make sure each sphere knows of the data its representing (similar to how it knows about the brain region)
-> * Similar to how we made a tooltip, plotly needs a div to hook into. You can use this: <div id='detail-plot' style='position:absolute; width:400px; height:300px; top:20px; left: 70%; border: 1px solid white; visibility:hidden;'></div>
+> * Similar to how we made a tooltip, plotly needs a div to hook into. You can use this: `<div id='detail-plot' style='position:absolute; width:400px; height:300px; top:20px; right: 20px; border: 1px solid white; visibility:hidden;'></div>`
 > Making plots happens in three steps:
 > * grab the plot div: var plot = document.getElementById('detail-plot');
 > * make data trace and layout: `var trace = [{"y": (data goes here) , "type": "scatter" }]; var layout = {"title": (title goes here)}`
@@ -165,21 +165,10 @@ function onMouseMove(event) {
 
 
 
-<!--
-
-links: [https://threejs.org/examples](https://threejs.org/examples)
-
-code:
-```html
-  <script type="text/javascript" src="OrbitControls.js"></script>
-```
-
-challenges:
-> ### Challenge: Playing with libraries
->
-> Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
-
--->
-
 Congratulations! Here is what the scene should look like now that we've finished the course:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-08.html" width="1000" height="600"></iframe>
+
+
+> ### Stay in touch! 
+>
+> Please let us know if liked this course, share with us, if it's helped you make something, or give us feedback on what we could do better. [Isabell](https://twitter.com/Isa_Kiko) and [Rob](https://twitter.com/robrkerr) 

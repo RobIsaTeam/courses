@@ -30,7 +30,7 @@ loader.load( '../data/MonkeyBrain.stl', function ( brainGeometry ) {
 	console.log('brain loaded')
 
 	// var brainMaterial= new THREE.MeshNormalMaterial();
-	var brainMaterial = new THREE.MeshLambertMaterial({ transparent: true, opacity: .8, color: 'grey'});
+	var brainMaterial = new THREE.MeshLambertMaterial({ transparent: true, opacity: 1, color: 'grey'});
 	var brainMesh = new THREE.Mesh( brainGeometry, brainMaterial );
 
 	scene.add( brainMesh );
