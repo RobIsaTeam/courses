@@ -152,7 +152,7 @@ function onMouseMove(event) {
 > * The plotly library can be included using `<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>`
 > * Make sure each sphere knows of the data its representing (similar to how it knows about the brain region)
 > * Similar to how we made a tooltip, plotly needs a div to hook into. You can use this: <div id='detail-plot' style='position:absolute; width:400px; height:300px; top:20px; left: 70%; border: 1px solid white; visibility:hidden;'></div>
-> Making plots happens in three steps: 
+> Making plots happens in three steps:
 > * grab the plot div: var plot = document.getElementById('detail-plot');
 > * make data trace and layout: `var trace = [{"y": (data goes here) , "type": "scatter" }]; var layout = {"title": (title goes here)}`
 > * put it all together: `Plotly.newPlot(plot, trace, layout, {"showLink": false})`
@@ -180,3 +180,6 @@ challenges:
 > Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
 
 -->
+
+Congratulations! Here is what the scene should look like now that we've finished the course:
+<iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-08.html" width="1000" height="600"></iframe>

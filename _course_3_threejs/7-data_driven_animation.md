@@ -284,3 +284,8 @@ challenges:
 > Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
 
 -->
+
+Here is what the scene should look like by the end of this lesson:
+<iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-07.html" width="1000" height="600"></iframe>
+
+> ### [Next Lesson: Interacting with the scene](./8-interactions)
