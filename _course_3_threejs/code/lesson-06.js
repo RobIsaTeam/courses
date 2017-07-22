@@ -1,44 +1,37 @@
-var container = document.getElementById('threeJScontainer');
-
 var scene =  new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 100000 );
+var camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, .1, 1000 );
 var renderer = new THREE.WebGLRenderer();
-// when i create the renderer, it creates a canvas in the page, which is where the renderer puts the 2D image it draws
 
-container.appendChild( renderer.domElement ); //renderer has an attribute called domElement that is the html canvas element
+var container = document.getElementById('container');
 
-renderer.setSize( window.innerWidth, window.innerHeight );
+container.appendChild(renderer.domElement);
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-addAxes(scene); // provided with the course material
-
-//camera.position.z = 50;
-
-camera.lookAt( new THREE.Vector3( 100, 10, 10 ) ); // ...looking at a point in space
-camera.position.set( -200, 200 , -200 ); // .set sets a THREE.Vector3 to new coordinates
-
-// camera.rotation.x = 2.3 // modify the rotation around the x-axis in radians
+var camera = new THREE.PerspectiveCamera( 80, window.innerWidth / window.innerHeight, 0.1, 100000 );
+console.log('camera position')
+console.log(camera.position);
+camera.position.set( -200, 200 , -200 );
+addAxes(scene);
 
 controls = new THREE.OrbitControls( camera, renderer.domElement );
-controls.addEventListener( 'change', function(){
-	renderer.render(scene, camera);
-} );
+controls.addEventListener( 'change', render );
 
-// controls.enableZoom = false;
+function render() {
+	renderer.render( scene, camera );
+}
+
 
 var loader = new THREE.STLLoader();
-loader.load( '../data/MonkeyBrain.stl', function ( brainGeometry ) {
-	console.log('brain loaded')
+loader.load('../data/MonkeyBrain.stl', function(geometry) {
+  console.log(geometry)
+	var material = new THREE.MeshLambertMaterial({visible: true, color: 'grey'});
 
-	var brainMaterial = new THREE.MeshLambertMaterial({color: 'pink'});
-	var brainMesh = new THREE.Mesh( brainGeometry, brainMaterial );
-
-	scene.add( brainMesh );
+	var mesh = new THREE.Mesh(geometry, material);
+	scene.add(mesh);
 
 	renderer.render(scene, camera);
-
 });
 
-// include our own geometry - 3 small balls
 var sphereMaterial = new THREE.MeshLambertMaterial({color: 'red'}  );
 var sphereGeometry = new THREE.SphereGeometry( 5, 16, 16);
 
@@ -61,4 +54,4 @@ var pointLight = new THREE.PointLight( 0x404040, 5, 0 ); // white point source
 pointLight.position.set( 0,200,0 );
 scene.add( pointLight );
 
-renderer.render(scene, camera);
+

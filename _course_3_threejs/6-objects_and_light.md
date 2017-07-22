@@ -23,9 +23,9 @@ var sphereGeometry = new THREE.SphereGeometry( 5, 8 ,8 );
 Just like before, our geometry needs to be coupled with a material to make a mesh that we can then add to the scene.  
 
 ```js
-var sphereMaterial = new THREE.MeshNormalMaterial( {wireframe: true} );
-var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-scene.add( sphere );
+var sphereMaterial = new THREE.MeshNormalMaterial();
+var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+scene.add(sphere);
 ```
 
 Lastly, we need to call the render function to update what we see on the screen.
@@ -44,10 +44,10 @@ sphere.position.set(-20, 50 , 80 )
 > ### Challenge: challenge_title
 >
 > 1. Play with the 3 sphere parameters. See if you can make the ball look smooth.
-> 1. Make 3 smooth, small, red balls that sit on the surface of the brain.
-> 1. Make the brain pink
+> 1. Make 3 smooth, small, red balls that sit on the surface of the brain using `MeshBasicMaterial`.
+> 1. Give the brain a colour and make it fully opaque.
 > 1. Time to play with another material. Find the Lambert material in the docs and apply it to all geometries.
-> ...what just happened?! Inspect the scene carefully...
+> ...what just happened?! Inspect the scene carefully... are our spheres still there?
 
 Time to get our brain back!
 At the moment, it's dark in our virtual room. Let's add some ambient light:
@@ -58,33 +58,16 @@ scene.add( ambientLight );
 ```
 
 > ### Note:
-> If you refer back to the [diagram from lesson 6](../images/flow.png), you can see that we need to add the light before rendering the scene, just like we did with the spheres._
+> If you refer back to the [diagram from lesson 3](../images/flow.png), you can see that we need to add the light before rendering the scene, just like we did with the spheres._
 
 
-> ### Challenge: challenge_title
+> ### Challenge: Natural shading
 >
-> 1. Naturally, there are different ways to illuminate your scene. Use [THREE.PointLight()](https://threejs.org/docs/#api/lights/PointLight) to create a point source.
-> 1. Then move it above the brain using the same command we used to move our camera and spheres earlier.
+> 1. Naturally, there are different ways to illuminate your scene. Use [THREE.PointLight()](https://threejs.org/docs/#api/lights/PointLight) to create a point source. Brain and spheres should be back at looking three dimensional! 
+> 1. Then move it above the brain using the same command we used to move our camera and spheres earlier. 
 
-
-<!--
-
-links: [https://threejs.org/examples](https://threejs.org/examples)
-
-code:
-```html
-	<script type="text/javascript" src="OrbitControls.js"></script>
-```
-
-challenges:
-
-> ### Challenge: Playing with libraries
->
-> Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
-
--->
 
 Here is what the scene should look like by the end of this lesson:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-06.html" width="1000" height="600"></iframe>
 
-> ### [Next Lesson: Adding animation](./7-data_driven_animation)
+> ### [Next Lesson: Animating things!](./7-data_driven_animation)
