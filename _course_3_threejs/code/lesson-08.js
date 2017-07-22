@@ -95,8 +95,6 @@ fetch('../data/electrode_data.json')
 
 var mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
-// Advanced challenge
-var plot = document.getElementById('detail-plot');
 
 function onMouseMove(event) {
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -112,7 +110,24 @@ function onMouseMove(event) {
       tooltip.style.visibility = 'visible';
       tooltip.style.top = event.clientY + 'px';
       tooltip.style.left = event.clientX + 20 + 'px';
+    } else {
+      tooltip.style.visibility = 'hidden';
+    }
+  } else {
+    tooltip.style.visibility = 'hidden';
+  }
+}
+window.addEventListener( 'mousemove', onMouseMove );
+
+
+
 // Advanced challenge
+var plot = document.getElementById('detail-plot');
+
+function onClick(event) {
+  var intersects = raycaster.intersectObjects(scene.children);
+  if (intersects[0]) {
+    if (intersects[0].object.region) {
       plot.style.visibility = 'visible';
       var trace = [{"y": intersects[0].object.power , "type": "scatter" }]; 
       var layout = {
@@ -137,7 +152,6 @@ function onMouseMove(event) {
         plot_bgcolor: '#000000'
       }      
       Plotly.newPlot(plot, trace, layout, {"showLink": false});
-
     } else {
       tooltip.style.visibility = 'hidden';
     }
@@ -145,4 +159,6 @@ function onMouseMove(event) {
     tooltip.style.visibility = 'hidden';
   }
 }
-window.addEventListener( 'mousemove', onMouseMove );
+
+
+window.addEventListener( 'click', onClick );
