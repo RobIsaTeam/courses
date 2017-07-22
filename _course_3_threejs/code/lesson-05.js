@@ -27,6 +27,10 @@ function render() {
 	renderer.render( scene, camera );
 }
 
+// function animate() {
+// 	requestAnimationFrame(animate);
+// 	controls.update();
+// }
 
 var loader = new THREE.STLLoader();
 loader.load('../data/MonkeyBrain.stl', function(geometry) {
@@ -38,5 +42,5 @@ loader.load('../data/MonkeyBrain.stl', function(geometry) {
 	scene.add(mesh);
 
 	renderer.render(scene, camera);
+	// animate();
 });
-
