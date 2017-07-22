@@ -32,8 +32,8 @@ Now it gets a little bit tricky. We'll want to find out which script this exampl
 Now the really handy thing is, that this example also shows us how to use the code we just included.
 
 ```js
-controls = new THREE.OrbitControls( camera, renderer.domElement );
-controls.addEventListener( 'change', render );
+controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.addEventListener('change', render);
 ```
 
 The controls are added to the `<canvas>`-element, which we inserted earlier and which we find again using `renderer.domElement` and will have directly influence our camera object.
@@ -44,7 +44,7 @@ Let's see what that function does... If we look for it somewhere further down in
 
 ```js
 function render() {
-	renderer.render( scene, camera );
+	renderer.render(scene, camera);
 }
 ```
 
@@ -54,7 +54,9 @@ Note: `camera.lookAt` gets overwritten by the controls we're using, so feel free
 
 > ### Challenge: Playing with libraries
 >
-> Find and include the "trackball" controls in the ThreeJS examples following the steps above and explore how they are different.  
+> Find and include the [trackball](https://threejs.org/examples/#misc_controls_trackball) controls in the ThreeJS examples following the steps above and explore how they are different.
+>
+> **Hint:** Look at how the trackball controls are used in the example source code and you'll see that it's a little bit different to the orbit controls. For trackball, you need to have an "animation" loop that keeps updating the camera even after you stop dragging (it has momentum). To do this, copy the `animate` function from the example and don't forget to start the loop by executing this function somewhere in your code. 
 
 Here is what the scene should look like by the end of this lesson:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-05.html" width="1000" height="600"></iframe>
