@@ -29,7 +29,7 @@ We'll start with these parameters:
 var camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 100000 );
 ```
 
-> ### Challenge: Bring back the brain! 
+> ### Challenge: Bring back the brain!
 >
 > Clearly we're no longer looking at the right area. Play with the camera settings until you can see the entire brain on the screen.
 > ...try setting `near = 80`. What happens?
@@ -69,7 +69,7 @@ camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
 ```
 
 > ### Challenge:
-> Similar to setting the positon, we can rotate the camera around the x-, y-, and z-axis.
+> Similar to setting the position, we can rotate the camera around the x-, y-, and z-axis.
 > Inspecting what `console.log(camera.rotation)`
 > returns, think of how you could just modify the rotation around the x-axis?
 
