@@ -62,7 +62,7 @@ addAxes(scene);
 > ### Challenge:
 > Move the camera over the brain, onto the z-axis. What are we looking at now?
 
-If we move the camera, it miraculously focusses on the brain again. If we don't want that, but want the default view when we load the page to be something else, we can tell it to look at any other point in the coordinate system instead, using `camera.lookAt()`. This command is used with a ThreeJS vector, which is just another way of sayin "this point in space". We'll come across more of these vectors later. We can either initialise it as a variable like we're used to, or we can create a new one on the fly (which is what we'll do here, because we won't need it a second time):
+If we move the camera, it miraculously focusses on the brain again. If we don't want that, but want the default view when we load the page to be something else, we can tell it to look at any other point in the coordinate system instead, using `camera.lookAt()`. This command is used with a ThreeJS vector, which is just another way of saying "this point in space". We'll come across more of these vectors later. We can either initialise it as a variable like we're used to, or we can create a new one on the fly (which is what we'll do here, because we won't need it a second time):
 
 ```js
 camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );

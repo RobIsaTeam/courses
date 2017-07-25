@@ -10,12 +10,22 @@ layout: post
 > * reading in and using data to control size and colour of an object
 > * animating properties
 
-
-It's time to use some actual data. In this course, we want to visualise recorded brain activity from [this Science paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4721574/). In particular, we're looking at Figure 2, which displays brain activity over time in different regions of a macaque's brain in response to the monkey looking at a cue on a screen.
+It's time to use some actual data. In this course, we want to visualise the information observed in the recorded brain activity that was published in [this Science paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4721574/). In particular, we're looking at Figure 2, which displays this signal over time in different regions of a macaque's brain.
 
 You'll find the necessary data in your [data folder that you would have downloaded in the beginning](./getting_started.zip).
 
-To load the data, we're using a command called `fetch`. `Fetch` returns what's called a promise. All this means is that it gives us the chance to wait with the next action until the data is actually loaded. Generally, JavaScript tries to work as efficiently as possible, which means it will often try to do two things at the time. So if it was going to try to update the page with the data, before it is actually loaded, we'd run into problems. (If you're familiar with D3 and like to use its loading functions, that'll work in a similar way.)
+To load the data, we're using a command called `fetch`. `Fetch` returns what's called a promise. All this means is that it gives us the chance to wait with the next action until the data is actually loaded. Generally, JavaScript tries to work as efficiently as possible, which means it will often try to do two things at the time. So if it was going to try to update the page with the data, before it is actually loaded, we'd run into problems. (If you're familiar with D3 and like to use its loading functions, that'll work in a similar way).
+
+> ### Note: Patch for older browsers
+>
+> In older browsers, `fetch` isn't built into the browser itself and you will need to use a JavaScript file to add in that functionality for you. We've included that library in `getting_started.zip`, so all you should need to do is add a line into `index.html` like this:
+>
+> ```html
+>  <script src="fetch.js"></script>
+>  <script src="three.min.js"></script>
+>  <script src="STLLoader.js"></script>
+>  <script src="main.js"></script>
+>  ```
 
 Now the neat thing about promises is that among other things, we can wait for the response and `then` act on the `response` we get back:
 
@@ -57,18 +67,17 @@ Now let's have a look at what we're dealing with:
 ]
 ```
 
-The data contains an array of data points. Each object in this array coresponds to the measurements in one brain region. We've got the electrode id, the position in 3D coordinates, the measured brain activity over time, the identifier of which brain region we're in, and a colour.
+The data contains an array of data points. Each object in this array coresponds to the measurements in one brain region. We've got the electrode id, the position in 3D coordinates, the measured brain signal over time, the identifier of which brain region we're in, and a colour.
 
 
 > ### Challenge: Chain all the things!
 >
-> 1. Just to see if you can, once the array is fully loaded, pass the first element of the array we just loaded through another '.then' statement to a function that prints its colour in the console.
-
+> Just to see if you can, once the array is fully loaded, pass the first element of the array we just loaded through another '.then' statement to a function that prints its colour in the console.
 
 Now everything we want to happen on the page that requires the data, needs to be in the function we just wrote.
 
 ```js
-fetch('/electrode_data.json')
+fetch('../data/electrode_data.json')
   .then(function(response) {
     return response.json()
   })
@@ -104,13 +113,14 @@ fetch('../data/electrode_data.json')
   })
 ```
 
+At this point it might be a bit hard to see what's going on so let's change our camera's field of view form 80 to 20.
+
 > ### Challenge: Scale the spheres
 >
-> 1. To relate our spheres to the data, we want to scale them based on the measured power.
+> To relate our spheres to the data, we want to scale them based on the measured power.
 Using `sphere.scale.set()`, scale each sphere according to the first value in its power array. In our data, `power` has been normalised to range between 0 and 1. To help make sure the spheres stay visible it might be a good idea to scale them as something like: `1 + 5*power`. They'll start of small, but over time, we'll see them grow. ;)
 
-We've started displaying our data. Now, how can we change the size of the spheres dynamically?
-To repeatedly execute a function, we can use the function `setInterval(my_function, timestep)`. Whatever `my_function` does is executed every `timestep` milliseconds. In our case, our function is supposed to update the size of the bubble.
+We've started displaying our data. Now, how can we change the size of the spheres dynamically? To repeatedly execute a function, we can use the function `setInterval(my_function, timestep)`. Whatever `my_function` does is executed every `timestep` milliseconds. In our case, our function is supposed to update the size of the bubble.
 
 We'll need to do a few things to make this work:
 
@@ -177,25 +187,27 @@ function update_spheres(){
     item.sphere.scale.set(size, size, size);
   })
   renderer.render( scene, camera );
-  if (counter < brainregions[0].data.power.length - 1){
-    counter = counter+1;
+  if (currentindex < brainregions[0].data.power.length - 1){
+    currentindex = currentindex+1;
   } else {
-    counter = 0;
+    currentindex = 0;
   }
 }
 ```
 
-So if we now call this function every 50 milliseconds, the whole slab of code looks like this:
+We now call this function every 50 milliseconds, using `setInterval`:
+```js
+setInterval(update_spheres, 50);
+```
+
+After all of this, the whole slab of code looks like this:
 
 ```js
 fetch('../data/electrode_data.json')
   .then(function(response) {
-    console.log(response)
     return response.json()
   })
   .then(function(data) {
-    console.log(data)
-
     var brainregions = data.map(function(item) {
       var sphereMaterial = new THREE.MeshLambertMaterial({color: item.color});
       var sphereGeometry = new THREE.SphereGeometry(1,32,32);
@@ -213,14 +225,14 @@ fetch('../data/electrode_data.json')
     function update_spheres() {    
       brainregions.forEach(function(item) {
         var size = 1 + 5*item.data.power[currentindex];
-				item.sphere.scale.set(size, size, size);
+        item.sphere.scale.set(size, size, size);
       })
       renderer.render(scene, camera);
       if (currentindex < brainregions[0].data.power.length - 1){
-				currentindex = currentindex+1;
-			} else {
-				currentindex = 0;
-			}
+        currentindex = currentindex+1;
+      } else {
+        currentindex = 0;
+      }
     }
 
     setInterval(update_spheres, 50);
@@ -228,11 +240,9 @@ fetch('../data/electrode_data.json')
   })
 ```
 
-And since we can barely see what's going on, let's change our camera's field of view form 80 to 20.
-
 > ### Challenge: Meaningful colours
 >
-> 1. Suppose we also want to update the colour, making spheres lighter when they get larger. Write the bit of code that allows you to do this. You will need to first get the initial colour, pass it on within the brainregions array, and then update it during the update phase.
+> Suppose we also want to update the colour, making spheres lighter when they get larger. Write the bit of code that allows you to do this. You will need to first get the initial colour, pass it on within the brainregions array, and then update it during the update phase.
 >
 > Hints:
 >
@@ -253,7 +263,7 @@ And since we can barely see what's going on, let's change our camera's field of 
 > var updatePeriod = 50; // ms
 > /// NEW ///
 >
-> function update_spheres(){    
+> function update_spheres() {    
 >
 >   /// NEW ///
 >   var time = Date.now() // time now in ms
@@ -265,15 +275,11 @@ And since we can barely see what's going on, let's change our camera's field of 
 >     var size = 1 + 5*item.data.power[currentindex];
 >     item.sphere.scale.set(size, size, size);
 >   })
->   renderer.render( scene, camera );
+>   renderer.render(scene, camera);
+>   requestAnimationFrame(update_spheres);
 > }
->  if (currentindex < brainregions[0].data.power.length - 1){
->        currentindex = currentindex+1;
->      } else {
->        currentindex = 0;
->      }
->    setInterval(update_spheres, updatePeriod);
->  })
+>    
+> update_spheres();
 > ```
 
 Here is what the scene should look like by the end of this lesson:

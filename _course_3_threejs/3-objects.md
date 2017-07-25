@@ -18,9 +18,14 @@ The file we're loading is an `STL` file. In principle most useful 3D files (`.ob
 
 <img src="../images/stl_screenshot.png" alt="setup" style="width:50%; margin: 0 25%;" />
 
-We want to load the image using the `THREE.STLLoader()` function we included earlier.
-We'll have to wait until the file is loaded before we can assign a material to it and add it to the scene.
-Whenever we need to wait until an earlier step has finished, an easy way to do this is to use a callback function.
+We want to load this 3D file using the `THREE.STLLoader()` function, which isn't part of the core Three.js library. To use it we first need to include an extra file in `index.html`:
+```html
+  <script src="three.min.js"></script>
+  <script src="STLLoader.js"></script>
+  <script src="main.js"></script>
+```
+
+When we load in a file, we'll have to wait until it has finished loading before we can assign a material to it and add it to the scene. Whenever we need to wait until an earlier step has finished, an easy way to do this is to use a callback function:
 
 ```js
 var loader = new THREE.STLLoader();
@@ -31,12 +36,12 @@ loader.load('../data/MonkeyBrain.stl', function(geometry) {
 
 Again, we are creating a ThreeJS-specific object (a loader), which means we use the `new` keyword. `THREE.STLLoader()` provides a `load()` function. Its arguments are the path to the file and a callback function for the loaded geometry. For now, all we want to know is if the file was loaded at all, and we can use a `console.log()` to find out.
 
-> ### Challenge:
-> ...maybe have a look at https://github.com/mrdoob/three.js/tree/master/examples/js/loaders to see what some other file formats are we could be loading? Try finding other sources of 3D files on the internet, check their format, and share what you've found.
+> ### Challenge: Other file loaders
+> Have a look at the [other file loaders available]( https://github.com/mrdoob/three.js/tree/master/examples/js/loaders) to see what some other file formats are we could be loading? Try finding other sources of 3D files on the internet, check their format, and share what you've found.
 
 We can't show an object that doesn't have a material assigned. ThreeJS comes with a whole range of predefined materials. For now, we'll use a very basic one: `MeshNormalMaterial`. Any material has a whole range of attributes that we can define.
 
-From here on, all code that needs the brain to be loaded in order to work will need to be in the callback function of the loader. 
+From here on, all code that needs the brain to be loaded in order to work will need to be in the callback function of the loader.
 
 We'll create our material:
 

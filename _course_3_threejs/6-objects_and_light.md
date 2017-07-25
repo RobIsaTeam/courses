@@ -58,13 +58,13 @@ scene.add( ambientLight );
 ```
 
 > ### Note:
-> If you refer back to the [diagram from lesson 3](../images/flow.png), you can see that we need to add the light before rendering the scene, just like we did with the spheres._
+> If you refer back to the [diagram from lesson 3](../images/flow.png), you can see that we need to add the light before rendering the scene, just like we did with the spheres.
 
 
 > ### Challenge: Natural shading
 >
-> 1. Naturally, there are different ways to illuminate your scene. Use [THREE.PointLight()](https://threejs.org/docs/#api/lights/PointLight) to create a point source. Brain and spheres should be back at looking three dimensional! 
-> 1. Then move it above the brain using the same command we used to move our camera and spheres earlier. 
+> 1. Naturally, there are different ways to illuminate your scene. Use [THREE.PointLight()](https://threejs.org/docs/#api/lights/PointLight) to create a point source. Brain and spheres should be back at looking three dimensional!
+> 1. Then move it above the brain using the same command we used to move our camera and spheres earlier.
 
 
 Here is what the scene should look like by the end of this lesson:

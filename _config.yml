@@ -1,5 +1,5 @@
-baseurl: "https://robisateam.github.io/courses" # when you commit!
-# baseurl: "" # locally
+# baseurl: "https://robisateam.github.io/courses" # when you commit!
+baseurl: "" # locally
 url: "https://robisateam.github.io/courses/"
 title: Visualising Data on the Web
 email: isa.kiral@gmail.com
