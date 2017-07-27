@@ -37,7 +37,7 @@
 - give the challenge a name... add links?...
 - DONE: note has a weird underscore at the end...
 - maybe replace 0x040404 color with word color?
-- instead of 3 spheres, make 2 eyes
+- DONE: instead of 3 spheres, make 2 eyes
 - LATER: advanced challenge: texture o_o - do we need to point them to a texture image file?
 
 ## lesson 7
