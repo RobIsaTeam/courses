@@ -32,20 +32,17 @@ loader.load('../data/MonkeyBrain.stl', function(geometry) {
 	renderer.render(scene, camera);
 });
 
-var sphereMaterial = new THREE.MeshLambertMaterial({color: 'red'}  );
-var sphereGeometry = new THREE.SphereGeometry( 5, 16, 16);
+var sphereMaterial = new THREE.MeshLambertMaterial({color: 'white'}  );
+var sphereGeometry = new THREE.SphereGeometry( 7, 16, 16);
 
 var sphere1 = new THREE.Mesh( sphereGeometry, sphereMaterial );
 var sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
-var sphere3 = new THREE.Mesh( sphereGeometry, sphereMaterial );
 
-sphere1.position.set(16, 60 , -80);
-sphere2.position.set(-20, 30 , -80);
-sphere3.position.set(-20, 60 , -80);
+sphere1.position.set(9, 50 , -35);
+sphere2.position.set(-17, 50 , -35);
 
 scene.add( sphere1 );
 scene.add( sphere2 );
-scene.add( sphere3 );
 
 var ambientLight = new THREE.AmbientLight( 0x404040, 2 ); // soft white ambient light
 scene.add( ambientLight );

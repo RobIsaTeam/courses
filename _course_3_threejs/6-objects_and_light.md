@@ -41,10 +41,10 @@ We do this in the very same way we set the position of the camera:
 sphere.position.set(-20, 50 , 80 )
 ```
 
-> ### Challenge: Adding and positioning custom spheres 
+> ### Challenge: Adding eyes!
 >
 > 1. Play with the 3 sphere parameters. See if you can make the ball look smooth.
-> 1. Make 3 smooth, small, red balls that sit on the surface of the brain using `MeshBasicMaterial`. Alternatively, you might enjoy giving the brain some eyes...?
+> 1. Give the brain 2 smooth, small, white eyes using `MeshBasicMaterial`.
 > 1. Use `MeshBasicMaterial` on the brain and give it a colour.
 > 1. With this being done, it's time to play with another material. Find the Lambert material in the docs and apply it to all geometries.
 > ...what just happened?! Inspect the scene carefully... are our spheres still there?
