@@ -26,22 +26,16 @@ This [image](https://www3.ntu.edu.sg/home/ehchua/programming/opengl/CG_BasicsThe
 We'll start with these parameters:
 
 ```js
-var camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 100000 );
+var camera = new THREE.PerspectiveCamera( 80, window.innerWidth / window.innerHeight, 0.1, 100000 );
 ```
 
-> ### Challenge: Play with the camers!
+> ### Challenge: Play with the camera!
 >
 > Play with the parameters of the camera to see if you can get an intuition for how they work. Can you set them in a way that you cut through the brain? Can you make a fish eye lens?
 
 One thing that you might have noticed while playing with the camera is that you always look at the brain from the same direction. All we know how to change are the distance and the aspect ratio. Let's have a look at where our camera actually is by printing its position in the console:
 ```js
 console.log(camera.position);
-```
-
-Now we can set the camera position using `camera.position.set()` and giving it an x, y, and z coordinate:
-
-```js
-camera.position.set( 200, 0, 0 );
 ```
 
 One important thing I want to have if I'm in a 3D space is a reference system. ThreeJS doesn't come with a simple command to create axes, so we wrote a little script to help us with this. It should be in your `code` folder. To use it, we'll have to load it in the `index.html`. It needs to be included before the `main.js`, so we have access to its functionality in our main file.   
@@ -57,7 +51,20 @@ To add the axes to the scene, call `addAxes(scene)` any time after creating the 
 ```js
 addAxes(scene);
 ```
-Three coloured axes should appear on your screen: x (red) and z (blue) being the plane we'd stand on and y (green) pointing up. Once we move the camera, we can decide where it points to, using the `lookAt` command. This command is used with a ThreeJS vector, which is just another way of saying "this point in space". We'll come across more of these vectors later. We can either initialise it as a variable like we're used to, or we can create a new one on the fly (which is what we'll do here, because we won't need it a second time). For example, if we want to look at the origin of the coordinate system, we use:
+Three coloured axes should appear on your screen: x (red) and z (blue) being the plane we'd stand on and y (green) pointing up. 
+
+
+
+
+Now we can set the camera position using `camera.position.set()` and giving it an x, y, and z coordinate:
+
+```js
+camera.position.set( 200, 0, 0 );
+```
+
+Once we move the camera, we can decide where it points to, using the `lookAt` command. This command is used with a ThreeJS vector, which is just another way of saying "this point in space". We'll come across more of these vectors later. We can either initialise it as a variable like we're used to, or we can create a new one on the fly (which is what we'll do here, because we won't need it a second time). 
+
+For example, if we want to look at the origin of the coordinate system, we use:
 ```js
 camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 ```
@@ -76,7 +83,7 @@ camera.lookAt( new THREE.Vector3( 0, 100, 0 ) );
 > ### Challenge: Look down on the brain
 > Using `position` and `lookAt`, try recreating the following: 
 
-<img src="../images/cameraSceneChallenge.png" alt="setup" style="width:50%; margin: 0 auto;" />
+<img src="../images/cameraSceneChallenge.png" alt="setup" style="width:50%; margin: 0 25%;" />
 
 Sooo... we could play with this for ever, create buttons to rotate, focus, zoom, and pan. But instead, we'll rely on a pre-built library that has all these controls conveniently packaged up already.
 
