@@ -12,7 +12,7 @@ layout: post
 
 As you can imagine, we are not the first ones who are interested in zooming, panning, and rotating our scene on user input. Luckily, that there is someone who's already done the hard work and written a library that does all that and integrates well with ThreeJS.
 
-Even if it wasn't good for anything else (it will be.. ) the ThreeJS documentation is excellent for looking at examples and the associated code. If we go to [https://threejs.org/examples](https://threejs.org/examples), and search for 'controls', we'll see a number of examples that are built around that. We are interested in the orbit control package.
+Even if it wasn't good for anything else (it will be...) the ThreeJS documentation is excellent for looking at examples and the associated code. If we go to [https://threejs.org/examples](https://threejs.org/examples), and search for 'controls', we'll see a number of examples that are built around that. We are interested in the orbit control package.
 
 If you click on the example `controls / orbit`, there will be a button in the lower right corner with the text `view source` on it. This button takes us straight to the corresponding GitHub page.
 
@@ -48,15 +48,15 @@ function render() {
 }
 ```
 
-So that's all we need to copy over into our script to dynamically change the camera position, angle, and zoom.
+So that's all we need to copy over into our script to dynamically change the camera position, angle, and zoom! Give it a try!
 
-Note: `camera.lookAt` gets overwritten by the controls we're using, so feel free to comment that line out.
+Make sure that your camera position is not set to `(0,0,0)` (which is the default) because otherwise the controls will not work at all - they work by moving the camera around `(0,0,0)` and telling it to keep looking at `(0,0,0)`.
 
 > ### Challenge: Playing with libraries
 >
 > Find and include the [trackball](https://threejs.org/examples/#misc_controls_trackball) controls in the ThreeJS examples following the steps above and explore how they are different.
 >
-> **Hint:** Look at how the trackball controls are used in the example source code and you'll see that it's a little bit different to the orbit controls. For trackball, you need to have an "animation" loop that keeps updating the camera even after you stop dragging (it has momentum). To do this, copy the `animate` function from the example and don't forget to start the loop by executing this function somewhere in your code. 
+> **Hint:** Look at how the trackball controls are used in the example source code and you'll see that it's a little bit different to the orbit controls. For trackball, you need to have an "animation" loop that keeps updating the camera even after you stop dragging (it has momentum). To do this, copy the `animate` function from the example and don't forget to start the loop by executing this function somewhere in your code.
 
 Here is what the scene should look like by the end of this lesson:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-05.html" width="1000" height="600"></iframe>

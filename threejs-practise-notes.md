@@ -1,8 +1,11 @@
 
 ## general
 - DONE: add fetch polyfill thing to index.html: https://cdnjs.com/libraries/fetch
-- email about internet for course??!
-- reply re resources?
+- work out how to host version of everything we need:
+    - threejs.org
+    - our notes
+    - other?
+- check this works... window machine...
 - go through and decide on which challenges to do for campjs
 
 ## lesson 1
@@ -11,7 +14,7 @@
 ## lesson 2
 - DONE: move the image a bit down
 - DONE: delete 2nd challenge
-- point out which folder to start the live-server from and why
+- DONE: point out which folder to start the live-server from and why
 
 ## lesson 3
 - DONE: include stlloader where we actually start using it.
@@ -28,7 +31,7 @@
 - maybe draw 2 diagrams to help with camera position + lookat
 
 ## lesson 5
-- add hint - make sure the camera position is set to something other than 0,0,0
+- DONE: add hint - make sure the camera position is set to something other than 0,0,0
 
 ## lesson 6
 - give the challenge a name... add links?...
@@ -51,4 +54,4 @@
 - advanced challenge: ?
 
 ## lesson 8
--
+- ?
