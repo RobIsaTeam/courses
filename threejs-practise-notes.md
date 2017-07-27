@@ -47,11 +47,9 @@
 - DONE: get rid of 1. in scale the sphere challenge
 - DONE: change counter --> currentIndex in code snippet
 - DONE: separate line for setInterval
-- make the last step of adding the animation the challenge: adding the `currentindex` variable and incrementing / resetting it
-- make colour challenge an advanced challenge
+- DONE: make the last step of adding the animation the challenge: adding the `currentindex` variable and incrementing / resetting it
+- DONE: make colour challenge an advanced challenge
 - DONE: fix indentation in big code block
 - DONE: move the changing field of view line to early on in the lesson (it's currently quite late)
-- advanced challenge: ?
 
 ## lesson 8
-- ?

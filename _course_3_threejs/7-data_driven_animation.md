@@ -212,7 +212,7 @@ fetch('../data/electrode_data.json')
   })
 ```
 
-But this isn't doing much yet in terms of updating. We still need have one last thing to do to make the animation work. And that's going to be your job - it's challenge time!
+But you'll notice that this isn't doing much yet in terms of updating. We still need have one last thing to do to make the animation work. And that's going to be your job - it's challenge time!
 
 > ### Challenge: Get the spheres animating
 >
