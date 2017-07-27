@@ -175,33 +175,12 @@ function update_spheres(){
 }
 ```
 
-This isn't doing much yet in terms of updating. We'll need to also keep track of time (or in how often we've called the update function) and change the current index accordingly. We'll start at 0 (outside of the function), and then, every time the update function is called, we'll increment until there aren't any values in the power array anymore. That's when we reset.
-
-```js
-var currentindex = 0;
-
-function update_spheres(){    
-  brainregions.forEach(function(item){
-    // update things we want to update - for example the scale
-    var size = 1 + 5*item.data.power[currentindex];
-    item.sphere.scale.set(size, size, size);
-  })
-  renderer.render( scene, camera );
-  if (currentindex < brainregions[0].data.power.length - 1){
-    currentindex = currentindex+1;
-  } else {
-    currentindex = 0;
-  }
-}
-```
-
-We now call this function every 50 milliseconds, using `setInterval`:
+And we can call this function every 50 milliseconds, using `setInterval`:
 ```js
 setInterval(update_spheres, 50);
 ```
 
-After all of this, the whole slab of code looks like this:
-
+So at this point, the whole slab of code looks like this:
 ```js
 fetch('../data/electrode_data.json')
   .then(function(response) {
@@ -221,26 +200,27 @@ fetch('../data/electrode_data.json')
       return brainregion;
     })
 
-    var currentindex = 0;
     function update_spheres() {    
       brainregions.forEach(function(item) {
         var size = 1 + 5*item.data.power[currentindex];
         item.sphere.scale.set(size, size, size);
       })
       renderer.render(scene, camera);
-      if (currentindex < brainregions[0].data.power.length - 1){
-        currentindex = currentindex+1;
-      } else {
-        currentindex = 0;
-      }
     }
 
     setInterval(update_spheres, 50);
-
   })
 ```
 
-> ### Challenge: Meaningful colours
+But this isn't doing much yet in terms of updating. We still need have one last thing to do to make the animation work. And that's going to be your job - it's challenge time!
+
+> ### Challenge: Get the spheres animating
+>
+> Complete the last step that we outlined above: keep track of where we are within the animation (keep track of time) and in doing so size the sphere using a different index of the power arrays. Do this in such a way that the animation loops over and over.
+>
+> Hint: a simple way is to step through an index variable each time the `update_spheres` function is called.
+
+> ### Advanced challenge: Meaningful colours
 >
 > Suppose we also want to update the colour, making spheres lighter when they get larger. Write the bit of code that allows you to do this. You will need to first get the initial colour, pass it on within the brainregions array, and then update it during the update phase.
 >
