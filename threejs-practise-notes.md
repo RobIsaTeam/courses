@@ -6,7 +6,7 @@
     - our notes
     - other?
 - check this works... window machine...
-- go through and decide on which challenges to do for campjs
+- DONE: go through and decide on which challenges to do for campjs
 
 ## lesson 1
 - DONE: information vs activity
@@ -18,12 +18,12 @@
 
 ## lesson 3
 - DONE: include stlloader where we actually start using it.
-- challenge: make link a link
-- 1st challenge: maybe use a different loader and file and make the challenge to load the monkey brain stl?
-- show docs before materials challenge
+- DONE: challenge: make link a link
+- LATER: 1st challenge: maybe use a different loader and file and make the challenge to load the monkey brain stl?
+- NOTE: show docs before materials challenge
 
 ## lesson 4
-- fix 1st challenge - don't set the fov to 20 first, suggest adjusting fov though
+- fix 1st challenge - don't set the fov to 20 first, suggest adjusting fov though - make a fish eye lens
 - combine 2nd + 3rd challenges - make them get the scene to look a certain way (looking down on the brain)
 - DONE: "position" typo in 3rd challenge
 - change the text (doesn't miraculously look anywhere automatically - just points along x or z axis by default)
