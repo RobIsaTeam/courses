@@ -12,10 +12,7 @@ console.log('camera position')
 console.log(camera.position);
 camera.position.set( -200, 200 , -200 );
 addAxes(scene);
-// camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
-// console.log('camera rotation')
-// console.log(camera.rotation)
-// camera.rotation.set(-2, -0.8, -2,)
+camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
 
 controls = new THREE.OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', render );

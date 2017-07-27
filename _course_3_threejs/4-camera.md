@@ -29,10 +29,9 @@ We'll start with these parameters:
 var camera = new THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 0.1, 100000 );
 ```
 
-> ### Challenge: Bring back the brain!
+> ### Challenge: Play with the camers!
 >
-> Clearly we're no longer looking at the right area. Play with the camera settings until you can see the entire brain on the screen.
-> ...try setting `near = 80`. What happens?
+> Play with the parameters of the camera to see if you can get an intuition for how they work. Can you set them in a way that you cut through the brain? Can you make a fish eye lens?
 
 One thing that you might have noticed while playing with the camera is that you always look at the brain from the same direction. All we know how to change are the distance and the aspect ratio. Let's have a look at where our camera actually is by printing its position in the console:
 ```js
@@ -42,7 +41,7 @@ console.log(camera.position);
 Now we can set the camera position using `camera.position.set()` and giving it an x, y, and z coordinate:
 
 ```js
-camera.position.set( -200, 200 , -200 );
+camera.position.set( 200, 0, 0 );
 ```
 
 One important thing I want to have if I'm in a 3D space is a reference system. ThreeJS doesn't come with a simple command to create axes, so we wrote a little script to help us with this. It should be in your `code` folder. To use it, we'll have to load it in the `index.html`. It needs to be included before the `main.js`, so we have access to its functionality in our main file.   
@@ -58,22 +57,34 @@ To add the axes to the scene, call `addAxes(scene)` any time after creating the 
 ```js
 addAxes(scene);
 ```
-
-> ### Challenge:
-> Move the camera over the brain, onto the z-axis. What are we looking at now?
-
-If we move the camera, it miraculously focusses on the brain again. If we don't want that, but want the default view when we load the page to be something else, we can tell it to look at any other point in the coordinate system instead, using `camera.lookAt()`. This command is used with a ThreeJS vector, which is just another way of saying "this point in space". We'll come across more of these vectors later. We can either initialise it as a variable like we're used to, or we can create a new one on the fly (which is what we'll do here, because we won't need it a second time):
-
+Three coloured axes should appear on your screen: x (red) and z (blue) being the plane we'd stand on and y (green) pointing up. Once we move the camera, we can decide where it points to, using the `lookAt` command. This command is used with a ThreeJS vector, which is just another way of saying "this point in space". We'll come across more of these vectors later. We can either initialise it as a variable like we're used to, or we can create a new one on the fly (which is what we'll do here, because we won't need it a second time). For example, if we want to look at the origin of the coordinate system, we use:
 ```js
-camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
+camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 ```
 
-> ### Challenge:
-> Similar to setting the position, we can rotate the camera around the x-, y-, and z-axis.
-> Inspecting what `console.log(camera.rotation)`
-> returns, think of how you could just modify the rotation around the x-axis?
+Let's have a look at where we are in space and what we're looking at. The left image (red border) shows the camera position and rotation in space, the right image (blue border) shows us what this postition results in on our screen:
+<img src="../images/cameraScene1.png" alt="setup" style="width:100%; margin: 0 auto;" />
+
+As a second example we're setting the position to a point just above the x-z plane and are looking at a point above the origin:
+```js
+camera.position.set( -200, 10, -200 );
+camera.lookAt( new THREE.Vector3( 0, 100, 0 ) );
+```
+<img src="../images/cameraScene2.png" alt="setup" style="width:100%; margin: 0 auto;" />
+
+
+> ### Challenge: Look down on the brain
+> Using `position` and `lookAt`, try recreating the following: 
+
+<img src="../images/cameraSceneChallenge.png" alt="setup" style="width:50%; margin: 0 auto;" />
 
 Sooo... we could play with this for ever, create buttons to rotate, focus, zoom, and pan. But instead, we'll rely on a pre-built library that has all these controls conveniently packaged up already.
+
+Before we move on though, let's end in a sensible spot:
+```js
+camera.position.set( -200, 200, -200);
+camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
+```
 
 Here is what the scene should look like by the end of this lesson:
 <iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/lesson-04.html" width="1000" height="600"></iframe>

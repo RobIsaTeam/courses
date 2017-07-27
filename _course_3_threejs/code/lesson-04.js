@@ -10,13 +10,14 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 var camera = new THREE.PerspectiveCamera( 80, window.innerWidth / window.innerHeight, 0.1, 100000 );
 console.log('camera position')
 console.log(camera.position);
+// camera.position.set( 0, 200 , 0 );
+// addAxes(scene);
+// camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
+
 camera.position.set( -200, 200 , -200 );
 addAxes(scene);
 camera.lookAt( new THREE.Vector3( 100, 10, 10 ) );
-console.log('camera rotation')
-console.log(camera.rotation)
 
-camera.rotation.set(-2, -0.8, -2,)
 
 var loader = new THREE.STLLoader();
 loader.load('../data/MonkeyBrain.stl', function(geometry) {
