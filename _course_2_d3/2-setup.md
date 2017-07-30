@@ -153,3 +153,6 @@ canvas.attr("height", canvas_height);
 > 1. Position the circle so that it isn't cut off by the edges of the canvas.
 >
 > HINT: You can use the `attr` method on the circle object obtained.
+
+> ### [Next Lesson: Showing data](./3-enter)
+
