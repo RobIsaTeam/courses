@@ -1,5 +1,5 @@
 // Load the data.
-var dataUrl = "https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json";
+var dataUrl = "../data/nations.json";
 d3.json(dataUrl, function(nations) {
 
 	// Create the SVG frame inside chart_area.
@@ -25,4 +25,11 @@ d3.json(dataUrl, function(nations) {
 	// Shift the chart and make it slightly smaller than the svg canvas.
 	canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+	// CHALLENGE
+	var circle = canvas.append("circle");
+	circle.attr("r", 40);
+	circle.attr("cx", 40);
+	circle.attr("cy", 50);
+	circle.attr("stroke", 'black');
+	circle.attr("fill", 'green');
 })

@@ -1,5 +1,5 @@
 // Load the data.
-var dataUrl = "https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json";
+var dataUrl = "../data/nations.json";
 d3.json(dataUrl, function(nations) {
 
 	var filtered_nations = nations.map(function(nation) { return nation; });
