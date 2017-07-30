@@ -30,7 +30,7 @@ D3js is good at all things we might need for effective data visualisation. Relat
 > The resulting code of all lessons lives in our [GitHub repo](https://github.com/RobIsaTeam/courses/tree/master/_course_2_d3/code). If you're stuck on a challenge, you can check out the solutions in the corresponding file.
 
 And this is the visualisation we will have by the end of this course:
-<iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/final.html" width="1000" height="700"></iframe>
+<iframe style="position: relative; left: -120px; overflow: hidden;" scrolling='no' src="code/final.html" width="1000" height="750"></iframe>
 
 We are using [gapminder data](http://gapminder.org) and the later lessons are based on an example by [Mike Bostock](http://bost.ocks.org/mike/nations/). In order to make this example slightly easier, we interpolated the data.
 
