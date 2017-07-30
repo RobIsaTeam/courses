@@ -32,7 +32,7 @@ var filtered_nations = nations.filter( function (nation) {
 > You might have noticed that our data contains information about the region in
 > which a country is.
 >
-> 1. Create a filter so that you only display data points from "Sub-Saharan Africa".
+> Create a filter so that you only display data points from "Sub-Saharan Africa".
 
 We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change what data gets displayed interactively using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.
 
@@ -91,7 +91,7 @@ Whereas before `enter()` was used to append new elements to the plot, `exit()` i
 A good, brief explanation of this linking between data and elements on the page can be found [here](http://bost.ocks.org/mike/join/). This article discusses the three important functions used for this: `enter`, `exit`, and a third function `update` that we will get to shortly.
 
 > ### Challenge: Removing elements
-> 1. Using an `else` case after the `if` statement, create a filter that removes elements from `filtered_data` that correspond to the checkbox that was just unchecked. (i.e. `else { filtered_nations = <--- fill in this bit --->}`).
+> Using an `else` case after the `if` statement, create a filter that removes elements from `filtered_data` that correspond to the checkbox that was just unchecked. (i.e. `else { filtered_nations = <--- fill in this bit --->}`).
 
 As a last step, let's move `enter()` and `exit()` into a separate function. This will become useful when we want to update the data from different elements on the page.
 
@@ -127,7 +127,29 @@ d3.selectAll(".region_cb").on("change", function() {
 In order to create the plot when we first load the page, we will also have to call `update()` outside of our event listeners once.
 
 > ### Challenge: Another new dimension
-> 1. Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
+> Have the colour of circles represent the region. Use category20() to make a scale. You will then need to add `.style("fill", function(d) { <-- fill in this bit ---> });` to the enter() function.
+
+> ### Note: Custom colour scales
+> You may not like the default colours that d3 uses (e.g. `category20`). The good news is that you can make your own colour scale, using a function like this:
+> ```js
+> function colourScale(region) {
+>   if (region == "Sub-Saharan Africa") {
+>     return "#dc39ba";
+>   } else if (region == "South Asia") {
+>     return "#72ed87";
+>   } else if (region == "Middle East & North Africa") {
+>     return "#3bb6fc";
+>   } else if (region == "East Asia & Pacific") {
+>     return "#8e50ff";
+>   } else if (region == "Europe & Central Asia") {
+>     return "#f0c731";
+>   } else {
+>     return "#ff9449";
+>   }  
+> }
+> ```
+>
+> The additional benefit of making a custom scale like this is that the colours are now linked directly to the region names, whereas before, with `category20`, the colours were assigned in the order that regions were added to the page and this can lead to inconsistent results. 
 
 By the end of this lesson, your page should look something like this:
 

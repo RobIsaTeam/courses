@@ -17,7 +17,7 @@ The goal is to visualise brain activity in certain spots on the surface of the b
 In the [docs](https://threejs.org/docs/) we can find SphereGeometry, that we can set up in the following way:
 
 ```js
-var sphereGeometry = new THREE.SphereGeometry( 5, 8 ,8 );
+var sphereGeometry = new THREE.SphereGeometry(5, 8 ,8);
 ```
 
 Just like before, our geometry needs to be coupled with a material to make a mesh that we can then add to the scene.  
@@ -38,7 +38,7 @@ Now let's change where our bubble sits in the scene.
 We do this in the very same way we set the position of the camera:
 
 ```js
-sphere.position.set(-20, 50 , 80 )
+sphere.position.set(-20, 50 , 80)
 ```
 
 > ### Challenge: Adding eyes!
@@ -53,7 +53,7 @@ Time to get our brain back!
 At the moment, it's dark in our virtual room. Let's add some ambient light:
 
 ```js
-var ambientLight = new THREE.AmbientLight( 0x404040, 2 ); // soft white ambient light
+var ambientLight = new THREE.AmbientLight(0x404040, 2); // soft white ambient light
 scene.add( ambientLight );
 ```
 
