@@ -1,0 +1,47 @@
+* {
+	font-family: sans-serif;
+}
+
+body{
+	padding: 1rem;
+}
+
+h1{
+	margin-bottom: 4rem;
+}
+
+#chart_area{
+	margin-bottom: 4rem;
+}
+
+.slider{
+	margin-top: 1rem;
+	width: 15rem;
+}
+
+text {
+  font: 14px sans-serif;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.label {
+  fill: #777;
+}
+
+.year.label {
+  font: 500 196px "Helvetica Neue";
+  fill: #ddd;
+}
+
+.year.label.active {
+  fill: #aaa;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  cursor: ew-resize;
+}
