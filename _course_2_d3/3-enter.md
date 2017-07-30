@@ -73,7 +73,7 @@ We add a transform attribute to move the axis to the bottom of the plotting area
 We also give it a class, just in case we might want to select the axis later in our code.
 
 > ### Challenge: We might need a y-axis, too
-> 1. Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.
+> Create a linear scale for the y-axis, with 10 being the minimum and 85 being the maximum value. Then, add the axis to the canvas.
 
 We're slowly getting there. Having our two axes, we can now finally add our data.
 

@@ -1,6 +1,7 @@
 d3
 
 - [] getting started folder
+- [] add a live-server challenge to check
 - [] choose challenges for campjs
 - [] go through lessons and make sure code works
 - [] add custom color scales to lesson

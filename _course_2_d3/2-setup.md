@@ -149,7 +149,7 @@ canvas.attr("height", canvas_height);
 
 > ### Challenge: Adding SVGs from JavaScript file
 > 1. Add a SVG circle element to the frame.
-> 1. Once the circle reference is obtained, make the radius 40, the border black and the colour green (look out: SVG uses different names to refer to these [properties](https://www.w3schools.com/graphics/svg_circle.asp)).
-> 1. Position the circle so that it isn't cut off by the edges of the canvas. 
+> 1. Once the circle reference is obtained, make the radius 40, the border black, and the colour green (look out: SVG uses different names to refer to these [properties](https://www.w3schools.com/graphics/svg_circle.asp)).
+> 1. Position the circle so that it isn't cut off by the edges of the canvas.
 >
 > HINT: You can use the `attr` method on the circle object obtained.
