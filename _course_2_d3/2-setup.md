@@ -33,7 +33,7 @@ Then create `index.html` in the new repository containing the following:
 
     <p id="chart_area"></p>
 
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="d3.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
@@ -42,7 +42,7 @@ Then create `index.html` in the new repository containing the following:
 There are a few things in this file that look new:
 `<link rel="stylesheet" type="text/css" href="main.css" />` is linking the local CSS file `main.css`(that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen.
 
-Additionally, we now need to link d3 using `<script src="https://d3js.org/d3.v4.min.js"></script>`. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to d3.js first.
+Additionally, we now need to link d3 using `<script src="d3.min.js"></script>`. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to `d3.min.js` first.
 
 The last bit, that's important here is an HTML element (paragraph) we create. We give it an id `chart_area`. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in.
 
@@ -50,12 +50,10 @@ Now, let's write main.js.
 
 Similar to the syntax we've already seen (`JSON.stringify`), D3-specific functions can be called using a `d3.`-syntax.
 
-The first thing we need, is of course our data, which we can find at 'https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json'.
-D3 provides a handy function to read in `json`-files:
+The first thing we need, is of course our data, which we can find at `data/nations.json` in our `getting_started` folder. D3 provides a handy function to read in `json`-files:
 
 ```js
-var dataUrl = "https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json";
-d3.json(dataUrl, function(nations) { })
+d3.json('../data/nations.json', function(nations) { })
 ```
 
 This line probably needs a little explanation and we'll go through it bit by bit:
@@ -65,7 +63,6 @@ This line probably needs a little explanation and we'll go through it bit by bit
 * `function(...){...}` is called the callback function. It is a so-called 'inline' function, which means it has no name (we're only operating in the object space here). This also means we can't use this function anywhere else in our code. The code we put inside the curly brackets is the code that's run once d3.json() is called and the data is loaded.
 * D3 assigns the name `nations` to the parsed object it returns. We can only use 'nations' within the callback function, this means our code only knows of `nations` inside the curly brackets.
 * What seems unusual, but is actually quite common, is that this function call doesn't return anything. It is simply executed and displayed (if we tell it to), but no value is returned.
-
 
 > ### Note: What else can I read in conveniently?
 > D3 offers the possibility to also read in csv (comma-separated values) files directly. See [here](https://github.com/mbostock/d3/wiki/CSV) for an example. Also available are functions to read in tab-separated values (tsv) and files with arbitrary delimiter (dsv).
@@ -82,10 +79,13 @@ First, let's draw a little schematic of how we want the page to be structured.
 
 <img src="../images/chart_area.png" alt="What we want.." width="700" />
 
-We already set up our HTML page to contain a chart area. That's the space we want to
-fill now.
-We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in
-that drawing area, we'll have separate elements for both axes and the area for our circles.
+We already set up our HTML page to contain a chart area. That's the space we want to fill now. We'll have a picture frame (an [SVG-element](../web-course/3-images-and-svg)), our drawing area (a g-element), and in that drawing area, we'll have separate elements for both axes and the area for our circles.
+
+> ### Note: Why SVGs?
+>
+> We're trying to create a data-driven graph, made up of objects such as lines, circles, and squares (not photos of cats). We could just find an image of a circle and use this to represent the data by scaling and positioning it on the page, but that might not be the best way. An image is an inefficient way to represent lines and circles and your webpage would spend an unnecessary amount of time downloading each of these image files.
+>
+> SVGs (Scalable Vector Graphics) are a better way to include graphical elements that aren’t photos. They are a much more efficient way to store these shapes and, regardless of the screen and size of these shapes, they will never be pixelated (that's what vector graphic means).
 
 What we now want to end up with in our html document is this:
 
@@ -109,7 +109,7 @@ Now we're setting up the grid by appending the chart area by the SVG picture fra
 var frame = chart_area.append("svg");
 ```
 
-in the HTML file. We chose to append because we now have access to the SVG element without the need to seperately select it by ID.
+in the HTML file. We chose to append because we now have access to the SVG element without the need to separately select it by ID.
 
 We also create the canvas inside the frame:
 
@@ -137,8 +137,7 @@ frame.attr("width", frame_width);
 frame.attr("height", frame_height);
 ```
 
-The canvas element will have to fit nicely into the frame. To make it fit, we set
-a transform attribute and use the translate function.
+The canvas element will have to fit nicely into the frame. To make it fit, we set a transform attribute and use the translate function.
 
 ```js
 // Shift the canvas
@@ -150,6 +149,7 @@ canvas.attr("height", canvas_height);
 
 > ### Challenge: Adding SVGs from JavaScript file
 > 1. Add a SVG circle element to the frame.
-> 1. Once the circle reference is obtained, make the radius 40px, the border black and the colour green.
+> 1. Once the circle reference is obtained, make the radius 40, the border black and the colour green (look out: SVG uses different names to refer to these [properties](https://www.w3schools.com/graphics/svg_circle.asp)).
+> 1. Position the circle so that it isn't cut off by the edges of the canvas. 
 >
 > HINT: You can use the `attr` method on the circle object obtained.

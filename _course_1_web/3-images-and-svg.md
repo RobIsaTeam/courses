@@ -75,7 +75,7 @@ the center of the circle, 'r' is the radius of the circle.
 But what if we don't want to only use circles, but instead want to use other shapes?
 On the internet we can find tons of helpful examples. A good resource to
 find simple examples of using different, commonly used SVG shapes is
-[w3school](http://www.w3schools.com/svg/default.asp).
+[w3school](https://www.w3schools.com/graphics/svg_circle.asp).
 
 > ### Challenge: Question
 >
