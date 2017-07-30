@@ -167,7 +167,7 @@ function calc_mean(region_data) {
 
 By the end of this lesson, your page should look something like this:
 
-<iframe style="position: relative; left: -120px" src="code/lesson-05.html" width="1000" height="600"></iframe>
+<iframe style="position: relative; left: -120px" src="code/lesson-05.html" width="1000" height="700"></iframe>
 
 > ### Stay in touch! 
 >

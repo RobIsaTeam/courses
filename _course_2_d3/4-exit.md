@@ -153,6 +153,6 @@ In order to create the plot when we first load the page, we will also have to ca
 
 By the end of this lesson, your page should look something like this:
 
-<iframe style="position: relative; left: -120px" src="code/lesson-04.html" width="1000" height="600"></iframe>
+<iframe style="position: relative; left: -120px" src="code/lesson-04.html" width="1000" height="700"></iframe>
 
 > ### [Next Lesson: Making things move..!](./5-update)
