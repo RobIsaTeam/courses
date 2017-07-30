@@ -70,7 +70,7 @@ data_canvas.selectAll(".dot")
 > * exp - raises 2 to a power based on t.
 > * bounce - simulates a bouncy collision.
 > * elastic(a, p) - simulates an elastic band; may extend slightly beyond 0 and 1.
-> * [more here](https://github.com/mbostock/d3/wiki/Transitions#d3_ease)
+> * [more here](https://github.com/d3/d3/blob/master/API.md#transitions-d3-transition)
 
 > ### Challenge: Play time
 > D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.
