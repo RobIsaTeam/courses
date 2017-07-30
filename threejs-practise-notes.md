@@ -1,11 +1,7 @@
 
 ## general
 - DONE: add fetch polyfill thing to index.html: https://cdnjs.com/libraries/fetch
-- work out how to host version of everything we need:
-    - threejs.org
-    - our notes
-    - other?
-- check this works... windows machine...
+- work out how to host version of everything we need (threejs.org, our notes, d3 API.md, etc.)
 - DONE: go through and decide on which challenges to do for campjs
 
 ## lesson 1
