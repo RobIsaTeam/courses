@@ -15,10 +15,9 @@ D3 is a JavaScript library. This means that we can use all of the JavaScript com
 
 The main purpose of D3 is to create visualisations of data online. Because it uses JavaScript, it is possible to make graphs interactive!
 
-As a little refresher, we will repeat a little bit html to set up our page.
+As a little refresher, we will repeat a little bit of HTML to set up our page.
 
-Create a new GitHub repository and create a gh-pages branch to which you commit. This is, where our actual page will live.
-Then create `index.html` in the new repository containing the following:
+Create a new GitHub repository and create a `gh-pages` branch to which you commit. This is, where our actual page will live. Then create `index.html` in the new repository containing the following:
 
 ```html
 <!DOCTYPE html>
@@ -40,13 +39,17 @@ Then create `index.html` in the new repository containing the following:
 ```
 
 There are a few things in this file that look new:
-`<link rel="stylesheet" type="text/css" href="main.css" />` is linking the local CSS file `main.css`(that can just be an empty file for now). `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen.
-
-Additionally, we now need to link d3 using `<script src="d3.min.js"></script>`. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to `d3.min.js` first.
+- `<link rel="stylesheet" type="text/css" href="main.css" />` is linking the local CSS file `main.css` (this should already exist in your `getting_started/code` folder);
+- `<script src="main.js"></script>` is linking the JavaScript file, the file in which all the action will happen. Let's create an empty `main.js` in `getting_started/code` for now.
+- `<script src="d3.min.js"></script>` is linking the d3 library (already included in `getting_started/code`). The order of these `<script>` lines matters, as these lines are executed sequentially and we want to use parts of the D3 library in our own script, we have to load in `d3.min.js` first.
 
 The last bit, that's important here is an HTML element (paragraph) we create. We give it an id `chart_area`. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in.
 
-Now, let's write main.js.
+> ### Challenge: Try it out!
+>
+> This is not the most interesting challenge, but we have to see that everything works. Navigate to `getting_started` and type `live-server` in the terminal (make sure you run this in `getting_started` and not within `code`). If you're on a Windows machine, you may need to start a "nodejs" terminal. Your browser should open a new tab displaying your folder structure. Click on `code`. If everything goes according to plan, you should see the text "The Wealth & Health of Nations" appear. Also, check the console for any errors... (right-click anywhere and click `inspect element` to open it). Live-server will keep this tab up to date if we change anything in the code. So there's no need to close the tab.
+
+Now, let's add some code to main.js.
 
 Similar to the syntax we've already seen (`JSON.stringify`), D3-specific functions can be called using a `d3.`-syntax.
 
@@ -67,8 +70,7 @@ This line probably needs a little explanation and we'll go through it bit by bit
 > ### Note: What else can I read in conveniently?
 > D3 offers the possibility to also read in csv (comma-separated values) files directly. See [here](https://github.com/mbostock/d3/wiki/CSV) for an example. Also available are functions to read in tab-separated values (tsv) and files with arbitrary delimiter (dsv).
 
-So naturally, the next step is to think about what we want to happen between the curly brackets.
-For now, we want to:
+So naturally, the next step is to think about what we want to happen between the curly brackets. For now, we want to:
 
 * Link JavaScript to HTML page
 * Insert an SVG canvas
@@ -155,4 +157,3 @@ canvas.attr("height", canvas_height);
 > HINT: You can use the `attr` method on the circle object obtained.
 
 > ### [Next Lesson: Showing data](./3-enter)
-

@@ -7,12 +7,12 @@
 - [x] tidy up css
 
 - [ ] TUES LUNCH: add transparency to lesson 5 (near the `sort` bit)
-- [ ] TUES LUNCH: fix intro (add the final demo)
+- [x] TUES LUNCH: fix intro (add the final demo)
 - [ ] TUES LUNCH: tweet!
 
-- [ ] ROB: add a live-server challenge to check
-- [ ] ROB: links to next lesson
-- [ ] ROB: remove last lesson for now
+- [x] ROB: add a live-server challenge to check
+- [x] ISA: links to next lesson
+- [x] ROB: remove last lesson for now
 
 - [ ] LATER: add year text to slider (maybe a challenge)
 - [ ] LATER: add whiteboard explanation of enter/exit
