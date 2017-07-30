@@ -8,6 +8,7 @@
 
 - [ ] TUES LUNCH: add transparency to lesson 5 (near the `sort` bit)
 - [ ] TUES LUNCH: fix intro (add the final demo)
+- [ ] TUES LUNCH: tweet!
 
 - [ ] ROB: add a live-server challenge to check
 - [ ] ROB: links to next lesson
