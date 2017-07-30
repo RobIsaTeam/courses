@@ -1,5 +1,5 @@
 // Load the data.
-var dataUrl = "https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json";
+var dataUrl = "../data/nations.json";
 d3.json(dataUrl, function(nations) {
 
 	// Create the SVG frame inside chart_area.
@@ -37,6 +37,7 @@ d3.json(dataUrl, function(nations) {
 	// we set the range - range on the page
 	// domain, range, log scale all determing data values are mapped to graph positions.
 
+	// CHALLENGE YSCALE
 	var yScale = d3.scaleLinear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
 
 	// an alternative notation that d3 offers is to chain everything together using the dot-syntax
@@ -44,8 +45,10 @@ d3.json(dataUrl, function(nations) {
 
 	// Creating the x & y axes.
 	var xAxis = d3.axisBottom(xScale);
+	// CHALLENGE YSCALE
 	var yAxis = d3.axisLeft(yScale);
 
+	// CHALLENGE POPULATION SCALING
 	var rScale = d3.scaleSqrt().domain([0, 5e8]).range([0, 40]); // life expectancy
 
 		// Next step: push the axes into the chart
@@ -59,6 +62,7 @@ d3.json(dataUrl, function(nations) {
 		// attribures are added to make it look pretty (class is used in the css file)
 
 
+	// CHALLENGE YSCALE
 	// Add the y-axis.
 	canvas.append("g")
 		.attr("class", "y axis")
@@ -86,6 +90,7 @@ d3.json(dataUrl, function(nations) {
 		dot.enter().append("circle").attr("class","dot")
 									.attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
 									.attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
+	// CHALLENGE POPULATION SCALING
 									.attr("r", function(d) { return rScale(d.population[d.population.length-1]); });
 
 

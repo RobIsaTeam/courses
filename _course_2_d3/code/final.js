@@ -1,5 +1,5 @@
 // Load the data.
-var dataUrl = "https://raw.githubusercontent.com/RobIsaTeam/courses/master/_course_2_d3/data/nations.json";
+var dataUrl = "../data/nations.json";
 d3.json(dataUrl, function(nations) {
 
 	var filtered_nations = nations.map(function(nation) { return nation; });
@@ -155,11 +155,7 @@ d3.json(dataUrl, function(nations) {
 		var cross = data_canvas.selectAll(".cross")
 			.data(filtered_reg_nations, function(d){return d.region});
 
-		cross.enter().append("path").attr("class","cross");
-
-		cross.exit().remove();
-
-		cross.transition().ease(d3.easeLinear).duration(200)
+		cross.enter().append("path").attr("class","cross")
 			.style("stroke", function(d) { return colorScale(d.region); })
 			.style("stroke-width", 2)
 			.attr("d", function(d){
@@ -174,7 +170,24 @@ d3.json(dataUrl, function(nations) {
 				"M " + posx + " " + posy + " L " + posx10d + " " + posy +
 				"M " + posx + " " + posy + " L " + posx10u + " " + posy;
 				return pathstring;
-			})
+			});
+
+		cross.exit().remove();
+
+		cross.transition().ease(d3.easeLinear).duration(200)
+			.attr("d", function(d){
+				var posx = xScale(d.mean_income[year_idx]);
+				var posy = yScale(d.mean_lifeExpectancy[year_idx]);
+				var posx10u = posx+10;
+				var posy10u = posy+10;
+				var posx10d = posx-10;
+				var posy10d = posy-10;
+				var pathstring = "M " + posx + " " + posy + " L " + posx + " " + posy10u +
+				"M " + posx + " " + posy + " L " + posx + " " + posy10d +
+				"M " + posx + " " + posy + " L " + posx10d + " " + posy +
+				"M " + posx + " " + posy + " L " + posx10u + " " + posy;
+				return pathstring;
+			});
 
 	}
 
