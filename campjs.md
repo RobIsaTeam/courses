@@ -12,7 +12,7 @@
 ## D3JS, CampJS Challenges:
 
 - Lesson 1 (ROB): none
-- Lesson 2 (ROB): do 1st: running live-server (to be added), do 2nd (adding a circle)
-- Lesson 3 (ISA): do 1st (y-axis) and 2nd (population radius)
+- Lesson 2 (ROB): do 1st (running live-server), do 2nd (adding a circle)
+- Lesson 3 (ISA): do 1st (y-axis), do 2nd (population radius)
 - Lesson 4 (ROB): skip 1st, do 2nd (limited time), do 3rd (limited time)
 - Lesson 5 (ISA): skip 1st, add ad-hoc `onclick` make opaque, others only if time

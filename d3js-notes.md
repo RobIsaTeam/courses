@@ -6,7 +6,7 @@
 - [x] add custom color scales to lesson
 - [x] tidy up css
 
-- [ ] TUES LUNCH: add transparency to lesson 5 (near the `sort` bit)
+- [x] TUES LUNCH: add transparency to lesson 5 (near the `sort` bit)
 - [x] TUES LUNCH: fix intro (add the final demo)
 - [ ] TUES LUNCH: tweet!
 
