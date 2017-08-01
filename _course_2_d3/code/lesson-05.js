@@ -137,6 +137,7 @@ d3.json(dataUrl, function(nations) {
 			.attr("cx", function(d) { return xScale(d.income[year_idx]); }) // this is why attr knows to work with the data
 			.attr("cy", function(d) { return yScale(d.lifeExpectancy[year_idx]); })
 			.attr("r", function(d) { return rScale(d.population[year_idx]); })
+			.attr("opacity", 0.5)
 			.style("fill", function(d) { return colorScale(d.region); })
 			.on("mouseover", function(d){ return tooltip.style("visibility", "visible").text(d.name); })
 			.on("mousemove", function(){ return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px"); })

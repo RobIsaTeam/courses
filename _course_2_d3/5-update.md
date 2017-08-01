@@ -44,16 +44,13 @@ In addition to `d3.enter()` and `d3.exit()`, D3 also offers `d3.transition` to h
 dot.transition().ease(d3.easeLinear).duration(200);
 ```
 
-Now we know how it's gonna happen, but we need to tell the transition what the actual change is.
-We can simply move the part of our code that updates the circle attributes from our `enter` function to our `transition` function. Now, instead of using a hardcoded index for the year, we use the index `year_idx` that we updated in our event listener earlier.
+Now we know how it's gonna happen, but we need to tell the transition what the actual change is. We can simply move the part of our code that updates the circle attributes from our `enter` function to our `transition` function. Now, instead of using a hardcoded index for the year, we use the index `year_idx` that we updated in our event listener earlier.
 
-You might also noticed that the bigger circles cover the smaller ones. We can
-use `sort()` in our d3 selections to take care of that problem. `sort()` takes
-a function that compares two values, and return a positive, negative, or zero
-result, and reinserts the selected elements based on their differences.
+You might also noticed that the bigger circles cover the smaller ones. There are two things we might want to do about this: put the smaller circles in front and/or make the circles semi-transparent. We can use `sort()` in our d3 selections to take care of that problem using the first approach. `sort()` takes a function that compares two values, and return a positive, negative, or zero result, and reinserts the selected elements based on their differences. For the second approach, all we need to do is set the `opacity` of the circles using the `attr` method.
 
 ```js
-dot.enter().append("circle").attr("class","dot")
+dot.enter().append("circle").attr("class", "dot")
+				.attr("opacity", 0.5)
         .style("fill", function(d) { return colorScale(d.region); });
 dot.exit().remove();
 dot.transition().ease(d3.easeLinear).duration(200)
@@ -90,7 +87,6 @@ and then create event listeners for moving the mouse into a circle and out of on
 
 ```js
 dot.enter().append("circle").attr("class","dot")
-			.sort(function (a, b) { return b.population[year_idx] - a.population[year_idx]; })
 			.style("fill", function(d) { return colorScale(d.region); })
 			.on("mouseover", function(d){return tooltip.style("visibility", "visible").text(d.name);})
 			.on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
@@ -169,6 +165,6 @@ By the end of this lesson, your page should look something like this:
 
 <iframe style="position: relative; left: -120px" src="code/lesson-05.html" width="1000" height="750"></iframe>
 
-> ### Stay in touch! 
+> ### Stay in touch!
 >
-> Please let us know if liked this course, share with us, if it's helped you make something, or give us feedback on what we could do better. [Isabell](https://twitter.com/Isa_Kiko) and [Rob](https://twitter.com/robrkerr) 
+> Please let us know if liked this course, share with us, if it's helped you make something, or give us feedback on what we could do better. [Isabell](https://twitter.com/Isa_Kiko) and [Rob](https://twitter.com/robrkerr)
