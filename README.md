@@ -13,9 +13,9 @@ Courses available here: https://robisateam.github.io/courses/
 - [x] 🦆: convert to RobIsaTeam repo
 - [x] 🦄: clean up introduction
 - [x] 🦆: properly check that its at v4
-- [ ] 🦄: think about where to start and how to introduce d3 and the course
+- [x] 🦄: think about where to start and how to introduce d3 and the course
 - [ ] 🦄: give context about what d3 is for (and when plotly might be easier) <-- intro page
-- [ ] 🦄: prepare D3 rant - enter, exit
+- [x] 🦄: prepare D3 rant - enter, exit
 - [ ] 🦄: simpler build up for scales (1d first)? maybe??
 - [ ] 🦆+🦄: talk about the "note" in d3 lesson 5 - event is actually coming from d3 - not a special browser object
 
@@ -25,7 +25,6 @@ Courses available here: https://robisateam.github.io/courses/
 - [x] 🦄: swap images 5 and 6 (might be already done)
 - [x] 🦄: turn off spell checker in keynote before exporting images
 - [x] 🦄: export images with higher resolution
-- [ ] 🦄: setup flow: color in boxes??
 - [x] 🦄: setup flow: stack boxes vertically
 - [x] 🦄: create data file / trace data from paper
 - [x] 🦆: interpolate data traces
@@ -35,7 +34,7 @@ Courses available here: https://robisateam.github.io/courses/
 - [ ] 🦆+🦄: after campjs write to neuro paper authors
 
 ### Web page
-- [ ] 🦆: add twitter links
+- [x] 🦄: add twitter links
 - [ ] 🦆: link back to lesson list from within a lesson
 - [ ] 🦆: change font form bold to pretty
 - [ ] 🦄: write introduction
@@ -47,11 +46,10 @@ Courses available here: https://robisateam.github.io/courses/
 - [x] 🦄: Fix indentation in code blocks
 
 ## ThreeJS Lesson Plan 🦆+🦄:
-- lesson 7: animation of sphere sizes
-- lesson 8: clicking on spheres with plotly pop-up
-- advanced challenge: make stimulus textures on planes thing (lesson 7 or 8)
-- advanced challenge: give the brain eye (textured spheres)
-- no lesson 9
+- [x] lesson 7: animation of sphere sizes
+- [x] lesson 8: clicking on spheres with plotly pop-up
+- [ ] advanced challenge: make stimulus textures on planes thing (lesson 7 or 8) (?)
+- [ ] advanced challenge: give the eyes simple texture
 
 ## CampJS Notes:
 
